@@ -1,0 +1,721 @@
+14:04:17.569096 - servoControl started
+14:04:17.569096 - load servo data
+14:04:17.569096 - loading servo types
+14:04:17.570137 - loading servo definitions
+14:04:17.571124 - servoDefinitionsLoaded
+14:04:17.572131 - load last known servo positions
+14:04:17.572131 - servoPositions loaded
+14:04:17.779567 - serial connection with arduino 0 set
+14:04:17.781579 - arduinoReceive, readMessages started for arduino: 0
+14:04:17.781579 - started thread for reading serial messages arduino 0 (left) started
+14:04:19.195245 - <-I0 inmoovArduino v1.2
+14:04:19.782001 - request ready message from arduino 0
+14:04:19.789990 - ... wait for response from arduino 0, left
+14:04:20.189466 - arduino status update sent to client
+14:04:20.290260 - send servo definitions to arduino and move to rest position
+14:04:20.290260 - servo assign leftArm.rotate
+14:04:20.290260 - setup servo: leftArm.rotate      , servoId:  7, pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 40
+14:04:20.290260 - servo assign leftArm.shoulder
+14:04:20.290885 - setup servo: leftArm.shoulder    , servoId:  8, pin:  8, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 2000, inverted: 0, lastPos:  90, powerPin: 40
+14:04:20.290885 - servo assign leftArm.bicep
+14:04:20.290885 - setup servo: leftArm.bicep       , servoId:  6, pin: 11, minPos:  26, maxPos: 70, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  26, powerPin: 42
+14:04:20.290885 - servo assign leftArm.omoplate
+14:04:20.290885 - setup servo: leftArm.omoplate    , servoId:  9, pin:  8, minPos:  40, maxPos:170, restDeg:   0, autoDetach: 2000, inverted: 0, lastPos:  40, powerPin: 40
+14:04:20.290885 - servo assign leftHand.thumb
+14:04:20.290885 - setup servo: leftHand.thumb      , servoId:  0, pin:  7, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
+14:04:20.290885 - servo assign leftHand.index
+14:04:20.290885 - setup servo: leftHand.index      , servoId:  1, pin:  6, minPos:   0, maxPos:180, restDeg:  55, autoDetach: 1000, inverted: 0, lastPos: 110, powerPin: 42
+14:04:20.290885 - servo assign leftHand.majeure
+14:04:20.291917 - setup servo: leftHand.majeure    , servoId:  2, pin:  5, minPos:   0, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  75, powerPin: 42
+14:04:20.291917 - servo assign leftHand.ringFinger
+14:04:20.291917 - setup servo: leftHand.ringFinger , servoId:  3, pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
+14:04:20.291917 - servo assign leftHand.pinky
+14:04:20.291917 - setup servo: leftHand.pinky      , servoId:  4, pin:  3, minPos:  15, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  68, powerPin: 42
+14:04:20.291917 - servo assign leftHand.wrist
+14:04:20.291917 - setup servo: leftHand.wrist      , servoId:  5, pin:  2, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
+14:04:20.291917 - servo assign head.eyeX
+14:04:20.291917 - setup servo: head.eyeX           , servoId: 10, pin: 22, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 41
+14:04:20.291917 - servo assign head.eyeY
+14:04:20.291917 - setup servo: head.eyeY           , servoId: 11, pin: 24, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 41
+14:04:20.292911 - servo assign head.rothead
+14:04:20.292911 - setup servo: head.rothead        , servoId: 13, pin: 28, minPos:  40, maxPos:156, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  98, powerPin: 41
+14:04:20.292911 - servo assign head.neck
+14:04:20.292911 - setup servo: head.neck           , servoId: 14, pin: 12, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 3000, inverted: 0, lastPos: 125, powerPin: 41
+14:04:20.292911 - servo assign done
+14:04:20.292911 - --
+14:04:20.292911 - move enabled servos to rest position
+14:04:20.292911 - servo: leftArm.rotate, restDeg: 0, pos: 90
+14:04:20.292911 - arduino send leftArm.rotate, arduino 0, position: 90, duration: 1500, simulated: False
+14:04:20.297224 - leftArm.rotate update, position: 90
+14:04:20.311233 - move stopped, servo: leftArm.rotate, position: 90, degrees: 0
+14:04:20.313228 - move stopped, servo: leftArm.shoulder, position: 90, degrees: 0
+14:04:20.316220 - move stopped, servo: leftArm.bicep, position: 26, degrees: 0
+14:04:20.318214 - move stopped, servo: leftArm.omoplate, position: 40, degrees: 0
+14:04:20.320209 - move stopped, servo: leftHand.thumb, position: 90, degrees: 45
+14:04:20.323201 - move stopped, servo: leftHand.index, position: 110, degrees: 55
+14:04:20.325196 - move stopped, servo: leftHand.majeure, position: 75, degrees: 45
+14:04:20.327190 - move stopped, servo: leftHand.ringFinger, position: 90, degrees: 45
+14:04:20.330182 - move stopped, servo: leftHand.pinky, position: 68, degrees: 45
+14:04:20.332177 - move stopped, servo: leftHand.wrist, position: 90, degrees: 0
+14:04:20.335169 - move stopped, servo: head.eyeX, position: 90, degrees: 0
+14:04:20.337164 - move stopped, servo: head.eyeY, position: 90, degrees: 0
+14:04:20.339158 - move stopped, servo: head.rothead, position: 98, degrees: 0
+14:04:20.342150 - move stopped, servo: head.neck, position: 125, degrees: 0
+14:04:20.343148 - <-I0 servoMoveTo, servoId: 7, pos: 90, dur: 1500, sim: 0
+14:04:20.354118 - <-I0 m30 powerUp servo group, powerPin 40, powerPinIndex: 0, on: 0
+14:04:20.393050 - servo: leftArm.shoulder, restDeg: 0, pos: 90
+14:04:20.393050 - arduino send leftArm.shoulder, arduino 0, position: 90, duration: 1500, simulated: False
+14:04:20.408972 - <-I0 servoMoveTo, servoId: 8, pos: 90, dur: 1500, sim: 0
+14:04:20.493752 - servo: leftArm.bicep, restDeg: 0, pos: 26
+14:04:20.493752 - arduino send leftArm.bicep, arduino 0, position: 26, duration: 1500, simulated: False
+14:04:20.496768 - leftArm.rotate update, position: 90
+14:04:20.508705 - <-I0 servoMoveTo, servoId: 6, pos: 26, dur: 1500, sim: 0
+14:04:20.520673 - <-I0 m30 powerUp servo group, powerPin 42, powerPinIndex: 2, on: 0
+14:04:20.594626 - servo: leftArm.omoplate, restDeg: 0, pos: 40
+14:04:20.594626 - arduino send leftArm.omoplate, arduino 0, position: 40, duration: 1500, simulated: False
+14:04:20.607480 - <-I0 servoMoveTo, servoId: 9, pos: 40, dur: 1500, sim: 0
+14:04:20.695206 - servo: leftHand.thumb, restDeg: 45, pos: 90
+14:04:20.695279 - arduino send leftHand.thumb, arduino 0, position: 90, duration: 1500, simulated: False
+14:04:20.706209 - <-I0 servoMoveTo, servoId: 0, pos: 90, dur: 1500, sim: 0
+14:04:20.795642 - servo: leftHand.index, restDeg: 55, pos: 110
+14:04:20.795642 - arduino send leftHand.index, arduino 0, position: 110, duration: 1500, simulated: False
+14:04:20.804406 - <-I0 servoMoveTo, servoId: 1, pos: 110, dur: 1500, sim: 0
+14:04:20.896092 - servo: leftHand.majeure, restDeg: 45, pos: 75
+14:04:20.896092 - arduino send leftHand.majeure, arduino 0, position: 75, duration: 1500, simulated: False
+14:04:20.906032 - <-I0 servoMoveTo, servoId: 2, pos: 75, dur: 1500, sim: 0
+14:04:20.997126 - servo: leftHand.ringFinger, restDeg: 45, pos: 90
+14:04:20.997126 - arduino send leftHand.ringFinger, arduino 0, position: 90, duration: 1500, simulated: False
+14:04:21.015771 - <-I0 servoMoveTo, servoId: 3, pos: 90, dur: 1500, sim: 0
+14:04:21.097840 - servo: leftHand.pinky, restDeg: 45, pos: 68
+14:04:21.097840 - arduino send leftHand.pinky, arduino 0, position: 68, duration: 1500, simulated: False
+14:04:21.106498 - <-I0 servoMoveTo, servoId: 4, pos: 68, dur: 1500, sim: 0
+14:04:21.198286 - servo: leftHand.wrist, restDeg: 0, pos: 90
+14:04:21.198286 - arduino send leftHand.wrist, arduino 0, position: 90, duration: 1500, simulated: False
+14:04:21.214252 - <-I0 servoMoveTo, servoId: 5, pos: 90, dur: 1500, sim: 0
+14:04:21.298361 - servo: head.eyeX, restDeg: 0, pos: 90
+14:04:21.298361 - arduino send head.eyeX, arduino 0, position: 90, duration: 1500, simulated: False
+14:04:21.311983 - <-I0 servoMoveTo, servoId: 10, pos: 90, dur: 1500, sim: 0
+14:04:21.323940 - <-I0 m30 powerUp servo group, powerPin 41, powerPinIndex: 1, on: 0
+14:04:21.398715 - servo: head.eyeY, restDeg: 0, pos: 90
+14:04:21.398715 - arduino send head.eyeY, arduino 0, position: 90, duration: 1500, simulated: False
+14:04:21.411720 - <-I0 servoMoveTo, servoId: 11, pos: 90, dur: 1500, sim: 0
+14:04:21.498833 - servo: head.rothead, restDeg: 0, pos: 98
+14:04:21.498833 - arduino send head.rothead, arduino 0, position: 98, duration: 1500, simulated: False
+14:04:21.508423 - <-I0 servoMoveTo, servoId: 13, pos: 98, dur: 1500, sim: 0
+14:04:21.599689 - servo: head.neck, restDeg: 0, pos: 125
+14:04:21.599689 - arduino send head.neck, arduino 0, position: 125, duration: 1500, simulated: False
+14:04:21.617281 - <-I0 servoMoveTo, servoId: 14, pos: 125, dur: 1500, sim: 0
+14:04:21.997703 - leftArm.rotate update, position: 90
+14:04:21.997703 - move stopped, servo: leftArm.rotate, position: 90, degrees: 0
+14:04:22.019148 - move stopped, servo: leftArm.shoulder, position: 90, degrees: 0
+14:04:22.116520 - move stopped, servo: leftArm.bicep, position: 26, degrees: 0
+14:04:22.171346 - move stopped, servo: leftArm.omoplate, position: 40, degrees: 0
+14:04:22.279085 - move stopped, servo: leftHand.thumb, position: 90, degrees: 45
+14:04:22.375183 - move stopped, servo: leftHand.index, position: 110, degrees: 55
+14:04:22.472863 - move stopped, servo: leftHand.majeure, position: 75, degrees: 45
+14:04:22.580629 - move stopped, servo: leftHand.ringFinger, position: 90, degrees: 45
+14:04:22.675991 - move stopped, servo: leftHand.pinky, position: 68, degrees: 45
+14:04:22.775525 - move stopped, servo: leftHand.wrist, position: 90, degrees: 0
+14:04:22.871895 - move stopped, servo: head.eyeX, position: 90, degrees: 0
+14:04:22.914814 - move stopped, servo: head.eyeY, position: 90, degrees: 0
+14:04:23.001549 - leftArm.rotate update, position: 90
+14:04:23.012825 - move stopped, servo: head.rothead, position: 98, degrees: 0
+14:04:23.121260 - move stopped, servo: head.neck, position: 125, degrees: 0
+14:04:23.301246 - servo move to rest pos done
+14:04:23.803980 - <-I0 m35, servo group powered off, powerPin: 42
+14:04:24.181494 - <-I0 m35, servo group powered off, powerPin: 40
+14:04:24.508985 - serial connection with arduino 1 set
+14:04:24.509982 - arduinoReceive, readMessages started for arduino: 1
+14:04:24.509982 - started thread for reading serial messages arduino 1 (right) started
+14:04:25.146622 - <-I1 inmoovArduino v1.2
+14:04:26.136187 - <-I0 m35, servo group powered off, powerPin: 41
+14:04:26.510680 - request ready message from arduino 1
+14:04:26.510680 - ... wait for response from arduino 1, right
+14:04:26.520675 - arduino status update sent to client
+14:04:27.011269 - send servo definitions to arduino and move to rest position
+14:04:27.011269 - servo assign rightArm.bicep
+14:04:27.011269 - setup servo: rightArm.bicep      , servoId:  6, pin: 24, minPos:  26, maxPos: 70, restDeg:  10, autoDetach: 1000, inverted: 0, lastPos:  32, powerPin: 46
+14:04:27.011269 - servo assign rightArm.rotate
+14:04:27.011269 - setup servo: rightArm.rotate     , servoId:  7, pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 44
+14:04:27.011985 - servo assign rightArm.shoulder
+14:04:27.011985 - setup servo: rightArm.shoulder   , servoId:  8, pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 2000, inverted: 0, lastPos:  90, powerPin: 44
+14:04:27.011985 - servo assign rightArm.omoplate
+14:04:27.011985 - setup servo: rightArm.omoplate   , servoId:  9, pin: 22, minPos:  10, maxPos: 70, restDeg:   0, autoDetach: 5000, inverted: 0, lastPos:  10, powerPin: 44
+14:04:27.011985 - servo assign rightHand.thumb
+14:04:27.011985 - setup servo: rightHand.thumb     , servoId:  0, pin:  2, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  90, powerPin: 46
+14:04:27.011985 - servo assign rightHand.index
+14:04:27.011985 - setup servo: rightHand.index     , servoId:  1, pin:  3, minPos:  50, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  65, powerPin: 46
+14:04:27.011985 - servo assign rightHand.majeure
+14:04:27.012983 - setup servo: rightHand.majeure   , servoId:  2, pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  90, powerPin: 46
+14:04:27.012983 - servo assign rightHand.ringFinger
+14:04:27.012983 - setup servo: rightHand.ringFinger, servoId:  3, pin:  5, minPos:   0, maxPos:120, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  60, powerPin: 46
+14:04:27.012983 - servo assign rightHand.pinky
+14:04:27.012983 - setup servo: rightHand.pinky     , servoId:  4, pin:  6, minPos:  20, maxPos:140, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos: 100, powerPin: 46
+14:04:27.012983 - servo assign rightHand.wrist
+14:04:27.012983 - setup servo: rightHand.wrist     , servoId:  5, pin:  7, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 46
+14:04:27.012983 - servo assign done
+14:04:27.012983 - --
+14:04:27.012983 - move enabled servos to rest position
+14:04:27.013979 - servo: rightArm.bicep, restDeg: 10, pos: 32
+14:04:27.013979 - arduino send rightArm.bicep, arduino 1, position: 32, duration: 1500, simulated: False
+14:04:27.019965 - move stopped, servo: rightArm.bicep, position: 32, degrees: 10
+14:04:27.022957 - move stopped, servo: rightArm.rotate, position: 90, degrees: 0
+14:04:27.024951 - move stopped, servo: rightArm.shoulder, position: 90, degrees: 0
+14:04:27.026946 - move stopped, servo: rightArm.omoplate, position: 10, degrees: 0
+14:04:27.029938 - move stopped, servo: rightHand.thumb, position: 90, degrees: 45
+14:04:27.031933 - move stopped, servo: rightHand.index, position: 65, degrees: 45
+14:04:27.033927 - move stopped, servo: rightHand.majeure, position: 90, degrees: 45
+14:04:27.036374 - move stopped, servo: rightHand.ringFinger, position: 60, degrees: 45
+14:04:27.038914 - move stopped, servo: rightHand.pinky, position: 100, degrees: 45
+14:04:27.050882 - move stopped, servo: rightHand.wrist, position: 90, degrees: 0
+14:04:27.051879 - <-I1 servoMoveTo, servoId: 6, pos: 32, dur: 1500, sim: 0
+14:04:27.063847 - <-I1 m30 powerUp servo group, powerPin 46, powerPinIndex: 6, on: 0
+14:04:27.114060 - servo: rightArm.rotate, restDeg: 0, pos: 90
+14:04:27.114368 - arduino send rightArm.rotate, arduino 1, position: 90, duration: 1500, simulated: False
+14:04:27.121750 - <-I1 servoMoveTo, servoId: 7, pos: 90, dur: 1500, sim: 0
+14:04:27.133661 - <-I1 m30 powerUp servo group, powerPin 44, powerPinIndex: 4, on: 0
+14:04:27.215442 - servo: rightArm.shoulder, restDeg: 0, pos: 90
+14:04:27.215442 - arduino send rightArm.shoulder, arduino 1, position: 90, duration: 1500, simulated: False
+14:04:27.223788 - <-I1 servoMoveTo, servoId: 8, pos: 90, dur: 1500, sim: 0
+14:04:27.316172 - servo: rightArm.omoplate, restDeg: 0, pos: 10
+14:04:27.316172 - arduino send rightArm.omoplate, arduino 1, position: 10, duration: 1500, simulated: False
+14:04:27.332174 - <-I1 servoMoveTo, servoId: 9, pos: 10, dur: 1500, sim: 0
+14:04:27.416228 - servo: rightHand.thumb, restDeg: 45, pos: 90
+14:04:27.416228 - arduino send rightHand.thumb, arduino 1, position: 90, duration: 1500, simulated: False
+14:04:27.428871 - <-I1 servoMoveTo, servoId: 0, pos: 90, dur: 1500, sim: 0
+14:04:27.516799 - servo: rightHand.index, restDeg: 45, pos: 65
+14:04:27.516799 - arduino send rightHand.index, arduino 1, position: 65, duration: 1500, simulated: False
+14:04:27.528799 - <-I1 servoMoveTo, servoId: 1, pos: 65, dur: 1500, sim: 0
+14:04:27.617561 - servo: rightHand.majeure, restDeg: 45, pos: 90
+14:04:27.617561 - arduino send rightHand.majeure, arduino 1, position: 90, duration: 1500, simulated: False
+14:04:27.628533 - <-I1 servoMoveTo, servoId: 2, pos: 90, dur: 1500, sim: 0
+14:04:27.718303 - servo: rightHand.ringFinger, restDeg: 45, pos: 60
+14:04:27.718303 - arduino send rightHand.ringFinger, arduino 1, position: 60, duration: 1500, simulated: False
+14:04:27.727269 - <-I1 servoMoveTo, servoId: 3, pos: 60, dur: 1500, sim: 0
+14:04:27.818993 - servo: rightHand.pinky, restDeg: 45, pos: 100
+14:04:27.818993 - arduino send rightHand.pinky, arduino 1, position: 100, duration: 1500, simulated: False
+14:04:27.830056 - <-I1 servoMoveTo, servoId: 4, pos: 100, dur: 1500, sim: 0
+14:04:27.919724 - servo: rightHand.wrist, restDeg: 0, pos: 90
+14:04:27.919724 - arduino send rightHand.wrist, arduino 1, position: 90, duration: 1500, simulated: False
+14:04:27.929694 - <-I1 servoMoveTo, servoId: 5, pos: 90, dur: 1500, sim: 0
+14:04:28.664971 - move stopped, servo: rightArm.bicep, position: 32, degrees: 10
+14:04:28.687013 - move stopped, servo: rightArm.rotate, position: 90, degrees: 0
+14:04:28.739735 - move stopped, servo: rightArm.shoulder, position: 90, degrees: 0
+14:04:28.837710 - move stopped, servo: rightArm.omoplate, position: 10, degrees: 0
+14:04:28.947189 - move stopped, servo: rightHand.thumb, position: 90, degrees: 45
+14:04:29.043897 - move stopped, servo: rightHand.index, position: 65, degrees: 45
+14:04:29.140939 - move stopped, servo: rightHand.majeure, position: 90, degrees: 45
+14:04:29.249395 - move stopped, servo: rightHand.ringFinger, position: 60, degrees: 45
+14:04:29.337113 - move stopped, servo: rightHand.pinky, position: 100, degrees: 45
+14:04:29.443926 - move stopped, servo: rightHand.wrist, position: 90, degrees: 0
+14:04:29.620652 - servo move to rest pos done
+14:04:30.469549 - <-I1 m35, servo group powered off, powerPin: 46
+14:04:30.621427 - serverReady
+14:04:30.621427 - publishing basic servo data message to clients
+14:04:30.622144 - publishing ready=True message to clients
+14:04:30.623108 - started thread for watching connections
+14:04:30.623108 - start listening on port 20004
+server started on [0.0.0.0]:20004
+14:04:30.914688 - servoUpdate published, rightArm.shoulder, {"servoName": "rightArm.shoulder", "assigned": true, "moving": false, "attached": false, "autoDetach": true, "verbose": false, "position": 90, "degrees": 0}
+14:04:33.861391 - servoUpdate published, rightArm.omoplate, {"servoName": "rightArm.omoplate", "assigned": true, "moving": false, "attached": false, "autoDetach": true, "verbose": false, "position": 10, "degrees": 0}
+14:04:33.863427 - <-I1 m35, servo group powered off, powerPin: 44
+accepted ('192.168.0.14', 64926) with fd 1484
+welcome ('192.168.0.14', 64926)
+14:04:37.347435 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:04:37.360392 - reply connection established
+14:04:37.360392 - append client connection ('192.168.0.14', 20010)
+14:04:37.360392 - publishing basic servo data message to clients
+14:04:37.380087 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:04:37.380087 - publishing ready=True message to clients
+goodbye ('192.168.0.14', 64926)
+accepted ('192.168.0.14', 64937) with fd 1704
+welcome ('192.168.0.14', 64937)
+14:05:32.288435 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:05:32.300730 - reply connection established
+14:05:32.300730 - update client connection
+14:05:32.300730 - publishing basic servo data message to clients
+14:05:32.316714 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:05:32.317391 - publishing ready=True message to clients
+goodbye ('192.168.0.14', 64937)
+accepted ('192.168.0.14', 64968) with fd 1132
+welcome ('192.168.0.14', 64968)
+14:06:35.844782 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:06:35.856753 - reply connection established
+14:06:35.856753 - update client connection
+14:06:35.856753 - publishing basic servo data message to clients
+14:06:35.872586 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:06:35.872586 - publishing ready=True message to clients
+accepted ('192.168.0.14', 64969) with fd 1776
+welcome ('192.168.0.14', 64969)
+goodbye ('192.168.0.14', 64968)
+14:06:42.090613 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:06:42.092644 - reply connection established
+14:06:42.092644 - update client connection
+14:06:42.092644 - publishing basic servo data message to clients
+14:06:42.227947 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:06:42.227947 - publishing ready=True message to clients
+accepted ('192.168.0.14', 64970) with fd 1828
+welcome ('192.168.0.14', 64970)
+14:06:48.497264 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:06:48.510989 - reply connection established
+14:06:48.510989 - update client connection
+14:06:48.510989 - publishing basic servo data message to clients
+14:06:48.618957 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:06:48.618957 - publishing ready=True message to clients
+accepted ('192.168.0.14', 64971) with fd 1896
+welcome ('192.168.0.14', 64971)
+goodbye ('192.168.0.14', 64969)
+goodbye ('192.168.0.14', 64970)
+14:06:54.884541 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:06:54.897364 - reply connection established
+14:06:54.897364 - update client connection
+14:06:54.897364 - publishing basic servo data message to clients
+14:06:54.999985 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:06:54.999985 - publishing ready=True message to clients
+accepted ('192.168.0.14', 64972) with fd 1904
+welcome ('192.168.0.14', 64972)
+14:07:01.301624 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:07:01.303253 - reply connection established
+14:07:01.303253 - update client connection
+14:07:01.303253 - publishing basic servo data message to clients
+14:07:01.438499 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:07:01.438499 - publishing ready=True message to clients
+accepted ('192.168.0.14', 64973) with fd 1968
+welcome ('192.168.0.14', 64973)
+14:07:07.769365 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:07:07.781333 - reply connection established
+14:07:07.781333 - update client connection
+14:07:07.781333 - publishing basic servo data message to clients
+14:07:07.895894 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:07:07.896889 - publishing ready=True message to clients
+accepted ('192.168.0.14', 64974) with fd 1996
+welcome ('192.168.0.14', 64974)
+goodbye ('192.168.0.14', 64972)
+goodbye ('192.168.0.14', 64973)
+14:07:14.268724 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:07:14.281834 - reply connection established
+14:07:14.281834 - update client connection
+14:07:14.281834 - publishing basic servo data message to clients
+14:07:14.441721 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:07:14.441721 - publishing ready=True message to clients
+accepted ('192.168.0.14', 64975) with fd 2040
+welcome ('192.168.0.14', 64975)
+14:07:20.671056 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:07:20.683877 - reply connection established
+14:07:20.683877 - update client connection
+14:07:20.683877 - publishing basic servo data message to clients
+14:07:20.775506 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:07:20.775506 - publishing ready=True message to clients
+goodbye ('192.168.0.14', 64974)
+goodbye ('192.168.0.14', 64975)
+goodbye ('192.168.0.14', 64971)
+accepted ('192.168.0.14', 65020) with fd 1896
+welcome ('192.168.0.14', 65020)
+14:14:58.481194 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:14:58.494329 - reply connection established
+14:14:58.494329 - update client connection
+14:14:58.494329 - publishing basic servo data message to clients
+14:14:58.506545 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:14:58.506545 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65021) with fd 2004
+welcome ('192.168.0.14', 65021)
+goodbye ('192.168.0.14', 65020)
+14:15:04.681077 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:04.694040 - reply connection established
+14:15:04.694040 - update client connection
+14:15:04.694040 - publishing basic servo data message to clients
+14:15:04.788770 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:04.789502 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65022) with fd 1888
+welcome ('192.168.0.14', 65022)
+14:15:11.012794 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:11.025459 - reply connection established
+14:15:11.025459 - update client connection
+14:15:11.025459 - publishing basic servo data message to clients
+14:15:11.176024 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:11.176024 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65023) with fd 2124
+welcome ('192.168.0.14', 65023)
+goodbye ('192.168.0.14', 65021)
+goodbye ('192.168.0.14', 65022)
+14:15:17.467995 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:17.480640 - reply connection established
+14:15:17.480640 - update client connection
+14:15:17.480640 - publishing basic servo data message to clients
+14:15:17.643229 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:17.644236 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65024) with fd 2132
+welcome ('192.168.0.14', 65024)
+14:15:23.932723 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:23.944556 - reply connection established
+14:15:23.944556 - update client connection
+14:15:23.944556 - publishing basic servo data message to clients
+14:15:24.064288 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:24.064288 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65025) with fd 1896
+welcome ('192.168.0.14', 65025)
+14:15:30.402303 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:30.414189 - reply connection established
+14:15:30.414189 - update client connection
+14:15:30.414189 - publishing basic servo data message to clients
+14:15:30.601762 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:30.601762 - publishing ready=True message to clients
+goodbye ('192.168.0.14', 65023)
+goodbye ('192.168.0.14', 65025)
+goodbye ('192.168.0.14', 65024)
+accepted ('192.168.0.14', 65031) with fd 2288
+welcome ('192.168.0.14', 65031)
+14:15:39.267892 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:39.279861 - reply connection established
+14:15:39.279861 - update client connection
+14:15:39.279861 - publishing basic servo data message to clients
+14:15:39.302891 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:39.302891 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65032) with fd 2356
+welcome ('192.168.0.14', 65032)
+goodbye ('192.168.0.14', 65031)
+14:15:45.523709 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:45.535741 - reply connection established
+14:15:45.535741 - update client connection
+14:15:45.535741 - publishing basic servo data message to clients
+14:15:45.661278 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:45.661278 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65033) with fd 2408
+welcome ('192.168.0.14', 65033)
+14:15:51.995629 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:51.997696 - reply connection established
+14:15:51.997696 - update client connection
+14:15:51.997696 - publishing basic servo data message to clients
+14:15:52.202414 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:52.202414 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65034) with fd 2416
+welcome ('192.168.0.14', 65034)
+goodbye ('192.168.0.14', 65032)
+goodbye ('192.168.0.14', 65033)
+14:15:58.593318 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:15:58.605139 - reply connection established
+14:15:58.605139 - update client connection
+14:15:58.605139 - publishing basic servo data message to clients
+14:15:58.705599 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:15:58.705599 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65035) with fd 2420
+welcome ('192.168.0.14', 65035)
+14:16:04.959670 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:16:04.972315 - reply connection established
+14:16:04.972315 - update client connection
+14:16:04.972315 - publishing basic servo data message to clients
+14:16:05.057257 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:16:05.057257 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65036) with fd 2408
+welcome ('192.168.0.14', 65036)
+14:16:11.297269 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:16:11.299265 - reply connection established
+14:16:11.300304 - update client connection
+14:16:11.300304 - publishing basic servo data message to clients
+goodbye ('192.168.0.14', 65035)
+14:16:11.488090 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:16:11.488090 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65038) with fd 2468
+welcome ('192.168.0.14', 65038)
+14:16:17.786953 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:16:17.800282 - reply connection established
+14:16:17.800282 - update client connection
+14:16:17.800282 - publishing basic servo data message to clients
+14:16:17.883015 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:16:17.883015 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65039) with fd 2556
+welcome ('192.168.0.14', 65039)
+14:16:24.149865 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:16:24.162138 - reply connection established
+14:16:24.162138 - update client connection
+14:16:24.162138 - publishing basic servo data message to clients
+14:16:24.262859 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:16:24.263561 - publishing ready=True message to clients
+accepted ('192.168.0.14', 65041) with fd 2668
+welcome ('192.168.0.14', 65041)
+goodbye ('192.168.0.14', 65038)
+goodbye ('192.168.0.14', 65039)
+14:16:30.612329 - request for reply connection received from 192.168.0.14:20010, messageList: []
+14:16:30.624445 - reply connection established
+14:16:30.624445 - update client connection
+14:16:30.624445 - publishing basic servo data message to clients
+14:16:30.782123 - exception in publishBasicData to ('192.168.0.14', 20010): 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+========= Remote Traceback (1) =========
+Traceback (most recent call last):
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 323, in _dispatch_request
+    res = self._HANDLERS[handler](self, *args)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 601, in _handle_getattr
+    return self._access_attr(obj, name, (), "_rpyc_getattr", "allow_getattr", getattr)
+  File "C:\ProgramData\Miniconda3\lib\site-packages\rpyc\core\protocol.py", line 529, in _access_attr
+    return accessor(obj, name, *args)
+AttributeError: 'rpcListener' object has no attribute 'exposed_servoControlBasicData'
+
+14:16:30.782123 - publishing ready=True message to clients
+goodbye ('192.168.0.14', 65036)
+goodbye ('192.168.0.14', 65034)
+goodbye ('192.168.0.14', 65041)

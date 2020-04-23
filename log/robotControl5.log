@@ -1,0 +1,186 @@
+14:20:22.803 - robotControl started
+14:20:22.804 - load servo data
+14:20:22.804 - loading servo definitions
+14:20:22.819 - loading servo types
+14:20:22.822 - load last known servo positions
+14:20:22.822 - servoPositions loaded
+14:20:23.031 - serial connection with arduino 0 set
+14:20:23.242 - serial connection with arduino 1 set
+14:20:23.250 - arduinoReceive, readMessages started for arduino: 0
+14:20:23.251 - arduinoReceive, readMessages started for arduino: 1
+14:20:23.669 - <-I0 inmoovArduino v1.25
+14:20:23.874 - <-I1 inmoovArduino v1.25
+14:20:25.251 - request ready message from arduino 0
+14:20:25.260 - ... wait for response from arduino 0, left
+14:20:25.260 - response from COM8 received
+14:20:27.261 - request ready message from arduino 1
+14:20:27.261 - ... wait for response from arduino 1, right
+14:20:27.761 - response from COM4 received
+14:20:27.761 - send servo definitions to arduino and set current position to last persisted position
+14:20:27.761 - assign servo: leftArm.rotate      , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  93, powerPin: 40
+14:20:27.781 - <-I0 servo begin, servoId: 0, servoName: leftArm.rotate, pin: 10, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 93, powerPin: 40
+14:20:27.862 - assign servo: leftArm.shoulder    , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  89, powerPin: 40
+14:20:27.881 - <-I0 servo begin, servoId: 1, servoName: leftArm.shoulder, pin: 9, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 89, powerPin: 40
+14:20:27.962 - assign servo: leftArm.bicep       , pin: 11, minPos:  26, maxPos: 70, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  25, powerPin: 41
+14:20:27.980 - <-I0 servo begin, servoId: 2, servoName: leftArm.bicep, pin: 11, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 25, powerPin: 41
+14:20:28.063 - assign servo: leftArm.omoplate    , pin:  8, minPos:  30, maxPos: 70, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  29, powerPin: 40
+14:20:28.082 - <-I0 servo begin, servoId: 3, servoName: leftArm.omoplate, pin: 8, min: 30, max: 70, autoDetachMs: 2000, inverted: 1, lastPos: 29, powerPin: 40
+14:20:28.163 - assign servo: leftHand.thumb      , pin:  7, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 41
+14:20:28.182 - <-I0 servo begin, servoId: 4, servoName: leftHand.thumb, pin: 7, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 41
+14:20:28.263 - assign servo: leftHand.index      , pin:  6, minPos:   0, maxPos:180, restDeg:  55, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+14:20:28.282 - <-I0 servo begin, servoId: 5, servoName: leftHand.index, pin: 6, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+14:20:28.364 - assign servo: leftHand.majeure    , pin:  5, minPos:   0, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+14:20:28.381 - <-I0 servo begin, servoId: 6, servoName: leftHand.majeure, pin: 5, min: 0, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+14:20:28.465 - assign servo: leftHand.ringFinger , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+14:20:28.482 - <-I0 servo begin, servoId: 7, servoName: leftHand.ringFinger, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+14:20:28.566 - assign servo: leftHand.pinky      , pin:  3, minPos:  15, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+14:20:28.584 - <-I0 servo begin, servoId: 8, servoName: leftHand.pinky, pin: 3, min: 15, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+14:20:28.666 - assign servo: leftHand.wrist      , pin:  2, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+14:20:28.684 - <-I0 servo begin, servoId: 9, servoName: leftHand.wrist, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+14:20:28.767 - assign servo: head.eyeX           , pin: 22, minPos:  60, maxPos:120, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+14:20:28.786 - <-I0 servo begin, servoId: 10, servoName: head.eyeX, pin: 22, min: 60, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+14:20:28.867 - assign servo: head.eyeY           , pin: 24, minPos:  30, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+14:20:28.884 - <-I0 servo begin, servoId: 11, servoName: head.eyeY, pin: 24, min: 30, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+14:20:28.968 - assign servo: head.jaw            , pin: 26, minPos:  80, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos: 115, powerPin: 41
+14:20:28.986 - <-I0 servo begin, servoId: 12, servoName: head.jaw, pin: 26, min: 80, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 115, powerPin: 41
+14:20:29.069 - assign servo: head.rothead        , pin: 28, minPos:  40, maxPos:156, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  98, powerPin: 41
+14:20:29.086 - <-I0 servo begin, servoId: 13, servoName: head.rothead, pin: 28, min: 40, max: 156, autoDetachMs: 2000, inverted: 1, lastPos: 98, powerPin: 41
+14:20:29.169 - assign servo: head.neck           , pin: 12, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 3000, inverted: 0, lastPos:  96, powerPin: 41
+14:20:29.187 - <-I0 servo begin, servoId: 14, servoName: head.neck, pin: 12, min: 0, max: 180, autoDetachMs: 3000, inverted: 0, lastPos: 96, powerPin: 41
+14:20:29.269 - servo assign done
+14:20:29.269 - --
+14:20:29.269 - send servo definitions to arduino and set current position to last persisted position
+14:20:29.269 - assign servo: rightArm.bicep      , pin: 24, minPos:  26, maxPos: 70, restDeg:  10, autoDetach: 1000, inverted: 0, lastPos:  31, powerPin: 46
+14:20:29.287 - <-I1 servo begin, servoId: 0, servoName: rightArm.bicep, pin: 24, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 31, powerPin: 46
+14:20:29.369 - assign servo: rightArm.rotate     , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 44
+14:20:29.387 - <-I1 servo begin, servoId: 1, servoName: rightArm.rotate, pin: 9, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 44
+14:20:29.470 - assign servo: rightArm.shoulder   , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  90, powerPin: 44
+14:20:29.489 - <-I1 servo begin, servoId: 2, servoName: rightArm.shoulder, pin: 10, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 90, powerPin: 44
+14:20:29.571 - assign servo: rightArm.omoplate   , pin: 22, minPos:  10, maxPos: 70, restDeg:   0, autoDetach: 5000, inverted: 0, lastPos:  10, powerPin: 44
+14:20:29.591 - <-I1 servo begin, servoId: 3, servoName: rightArm.omoplate, pin: 22, min: 10, max: 70, autoDetachMs: 5000, inverted: 0, lastPos: 10, powerPin: 44
+14:20:29.672 - assign servo: rightHand.thumb     , pin:  2, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  89, powerPin: 46
+14:20:29.690 - <-I1 servo begin, servoId: 4, servoName: rightHand.thumb, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 89, powerPin: 46
+14:20:29.772 - assign servo: rightHand.index     , pin:  3, minPos:  50, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  64, powerPin: 46
+14:20:29.791 - <-I1 servo begin, servoId: 5, servoName: rightHand.index, pin: 3, min: 50, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 64, powerPin: 46
+14:20:29.872 - assign servo: rightHand.majeure   , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  89, powerPin: 46
+14:20:29.891 - <-I1 servo begin, servoId: 6, servoName: rightHand.majeure, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 89, powerPin: 46
+14:20:29.973 - assign servo: rightHand.ringFinger, pin:  5, minPos:   0, maxPos:120, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  59, powerPin: 46
+14:20:29.991 - <-I1 servo begin, servoId: 7, servoName: rightHand.ringFinger, pin: 5, min: 0, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 59, powerPin: 46
+14:20:30.073 - assign servo: rightHand.pinky     , pin:  6, minPos:  20, maxPos:140, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:   0, powerPin: 46
+14:20:30.090 - <-I1 servo begin, servoId: 8, servoName: rightHand.pinky, pin: 6, min: 20, max: 140, autoDetachMs: 1000, inverted: 1, lastPos: 0, powerPin: 46
+14:20:30.174 - assign servo: rightHand.wrist     , pin:  7, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 46
+14:20:30.193 - <-I1 servo begin, servoId: 9, servoName: rightHand.wrist, pin: 7, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 46
+14:20:30.275 - servo assign done
+14:20:30.275 - --
+14:20:30.275 - robotControl ready
+14:20:30.275 - publishing basic servo data message to clients
+14:20:30.275 - publishing ready=True message to clients
+14:20:30.276 - started thread for watching connections
+14:20:30.276 - start listening on port 20004
+server started on [0.0.0.0]:20004
+14:20:30.278 - start gui in main thread
+14:20:30.462 - guiLogic.init, adding thread for handling servo updates
+14:20:30.462 - guiLogic.init, adding thread random moves
+14:20:30.462 - guiLogic.init, adding thread gestures
+14:20:30.462 - guiLogic.init, adding thread MoveLips
+14:20:30.463 - run initial tts text
+14:20:30.463 - speak: Karsten als Sprecher aktiviert, 30 chars
+14:20:30.464 - move lips thread started
+14:20:30.464 - text to speak: Karsten als Sprecher aktiviert
+14:20:31.165 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:31.174 - <-I0 m34, servo group powered on, group: 41, IN5, head
+14:20:31.226 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:31.226 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:31.229 - <-I0 m35, servo group powered off 41, IN5, head
+14:20:31.240 - <-I0 m34, servo group powered on, group: 41, IN5, head
+14:20:31.284 - <-I0 inMoveRequest set head.jaw
+14:20:31.287 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:31.299 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:31.310 - <-I0 inMoveRequest set head.jaw
+14:20:31.368 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
+14:20:31.380 - <-I0 m35, servo group powered off 41, IN5, head
+14:20:31.469 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:31.469 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:31.478 - <-I0 m34, servo group powered on, group: 41, IN5, head
+14:20:31.526 - <-I0 inMoveRequest set head.jaw
+14:20:31.530 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:31.542 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:31.553 - <-I0 inMoveRequest set head.jaw
+14:20:31.591 - arduino send head.jaw, arduino 0, position: 80, duration: 50
+14:20:31.591 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:31.599 - <-I0 inMoveRequest set head.jaw
+14:20:31.652 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:31.652 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:31.668 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:31.679 - <-I0 inMoveRequest set head.jaw
+14:20:31.712 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:31.712 - head.jaw: duration increased, deltaPos: 27.0, msPerPos: 2.5, from: 50 to: 67.5
+14:20:31.725 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:31.737 - <-I0 inMoveRequest set head.jaw
+14:20:31.815 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
+14:20:31.828 - <-I0 m35, servo group powered off 41, IN5, head
+14:20:31.834 - arduino send head.jaw, arduino 0, position: 80, duration: 50
+14:20:31.834 - head.jaw: duration increased, deltaPos: 34, msPerPos: 2.5, from: 50 to: 85.0
+14:20:31.842 - <-I0 m34, servo group powered on, group: 41, IN5, head
+14:20:31.895 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:31.897 - <-I0 inMoveRequest set head.jaw
+14:20:31.911 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:31.922 - <-I0 inMoveRequest set head.jaw
+14:20:31.956 - arduino send head.jaw, arduino 0, position: 80, duration: 50
+14:20:31.956 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:31.967 - <-I0 inMoveRequest set head.jaw
+14:20:32.018 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:32.034 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:32.045 - <-I0 inMoveRequest set head.jaw
+14:20:32.079 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:32.079 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:32.087 - <-I0 inMoveRequest set head.jaw
+14:20:32.141 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:32.156 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:32.168 - <-I0 inMoveRequest set head.jaw
+14:20:32.202 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:32.202 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:32.214 - <-I0 inMoveRequest set head.jaw
+14:20:32.316 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
+14:20:32.323 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:32.323 - head.jaw: duration increased, deltaPos: 35.0, msPerPos: 2.5, from: 50 to: 87.5
+14:20:32.327 - <-I0 m35, servo group powered off 41, IN5, head
+14:20:32.339 - <-I0 m34, servo group powered on, group: 41, IN5, head
+14:20:32.383 - <-I0 inMoveRequest set head.jaw
+14:20:32.384 - arduino send head.jaw, arduino 0, position: 80, duration: 50
+14:20:32.384 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 50 to: 175.0
+14:20:32.397 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:32.409 - <-I0 inMoveRequest set head.jaw
+14:20:32.445 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:32.456 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:32.467 - <-I0 inMoveRequest set head.jaw
+14:20:32.474 - process arduino message from updateQueue
+14:20:32.485 - process arduino message from updateQueue
+14:20:32.506 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:32.506 - head.jaw: duration increased, deltaPos: 35.0, msPerPos: 2.5, from: 50 to: 87.5
+14:20:32.513 - <-I0 inMoveRequest set head.jaw
+14:20:32.626 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
+14:20:32.628 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:32.628 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:32.637 - <-I0 m35, servo group powered off 41, IN5, head
+14:20:32.650 - <-I0 m34, servo group powered on, group: 41, IN5, head
+14:20:32.685 - <-I0 inMoveRequest set head.jaw
+14:20:32.689 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:32.701 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:32.713 - <-I0 inMoveRequest set head.jaw
+14:20:32.750 - arduino send head.jaw, arduino 0, position: 150, duration: 50
+14:20:32.750 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
+14:20:32.758 - <-I0 inMoveRequest set head.jaw
+14:20:32.872 - arduino send head.jaw, arduino 0, position: 115, duration: 50
+14:20:32.872 - head.jaw: duration increased, deltaPos: 35.0, msPerPos: 2.5, from: 50 to: 87.5
+14:20:32.873 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
+14:20:32.886 - <-I0 m35, servo group powered off 41, IN5, head
+14:20:32.897 - <-I0 m34, servo group powered on, group: 41, IN5, head
+14:20:32.931 - <-I0 inMoveRequest set head.jaw
+14:20:32.994 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+14:20:32.994 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 100 to: 175.0
+14:20:33.008 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+14:20:33.019 - <-I0 inMoveRequest set head.jaw
+14:20:33.197 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
+14:20:33.209 - <-I0 m35, servo group powered off 41, IN5, head
+14:20:34.082 - speech finished after: 3.6 s, charPerSec: 0.12

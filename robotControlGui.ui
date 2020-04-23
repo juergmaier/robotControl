@@ -1,0 +1,2573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>972</width>
+    <height>513</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>robotControl</string>
+  </property>
+  <property name="toolTipDuration">
+   <number>20</number>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QCheckBox" name="ArduinoLeft">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>60</y>
+      <width>81</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Arduino left</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="ArduinoRight">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>80</y>
+      <width>81</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Arduino right</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="PositionSlider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>549</x>
+      <y>300</y>
+      <width>251</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="maximum">
+     <number>180</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>301</y>
+      <width>91</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>A servo can be positioned in the range from 0 to 180 when using the arduino servo library module. 
+A relative target position of 0 will move the servo to its minimum angle, 180 to its maximum angle.
+The absolute angle is calculated from the min and max angle the servo can move (in many cases this is not listed in the servo specification and has to be manually measured and edited into the servo definitions) and the requested relative position.</string>
+    </property>
+    <property name="text">
+     <string>Position</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="ServoAssigned">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>190</y>
+      <width>70</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Assigned</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="ServoMoving">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>210</y>
+      <width>70</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Moving</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="ServoSignalStopped">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>190</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Detached</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>333</y>
+      <width>91</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>This is the servo arm degree assuming 0 being the middle position. Normally this is in the range from -170..-90 to 90..170 degree and depends on the servos physical or controllable range. You should specify the servo's possible range in the servoList.json file. If your connected hardware does not allow all servo positions limit the range by use of the min/max values for the movements in degree.</string>
+    </property>
+    <property name="text">
+     <string>Degree</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="PositionRangeMin">
+    <property name="geometry">
+     <rect>
+      <x>521</x>
+      <y>301</y>
+      <width>25</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="PositionRangeMax">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>301</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>180</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="DegreeSlider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>549</x>
+      <y>331</y>
+      <width>250</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-90</number>
+    </property>
+    <property name="maximum">
+     <number>90</number>
+    </property>
+    <property name="sliderPosition">
+     <number>0</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>438</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Duration (ms)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ServoName">
+    <property name="geometry">
+     <rect>
+      <x>489</x>
+      <y>153</y>
+      <width>501</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: black; background-color: lightBlue; </string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Select a Servo in the Left Pane&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="RightHandServos">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>236</y>
+      <width>120</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Right Hand Servos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QPushButton" name="rightHand_wrist">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>180</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Wrist</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightHand_ringFinger">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>116</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ring</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightHand_pinky">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>148</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pinky</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightHand_index">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>52</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Index</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightHand_majeure">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>84</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Majeure</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightHand_thumb">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Thumb</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightHand_thumbSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>42</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="value">
+      <number>90</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightHand_majeureSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>106</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="value">
+      <number>90</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightHand_ringFingerSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>138</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="value">
+      <number>90</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightHand_pinkySlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>170</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="value">
+      <number>90</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightHand_wristSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>202</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="value">
+      <number>90</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightHand_wristBend">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>212</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Wrist Bend</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightHand_wristBendSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>234</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="value">
+      <number>90</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="HeadServos">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>30</y>
+      <width>121</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Head Servos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QPushButton" name="head_eyeY">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>20</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Eye Y</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="head_eyeX">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>52</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Eye X</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="head_jaw">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>84</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mouth</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="head_rothead">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>116</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rothead</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="head_neck">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>148</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Neck</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="head_eyeYSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>42</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="head_eyeXSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>74</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="head_jawSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>106</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="head_rotheadSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>138</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="head_neckSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="LeftHandServos">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>234</y>
+      <width>120</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Left Hand Servos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QPushButton" name="leftHand_wrist">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>180</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Wrist</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftHand_ringFinger">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>116</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ring</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftHand_pinky">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>148</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pinky</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftHand_index">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>52</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Index</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftHand_majeure">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>84</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Majeure</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftHand_thumb">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>lefthand.thumb</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Thumb</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftHand_thumbSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>42</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftHand_indexSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>74</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftHand_majeureSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>106</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftHand_ringFingerSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>138</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftHand_pinkySlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>170</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftHand_wristSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>202</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="LeftSholderServos">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>56</y>
+      <width>121</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Left Arm Servos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QPushButton" name="leftArm_rotate">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rotate</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftArm_shoulder">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>52</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Shoulder</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftArm_omoplate">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>84</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Omoplate</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="leftArm_bicep">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>116</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bicep</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftArm_bicepSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>138</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftArm_omoplateSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>106</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftArm_shoulderSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>74</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="leftArm_rotateSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>42</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="rightArmServos">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>325</x>
+      <y>56</y>
+      <width>121</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Right Arm Servos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QPushButton" name="rightArm_rotate">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rotate</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightArm_shoulder">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>52</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Shoulder</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightArm_omoplate">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>84</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Omoplate</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rightArm_bicep">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>116</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Bicep</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightArm_rotateSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>42</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightArm_shoulderSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>74</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightArm_omoplateSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>106</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="rightArm_bicepSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>138</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="TorsservoStatics">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>370</y>
+      <width>121</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Torso Servos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QPushButton" name="torso_topStom">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Lean Left/Right</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="torso_midStom">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>52</y>
+       <width>101</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rotate</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="torso_topStomSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>42</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="torso_midStomSlider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>74</y>
+       <width>99</width>
+       <height>8</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="SwipeServo">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>478</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Swipe</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="AutoDetach">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>210</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When disabled the servo will always get a PWM signal and might cause the servo to growl. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;CAUTION: If the servo can't reach the requested position (load, mechanical restriction, wrong wiring) it will quickly heat up (up to burning). Add a thermo resistor into the power loop to prevent burned servos.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;The Swing, Omoplate, Bycep and Neck servos are currently servos that might lose position when no PWM signal is applied. You might want to have autoDisable switched off during gestures and switched back on in rest position.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;When auto Disable is activated the arduino will stop the PWM signal after reaching the target position.&lt;/p&gt;&lt;p&gt;LIMITATION: As the recommended InMoov servos have no feed back the signal might go off before the requested position is reached! Use reasonable timings for servo moves.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Auto-Detach</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Arduino">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>190</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Arduino:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Degree">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>333</y>
+      <width>20</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Position">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>301</y>
+      <width>20</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="rightHand_indexSlider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>361</x>
+      <y>310</y>
+      <width>99</width>
+      <height>8</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::groove:horizontal {border: 1px solid #999999;}
+QSlider::handle:horizontal {height: 5px; width: 6px;background-image: url(sliderButton.jpg)}
+QSlider::add-page:qlineargradient {background: lightgray;}
+QSlider::sub-page:qlineargradient {background: lightgray;}</string>
+    </property>
+    <property name="maximum">
+     <number>180</number>
+    </property>
+    <property name="value">
+     <number>90</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="RequestPositionSlider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>549</x>
+      <y>406</y>
+      <width>250</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>180</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::NoTicks</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RequestPositionMaxLabel">
+    <property name="geometry">
+     <rect>
+      <x>809</x>
+      <y>392</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>180</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>394</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Position</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RequestDegreeMaxLabel">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>412</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>90</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>416</y>
+      <width>35</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Degree</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="DurationMax">
+    <property name="geometry">
+     <rect>
+      <x>807</x>
+      <y>438</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>10000</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>493</x>
+      <y>368</y>
+      <width>491</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="DegreeRangeMax">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>332</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>180</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="DegreeRangeMin">
+    <property name="geometry">
+     <rect>
+      <x>521</x>
+      <y>332</y>
+      <width>25</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-180</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RequestPositionMinLabel">
+    <property name="geometry">
+     <rect>
+      <x>521</x>
+      <y>395</y>
+      <width>24</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RequestDegreeMinLabel">
+    <property name="geometry">
+     <rect>
+      <x>521</x>
+      <y>412</y>
+      <width>24</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-90</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="DurationMin">
+    <property name="geometry">
+     <rect>
+      <x>521</x>
+      <y>439</y>
+      <width>24</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RequestPosition">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>392</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RequestDegree">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>412</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Duration">
+    <property name="geometry">
+     <rect>
+      <x>829</x>
+      <y>438</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="randomMoves">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>10</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Random Moves</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>10</y>
+      <width>20</width>
+      <height>491</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_3">
+    <property name="geometry">
+     <rect>
+      <x>489</x>
+      <y>133</y>
+      <width>501</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Modify">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>478</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Modify</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="Verbose">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>230</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;logs additional information from arduino low level functions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Verbose</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="MoveServo">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>478</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Move</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="minComment">
+    <property name="geometry">
+     <rect>
+      <x>498</x>
+      <y>370</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: yellow;</string>
+    </property>
+    <property name="text">
+     <string>minComment</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="margin">
+     <number>3</number>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="maxComment">
+    <property name="geometry">
+     <rect>
+      <x>773</x>
+      <y>370</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: yellow;</string>
+    </property>
+    <property name="text">
+     <string>maxComment</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="margin">
+     <number>3</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Rest">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>478</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rest</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="DurationSlider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>440</y>
+      <width>250</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximum">
+     <number>10000</number>
+    </property>
+    <property name="singleStep">
+     <number>0</number>
+    </property>
+    <property name="pageStep">
+     <number>500</number>
+    </property>
+    <property name="value">
+     <number>1000</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Pin">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>190</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pin:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="CableArduinoTerminal">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>210</y>
+      <width>231</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>color of signal cable from Arduino to cable termial</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Arduino-&gt;Terminal: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Terminal">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>230</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>terminal slot number</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Terminal:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="CableTerminalServo">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>250</y>
+      <width>231</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>color of signal cable from cable terminal to servo</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Termial-&gt;Servo:</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="AutoDetachValue">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>210</y>
+      <width>51</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>detach servo &lt;ms&gt; after position reached</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="maximum">
+     <number>10000</number>
+    </property>
+    <property name="singleStep">
+     <number>100</number>
+    </property>
+    <property name="value">
+     <number>1000</number>
+    </property>
+    <property name="displayIntegerBase">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="restAll">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>50</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rest All</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>242</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>InMoov Servo Gui</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="playGesture">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>90</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Play Gesture</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="Inverted">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>230</y>
+      <width>65</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;logs additional information from arduino low level functions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Inverted</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ServoSpeed">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>270</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>color of signal cable from cable terminal to servo</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Servo Speed (s/60°):</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Torque">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>250</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>color of signal cable from cable terminal to servo</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Torque:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Type">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>250</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>color of signal cable from cable terminal to servo</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Type:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Power">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>190</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Power:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stopAllServos">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>40</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Stop
+All
+Servos</string>
+    </property>
+   </widget>
+   <widget class="Line" name="degRange">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>330</y>
+      <width>250</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgba(0,255,0,100)</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>8</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="posRange">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>299</y>
+      <width>250</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgba(0,255,0,100)</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>8</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="MoveSpeed">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>270</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>color of signal cable from cable terminal to servo</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Move Speed (s/60°):</string>
+    </property>
+   </widget>
+   <zorder>PositionSlider</zorder>
+   <zorder>posRange</zorder>
+   <zorder>HeadServos</zorder>
+   <zorder>ArduinoLeft</zorder>
+   <zorder>ArduinoRight</zorder>
+   <zorder>label_2</zorder>
+   <zorder>ServoAssigned</zorder>
+   <zorder>ServoMoving</zorder>
+   <zorder>ServoSignalStopped</zorder>
+   <zorder>label_5</zorder>
+   <zorder>PositionRangeMin</zorder>
+   <zorder>PositionRangeMax</zorder>
+   <zorder>DegreeSlider</zorder>
+   <zorder>label_15</zorder>
+   <zorder>ServoName</zorder>
+   <zorder>RightHandServos</zorder>
+   <zorder>LeftHandServos</zorder>
+   <zorder>LeftSholderServos</zorder>
+   <zorder>rightArmServos</zorder>
+   <zorder>TorsservoStatics</zorder>
+   <zorder>SwipeServo</zorder>
+   <zorder>AutoDetach</zorder>
+   <zorder>Arduino</zorder>
+   <zorder>Degree</zorder>
+   <zorder>Position</zorder>
+   <zorder>rightHand_indexSlider</zorder>
+   <zorder>RequestPositionSlider</zorder>
+   <zorder>RequestPositionMaxLabel</zorder>
+   <zorder>label_6</zorder>
+   <zorder>RequestDegreeMaxLabel</zorder>
+   <zorder>label_9</zorder>
+   <zorder>DurationMax</zorder>
+   <zorder>line_2</zorder>
+   <zorder>DegreeRangeMax</zorder>
+   <zorder>DegreeRangeMin</zorder>
+   <zorder>RequestPositionMinLabel</zorder>
+   <zorder>RequestDegreeMinLabel</zorder>
+   <zorder>DurationMin</zorder>
+   <zorder>RequestPosition</zorder>
+   <zorder>RequestDegree</zorder>
+   <zorder>Duration</zorder>
+   <zorder>randomMoves</zorder>
+   <zorder>line</zorder>
+   <zorder>line_3</zorder>
+   <zorder>Modify</zorder>
+   <zorder>Verbose</zorder>
+   <zorder>MoveServo</zorder>
+   <zorder>minComment</zorder>
+   <zorder>maxComment</zorder>
+   <zorder>Rest</zorder>
+   <zorder>DurationSlider</zorder>
+   <zorder>Pin</zorder>
+   <zorder>CableArduinoTerminal</zorder>
+   <zorder>Terminal</zorder>
+   <zorder>CableTerminalServo</zorder>
+   <zorder>AutoDetachValue</zorder>
+   <zorder>restAll</zorder>
+   <zorder>label_7</zorder>
+   <zorder>playGesture</zorder>
+   <zorder>Inverted</zorder>
+   <zorder>ServoSpeed</zorder>
+   <zorder>Torque</zorder>
+   <zorder>Type</zorder>
+   <zorder>Power</zorder>
+   <zorder>stopAllServos</zorder>
+   <zorder>degRange</zorder>
+   <zorder>MoveSpeed</zorder>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>ArduinoLeft</tabstop>
+  <tabstop>ArduinoRight</tabstop>
+  <tabstop>head_eyeY</tabstop>
+  <tabstop>head_eyeYSlider</tabstop>
+  <tabstop>head_eyeX</tabstop>
+  <tabstop>head_eyeXSlider</tabstop>
+  <tabstop>head_jaw</tabstop>
+  <tabstop>head_jawSlider</tabstop>
+  <tabstop>head_rothead</tabstop>
+  <tabstop>SwipeServo</tabstop>
+  <tabstop>AutoDetach</tabstop>
+  <tabstop>head_rotheadSlider</tabstop>
+  <tabstop>head_neckSlider</tabstop>
+  <tabstop>head_neck</tabstop>
+  <tabstop>RequestPositionSlider</tabstop>
+  <tabstop>rightHand_wrist</tabstop>
+  <tabstop>rightHand_ringFinger</tabstop>
+  <tabstop>rightHand_pinky</tabstop>
+  <tabstop>rightHand_index</tabstop>
+  <tabstop>rightHand_majeure</tabstop>
+  <tabstop>rightHand_thumb</tabstop>
+  <tabstop>rightHand_thumbSlider</tabstop>
+  <tabstop>rightHand_majeureSlider</tabstop>
+  <tabstop>rightHand_ringFingerSlider</tabstop>
+  <tabstop>rightHand_pinkySlider</tabstop>
+  <tabstop>rightHand_wrist</tabstop>
+  <tabstop>PositionSlider</tabstop>
+  <tabstop>ServoAssigned</tabstop>
+  <tabstop>DegreeSlider</tabstop>
+  <tabstop>rightHand_indexSlider</tabstop>
+  <tabstop>ServoMoving</tabstop>
+  <tabstop>ServoSignalStopped</tabstop>
+  <tabstop>leftHand_wrist</tabstop>
+  <tabstop>leftHand_ringFinger</tabstop>
+  <tabstop>leftHand_pinky</tabstop>
+  <tabstop>leftHand_index</tabstop>
+  <tabstop>leftHand_majeure</tabstop>
+  <tabstop>leftHand_thumb</tabstop>
+  <tabstop>leftHand_thumbSlider</tabstop>
+  <tabstop>leftHand_indexSlider</tabstop>
+  <tabstop>leftHand_majeureSlider</tabstop>
+  <tabstop>leftHand_ringFingerSlider</tabstop>
+  <tabstop>leftHand_pinkySlider</tabstop>
+  <tabstop>leftHand_wristSlider</tabstop>
+  <tabstop>leftArm_rotate</tabstop>
+  <tabstop>leftArm_shoulder</tabstop>
+  <tabstop>leftArm_omoplate</tabstop>
+  <tabstop>leftArm_bicep</tabstop>
+  <tabstop>leftArm_bicepSlider</tabstop>
+  <tabstop>leftArm_omoplateSlider</tabstop>
+  <tabstop>leftArm_shoulderSlider</tabstop>
+  <tabstop>leftArm_rotateSlider</tabstop>
+  <tabstop>rightArm_rotate</tabstop>
+  <tabstop>rightArm_shoulder</tabstop>
+  <tabstop>rightArm_omoplate</tabstop>
+  <tabstop>rightArm_bicep</tabstop>
+  <tabstop>rightArm_rotateSlider</tabstop>
+  <tabstop>rightArm_shoulderSlider</tabstop>
+  <tabstop>rightArm_omoplateSlider</tabstop>
+  <tabstop>rightArm_bicepSlider</tabstop>
+  <tabstop>torso_topStom</tabstop>
+  <tabstop>torso_midStom</tabstop>
+  <tabstop>torso_topStomSlider</tabstop>
+  <tabstop>torso_midStomSlider</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,221 @@
+14:35:08.723406 - servoControl started
+14:35:08.723406 - load servo data
+14:35:08.724414 - loading servo types
+14:35:08.724414 - loading servo definitions
+14:35:08.731387 - servoDefinitionsLoaded
+14:35:08.732381 - load last known servo positions
+14:35:08.733347 - servoPositions loaded
+14:35:08.940794 - serial connection with arduino 0 set
+14:35:08.942786 - arduinoReceive, readMessages started for arduino: 0
+14:35:08.942786 - started thread for reading serial messages arduino 0 (left) started
+14:35:10.350629 - <-I0 inmoovArduino v1.2
+14:35:10.942952 - request ready message from arduino 0
+14:35:10.951238 - ... wait for response from arduino 0, left
+14:35:11.345156 - arduino status update sent to client
+14:35:11.451727 - send servo definitions to arduino and move to rest position
+14:35:11.451727 - servo assign leftArm.rotate
+14:35:11.451727 - setup servo: leftArm.rotate      , servoId:  7, pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 40
+14:35:11.451727 - servo assign leftArm.shoulder
+14:35:11.451727 - setup servo: leftArm.shoulder    , servoId:  8, pin:  8, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 2000, inverted: 0, lastPos:  90, powerPin: 40
+14:35:11.451727 - servo assign leftArm.bicep
+14:35:11.451727 - setup servo: leftArm.bicep       , servoId:  6, pin: 11, minPos:  26, maxPos: 70, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  26, powerPin: 42
+14:35:11.452634 - servo assign leftArm.omoplate
+14:35:11.452634 - setup servo: leftArm.omoplate    , servoId:  9, pin:  8, minPos:  40, maxPos:170, restDeg:   0, autoDetach: 2000, inverted: 0, lastPos:  40, powerPin: 40
+14:35:11.452634 - servo assign leftHand.thumb
+14:35:11.452634 - setup servo: leftHand.thumb      , servoId:  0, pin:  7, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
+14:35:11.452634 - servo assign leftHand.index
+14:35:11.452634 - setup servo: leftHand.index      , servoId:  1, pin:  6, minPos:   0, maxPos:180, restDeg:  55, autoDetach: 1000, inverted: 0, lastPos: 110, powerPin: 42
+14:35:11.452634 - servo assign leftHand.majeure
+14:35:11.452634 - setup servo: leftHand.majeure    , servoId:  2, pin:  5, minPos:   0, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  75, powerPin: 42
+14:35:11.453624 - servo assign leftHand.ringFinger
+14:35:11.453624 - setup servo: leftHand.ringFinger , servoId:  3, pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
+14:35:11.453624 - servo assign leftHand.pinky
+14:35:11.453624 - setup servo: leftHand.pinky      , servoId:  4, pin:  3, minPos:  15, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  68, powerPin: 42
+14:35:11.453624 - servo assign leftHand.wrist
+14:35:11.453624 - setup servo: leftHand.wrist      , servoId:  5, pin:  2, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
+14:35:11.453624 - servo assign head.eyeX
+14:35:11.453624 - setup servo: head.eyeX           , servoId: 10, pin: 22, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 41
+14:35:11.453624 - servo assign head.eyeY
+14:35:11.453624 - setup servo: head.eyeY           , servoId: 11, pin: 24, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 41
+14:35:11.453624 - servo assign head.rothead
+14:35:11.454620 - setup servo: head.rothead        , servoId: 13, pin: 28, minPos:  40, maxPos:156, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  98, powerPin: 41
+14:35:11.454620 - servo assign head.neck
+14:35:11.454620 - setup servo: head.neck           , servoId: 14, pin: 12, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 3000, inverted: 0, lastPos: 125, powerPin: 41
+14:35:11.454620 - servo assign done
+14:35:11.454620 - --
+14:35:11.454620 - move enabled servos to rest position
+14:35:11.454620 - servo: leftArm.rotate, restDeg: 0, pos: 90
+14:35:11.454620 - arduino send leftArm.rotate, arduino 0, position: 90, duration: 1500, simulated: False
+14:35:11.465686 - leftArm.rotate update, position: 90
+14:35:11.467576 - move stopped, servo: leftArm.rotate, position: 90, degrees: 0
+14:35:11.469570 - move stopped, servo: leftArm.shoulder, position: 90, degrees: 0
+14:35:11.471565 - move stopped, servo: leftArm.bicep, position: 26, degrees: 0
+14:35:11.474557 - move stopped, servo: leftArm.omoplate, position: 40, degrees: 0
+14:35:11.476551 - move stopped, servo: leftHand.thumb, position: 90, degrees: 45
+14:35:11.478553 - move stopped, servo: leftHand.index, position: 110, degrees: 55
+14:35:11.480547 - move stopped, servo: leftHand.majeure, position: 75, degrees: 45
+14:35:11.482542 - move stopped, servo: leftHand.ringFinger, position: 90, degrees: 45
+14:35:11.484537 - move stopped, servo: leftHand.pinky, position: 68, degrees: 45
+14:35:11.486532 - move stopped, servo: leftHand.wrist, position: 90, degrees: 0
+14:35:11.489526 - move stopped, servo: head.eyeX, position: 90, degrees: 0
+14:35:11.491518 - move stopped, servo: head.eyeY, position: 90, degrees: 0
+14:35:11.493513 - move stopped, servo: head.rothead, position: 98, degrees: 0
+14:35:11.495508 - move stopped, servo: head.neck, position: 125, degrees: 0
+14:35:11.496505 - <-I0 servoMoveTo, servoId: 7, pos: 90, dur: 1500, sim: 0
+14:35:11.508440 - <-I0 m30 powerUp servo group, powerPin 40, powerPinIndex: 0, on: 0
+14:35:11.555316 - servo: leftArm.shoulder, restDeg: 0, pos: 90
+14:35:11.555316 - arduino send leftArm.shoulder, arduino 0, position: 90, duration: 1500, simulated: False
+14:35:11.565687 - <-I0 servoMoveTo, servoId: 8, pos: 90, dur: 1500, sim: 0
+14:35:11.654077 - leftArm.rotate update, position: 90
+14:35:11.656088 - servo: leftArm.bicep, restDeg: 0, pos: 26
+14:35:11.656088 - arduino send leftArm.bicep, arduino 0, position: 26, duration: 1500, simulated: False
+14:35:11.665057 - <-I0 servoMoveTo, servoId: 6, pos: 26, dur: 1500, sim: 0
+14:35:11.677039 - <-I0 m30 powerUp servo group, powerPin 42, powerPinIndex: 2, on: 0
+14:35:11.756776 - servo: leftArm.omoplate, restDeg: 0, pos: 40
+14:35:11.756776 - arduino send leftArm.omoplate, arduino 0, position: 40, duration: 1500, simulated: False
+14:35:11.766781 - <-I0 servoMoveTo, servoId: 9, pos: 40, dur: 1500, sim: 0
+14:35:11.857539 - servo: leftHand.thumb, restDeg: 45, pos: 90
+14:35:11.857539 - arduino send leftHand.thumb, arduino 0, position: 90, duration: 1500, simulated: False
+14:35:11.865485 - <-I0 servoMoveTo, servoId: 0, pos: 90, dur: 1500, sim: 0
+14:35:11.958237 - servo: leftHand.index, restDeg: 55, pos: 110
+14:35:11.958237 - arduino send leftHand.index, arduino 0, position: 110, duration: 1500, simulated: False
+14:35:11.967217 - <-I0 servoMoveTo, servoId: 1, pos: 110, dur: 1500, sim: 0
+14:35:12.059274 - servo: leftHand.majeure, restDeg: 45, pos: 75
+14:35:12.059274 - arduino send leftHand.majeure, arduino 0, position: 75, duration: 1500, simulated: False
+14:35:12.075953 - <-I0 servoMoveTo, servoId: 2, pos: 75, dur: 1500, sim: 0
+14:35:12.159998 - servo: leftHand.ringFinger, restDeg: 45, pos: 90
+14:35:12.159998 - arduino send leftHand.ringFinger, arduino 0, position: 90, duration: 1500, simulated: False
+14:35:12.168674 - <-I0 servoMoveTo, servoId: 3, pos: 90, dur: 1500, sim: 0
+14:35:12.260432 - servo: leftHand.pinky, restDeg: 45, pos: 68
+14:35:12.260432 - arduino send leftHand.pinky, arduino 0, position: 68, duration: 1500, simulated: False
+14:35:12.276412 - <-I0 servoMoveTo, servoId: 4, pos: 68, dur: 1500, sim: 0
+14:35:12.361160 - servo: leftHand.wrist, restDeg: 0, pos: 90
+14:35:12.361160 - arduino send leftHand.wrist, arduino 0, position: 90, duration: 1500, simulated: False
+14:35:12.376120 - <-I0 servoMoveTo, servoId: 5, pos: 90, dur: 1500, sim: 0
+14:35:12.461909 - servo: head.eyeX, restDeg: 0, pos: 90
+14:35:12.461909 - arduino send head.eyeX, arduino 0, position: 90, duration: 1500, simulated: False
+14:35:12.474855 - <-I0 servoMoveTo, servoId: 10, pos: 90, dur: 1500, sim: 0
+14:35:12.485858 - <-I0 m30 powerUp servo group, powerPin 41, powerPinIndex: 1, on: 0
+14:35:12.562692 - servo: head.eyeY, restDeg: 0, pos: 90
+14:35:12.562692 - arduino send head.eyeY, arduino 0, position: 90, duration: 1500, simulated: False
+14:35:12.573595 - <-I0 servoMoveTo, servoId: 11, pos: 90, dur: 1500, sim: 0
+14:35:12.663355 - servo: head.rothead, restDeg: 0, pos: 98
+14:35:12.663355 - arduino send head.rothead, arduino 0, position: 98, duration: 1500, simulated: False
+14:35:12.672327 - <-I0 servoMoveTo, servoId: 13, pos: 98, dur: 1500, sim: 0
+14:35:12.764130 - servo: head.neck, restDeg: 0, pos: 125
+14:35:12.764130 - arduino send head.neck, arduino 0, position: 125, duration: 1500, simulated: False
+14:35:12.774054 - <-I0 servoMoveTo, servoId: 14, pos: 125, dur: 1500, sim: 0
+14:35:13.183963 - leftArm.rotate update, position: 90
+14:35:13.183963 - move stopped, servo: leftArm.rotate, position: 90, degrees: 0
+14:35:13.204905 - move stopped, servo: leftArm.shoulder, position: 90, degrees: 0
+14:35:13.302437 - move stopped, servo: leftArm.bicep, position: 26, degrees: 0
+14:35:13.345492 - move stopped, servo: leftArm.omoplate, position: 40, degrees: 0
+14:35:13.431495 - move stopped, servo: leftHand.thumb, position: 90, degrees: 45
+14:35:13.530544 - move stopped, servo: leftHand.index, position: 110, degrees: 55
+14:35:13.637943 - move stopped, servo: leftHand.majeure, position: 75, degrees: 45
+14:35:13.734018 - move stopped, servo: leftHand.ringFinger, position: 90, degrees: 45
+14:35:13.830726 - move stopped, servo: leftHand.pinky, position: 68, degrees: 45
+14:35:13.938593 - move stopped, servo: leftHand.wrist, position: 90, degrees: 0
+14:35:14.044855 - move stopped, servo: head.eyeX, position: 90, degrees: 0
+14:35:14.077826 - move stopped, servo: head.eyeY, position: 90, degrees: 0
+14:35:14.175505 - leftArm.rotate update, position: 90
+14:35:14.178502 - move stopped, servo: head.rothead, position: 98, degrees: 0
+14:35:14.285502 - move stopped, servo: head.neck, position: 125, degrees: 0
+14:35:14.465411 - servo move to rest pos done
+14:35:14.956666 - <-I0 m35, servo group powered off, powerPin: 42
+14:35:15.343079 - <-I0 m35, servo group powered off, powerPin: 40
+14:35:15.677187 - serial connection with arduino 1 set
+14:35:15.678184 - arduinoReceive, readMessages started for arduino: 1
+14:35:15.678184 - started thread for reading serial messages arduino 1 (right) started
+14:35:16.311625 - <-I1 inmoovArduino v1.2
+14:35:17.306188 - <-I0 m35, servo group powered off, powerPin: 41
+14:35:17.679043 - request ready message from arduino 1
+14:35:17.679043 - ... wait for response from arduino 1, right
+14:35:17.690126 - arduino status update sent to client
+14:35:18.179081 - send servo definitions to arduino and move to rest position
+14:35:18.179081 - servo assign rightArm.bicep
+14:35:18.179081 - setup servo: rightArm.bicep      , servoId:  6, pin: 24, minPos:  26, maxPos: 70, restDeg:  10, autoDetach: 1000, inverted: 0, lastPos:  32, powerPin: 46
+14:35:18.179081 - servo assign rightArm.rotate
+14:35:18.179081 - setup servo: rightArm.rotate     , servoId:  7, pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 44
+14:35:18.179081 - servo assign rightArm.shoulder
+14:35:18.179081 - setup servo: rightArm.shoulder   , servoId:  8, pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 2000, inverted: 0, lastPos:  90, powerPin: 44
+14:35:18.180075 - servo assign rightArm.omoplate
+14:35:18.180075 - setup servo: rightArm.omoplate   , servoId:  9, pin: 22, minPos:  10, maxPos: 70, restDeg:   0, autoDetach: 5000, inverted: 0, lastPos:  10, powerPin: 44
+14:35:18.180075 - servo assign rightHand.thumb
+14:35:18.180075 - setup servo: rightHand.thumb     , servoId:  0, pin:  2, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  90, powerPin: 46
+14:35:18.180075 - servo assign rightHand.index
+14:35:18.180075 - setup servo: rightHand.index     , servoId:  1, pin:  3, minPos:  50, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  65, powerPin: 46
+14:35:18.180075 - servo assign rightHand.majeure
+14:35:18.181103 - setup servo: rightHand.majeure   , servoId:  2, pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  90, powerPin: 46
+14:35:18.181103 - servo assign rightHand.ringFinger
+14:35:18.181103 - setup servo: rightHand.ringFinger, servoId:  3, pin:  5, minPos:   0, maxPos:120, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  60, powerPin: 46
+14:35:18.181103 - servo assign rightHand.pinky
+14:35:18.181103 - setup servo: rightHand.pinky     , servoId:  4, pin:  6, minPos:  20, maxPos:140, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos: 100, powerPin: 46
+14:35:18.181103 - servo assign rightHand.wrist
+14:35:18.181103 - setup servo: rightHand.wrist     , servoId:  5, pin:  7, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 46
+14:35:18.181103 - servo assign done
+14:35:18.181103 - --
+14:35:18.181103 - move enabled servos to rest position
+14:35:18.181103 - servo: rightArm.bicep, restDeg: 10, pos: 32
+14:35:18.181103 - arduino send rightArm.bicep, arduino 1, position: 32, duration: 1500, simulated: False
+14:35:18.197056 - move stopped, servo: rightArm.bicep, position: 32, degrees: 10
+14:35:18.199065 - move stopped, servo: rightArm.rotate, position: 90, degrees: 0
+14:35:18.201052 - move stopped, servo: rightArm.shoulder, position: 90, degrees: 0
+14:35:18.204044 - move stopped, servo: rightArm.omoplate, position: 10, degrees: 0
+14:35:18.206038 - move stopped, servo: rightHand.thumb, position: 90, degrees: 45
+14:35:18.209029 - move stopped, servo: rightHand.index, position: 65, degrees: 45
+14:35:18.211025 - move stopped, servo: rightHand.majeure, position: 90, degrees: 45
+14:35:18.213279 - move stopped, servo: rightHand.ringFinger, position: 60, degrees: 45
+14:35:18.215014 - move stopped, servo: rightHand.pinky, position: 100, degrees: 45
+14:35:18.218007 - move stopped, servo: rightHand.wrist, position: 90, degrees: 0
+14:35:18.219003 - <-I1 servoMoveTo, servoId: 6, pos: 32, dur: 1500, sim: 0
+14:35:18.230964 - <-I1 m30 powerUp servo group, powerPin 46, powerPinIndex: 6, on: 0
+14:35:18.283095 - servo: rightArm.rotate, restDeg: 0, pos: 90
+14:35:18.283095 - arduino send rightArm.rotate, arduino 1, position: 90, duration: 1500, simulated: False
+14:35:18.296802 - <-I1 servoMoveTo, servoId: 7, pos: 90, dur: 1500, sim: 0
+14:35:18.308769 - <-I1 m30 powerUp servo group, powerPin 44, powerPinIndex: 4, on: 0
+14:35:18.383531 - servo: rightArm.shoulder, restDeg: 0, pos: 90
+14:35:18.383531 - arduino send rightArm.shoulder, arduino 1, position: 90, duration: 1500, simulated: False
+14:35:18.397494 - <-I1 servoMoveTo, servoId: 8, pos: 90, dur: 1500, sim: 0
+14:35:18.484303 - servo: rightArm.omoplate, restDeg: 0, pos: 10
+14:35:18.484303 - arduino send rightArm.omoplate, arduino 1, position: 10, duration: 1500, simulated: False
+14:35:18.496272 - <-I1 servoMoveTo, servoId: 9, pos: 10, dur: 1500, sim: 0
+14:35:18.584992 - servo: rightHand.thumb, restDeg: 45, pos: 90
+14:35:18.584992 - arduino send rightHand.thumb, arduino 1, position: 90, duration: 1500, simulated: False
+14:35:18.596986 - <-I1 servoMoveTo, servoId: 0, pos: 90, dur: 1500, sim: 0
+14:35:18.685759 - servo: rightHand.index, restDeg: 45, pos: 65
+14:35:18.685759 - arduino send rightHand.index, arduino 1, position: 65, duration: 1500, simulated: False
+14:35:18.696693 - <-I1 servoMoveTo, servoId: 1, pos: 65, dur: 1500, sim: 0
+14:35:18.786454 - servo: rightHand.majeure, restDeg: 45, pos: 90
+14:35:18.786454 - arduino send rightHand.majeure, arduino 1, position: 90, duration: 1500, simulated: False
+14:35:18.796450 - <-I1 servoMoveTo, servoId: 2, pos: 90, dur: 1500, sim: 0
+14:35:18.887183 - servo: rightHand.ringFinger, restDeg: 45, pos: 60
+14:35:18.887183 - arduino send rightHand.ringFinger, arduino 1, position: 60, duration: 1500, simulated: False
+14:35:18.895162 - <-I1 servoMoveTo, servoId: 3, pos: 60, dur: 1500, sim: 0
+14:35:18.987221 - servo: rightHand.pinky, restDeg: 45, pos: 100
+14:35:18.987221 - arduino send rightHand.pinky, arduino 1, position: 100, duration: 1500, simulated: False
+14:35:18.996916 - <-I1 servoMoveTo, servoId: 4, pos: 100, dur: 1500, sim: 0
+14:35:19.087651 - servo: rightHand.wrist, restDeg: 0, pos: 90
+14:35:19.087651 - arduino send rightHand.wrist, arduino 1, position: 90, duration: 1500, simulated: False
+14:35:19.096015 - <-I1 servoMoveTo, servoId: 5, pos: 90, dur: 1500, sim: 0
+14:35:19.817796 - move stopped, servo: rightArm.bicep, position: 32, degrees: 10
+14:35:19.850989 - move stopped, servo: rightArm.rotate, position: 90, degrees: 0
+14:35:19.915654 - move stopped, servo: rightArm.shoulder, position: 90, degrees: 0
+14:35:20.013911 - move stopped, servo: rightArm.omoplate, position: 10, degrees: 0
+14:35:20.109999 - move stopped, servo: rightHand.thumb, position: 90, degrees: 45
+14:35:20.207153 - move stopped, servo: rightHand.index, position: 65, degrees: 45
+14:35:20.315814 - move stopped, servo: rightHand.majeure, position: 90, degrees: 45
+14:35:20.413556 - move stopped, servo: rightHand.ringFinger, position: 60, degrees: 45
+14:35:20.511296 - move stopped, servo: rightHand.pinky, position: 100, degrees: 45
+14:35:20.608347 - move stopped, servo: rightHand.wrist, position: 90, degrees: 0
+14:35:20.788553 - servo move to rest pos done
+14:35:21.633595 - <-I1 m35, servo group powered off, powerPin: 46
+14:35:21.790208 - serverReady
+14:35:21.790208 - publishing basic servo data message to clients
+14:35:21.806164 - publishing ready=True message to clients
+14:35:21.807128 - started thread for watching connections
+14:35:21.807128 - start listening on port 20004
+server started on [0.0.0.0]:20004
+14:35:21.945787 - servoUpdate published, rightArm.shoulder, {"servoName": "rightArm.shoulder", "assigned": true, "moving": false, "attached": false, "autoDetach": true, "verbose": false, "position": 90, "degrees": 0}
+14:35:25.031452 - servoUpdate published, rightArm.omoplate, {"servoName": "rightArm.omoplate", "assigned": true, "moving": false, "attached": false, "autoDetach": true, "verbose": false, "position": 10, "degrees": 0}
+14:35:25.032448 - <-I1 m35, servo group powered off, powerPin: 44

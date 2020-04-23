@@ -1,0 +1,8 @@
+14:19:21.836 - robotControl started
+14:19:21.837 - load servo data
+14:19:21.837 - loading servo definitions
+14:19:21.855 - loading servo types
+14:19:21.858 - load last known servo positions
+14:19:21.859 - servoPositions loaded
+14:19:21.859 - exception on serial connect with arduino: left, comPort: COM3, could not open port 'COM3': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)
+14:19:22.859 - could not open serial port COM3, going down

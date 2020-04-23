@@ -1,0 +1,11 @@
+def removeleftarm():
+  i01.setHandVelocity("left", 100, 100, 100, 100, 100, 100)
+  setHandSpeed("right", 250, 250, 250, 250, 250, 250)
+  setArmSpeed("right", 0.75, 0.85, 0.95, 0.85)
+  setArmSpeed("left", 0.95, 0.65, 0.75, 0.75)
+  setHeadSpeed(0.75, 0.75)
+  i01.moveHead(20,100)
+  i01.moveArm("left",71,94,41,31)
+  i01.moveArm("right",5,82,28,15)
+  i01.moveHand("left",60,43,45,34,34,35)
+  i01.moveHand("right",20,40,40,30,30,72)
