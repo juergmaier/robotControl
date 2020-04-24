@@ -39,7 +39,7 @@ class MoveLipsThread(QtCore.QThread):
 
     def run(self):
         config.log(f"move lips thread started")
-        secondsPerChar = 0.06
+        secondsPerChar = 0.055
         self.servoStatic = config.servoStaticDict['head.jaw']
         self.lastMouthPosition = self.servoStatic.minPos
 
@@ -52,10 +52,14 @@ class MoveLipsThread(QtCore.QThread):
             for charPos in range(len(config.lipsText)):
                 #config.log(f"char to speak: {self.text[charPos]}")
 
+                # check for modified lipsText
+                if charPos >= len(config.lipsText):
+                    continue
+
                 # tts needs some time to start speaking
                 if charPos == 0:
                     config.log(f"text to speak: {config.lipsText}")
-                    time.sleep(0.7)
+                    time.sleep(0.5)
 
                 # mouth default half open
                 mouthServoPos = (self.servoStatic.maxPos + self.servoStatic.minPos) / 2
@@ -70,7 +74,8 @@ class MoveLipsThread(QtCore.QThread):
 
                 # check for changed mouth position
                 if mouthServoPos != self.lastMouthPosition:
-                    arduinoSend.requestServoPosition("head.jaw", mouthServoPos, 50, filterSequence=False)
+                    moveDuration = 50
+                    arduinoSend.requestServoPosition("head.jaw", mouthServoPos, moveDuration, filterSequence=False)
                     self.lastMouthPosition = mouthServoPos
 
                 time.sleep(secondsPerChar)
@@ -103,14 +108,14 @@ class Mouth:
 
 
     def speakBlocking(self, text):
-        config.log(f"speak: {text}, {len(text)} chars")
+        #config.log(f"speak: {text}, {len(text)} chars")
         speechStart = time.time()
         self.engine.say(text)
 
         config.lipsText = text      # triggers lips movement in moveLipsThread
 
         self.engine.runAndWait()
-        config.log(f"speech finished after: {time.time()-speechStart:.1f} s, charPerSec: {(time.time()-speechStart)/len(text):.2f}")
+        #config.log(f"speech finished after: {time.time()-speechStart:.1f} s, charPerSec: {(time.time()-speechStart)/len(text):.2f}")
 
 
     def speak(self, text):

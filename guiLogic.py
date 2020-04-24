@@ -428,11 +428,6 @@ class servoGui(QMainWindow):
         arduinoSend.setVerbose(self.selectedServoName, state)
 
 
-    def on_AutoDetachValue_valueChanged(self):
-        config.log(f"requestSetAutoDetach, servoName: {self.selectedServoName}, vaule: {self.AutoDetachValue.value()}")
-        arduinoSend.setAutoDetach(self.selectedServoName, self.AutoDetachValue.value())
-
-
     def startRandomMoves(self):
         config.log(f"start random moves")
         config.randomMovesActive = True
@@ -556,8 +551,6 @@ class servoGui(QMainWindow):
         self.CableTerminalServo.setText(f"Terminal->Servo: {servoStatic.wireColorTerminalServo}")
         self.AutoDetach.setChecked(servoStatic.autoDetach > 0)
         self.AutoDetachValue.setValue(servoStatic.autoDetach)
-        self.AutoDetachValue.setEnabled(True)
-
         self.Inverted.setChecked(servoStatic.inverted)
         self.Torque.setText(f"Torque: {servoType.typeTorque}")
         self.Type.setText(f"Type: {servoStatic.servoType}")
@@ -593,7 +586,6 @@ class servoGui(QMainWindow):
         self.Modify.setEnabled(True)
         self.Rest.setEnabled(True)
         self.SwipeServo.setEnabled(True)
-        self.AutoDetachValue.setEnabled(True)
         self.Verbose.setEnabled(True)
 
         curr = config.servoCurrentDict[servoName]

@@ -1,257 +1,1445 @@
-10:33:04.743 - robotControl started
-10:33:04.744 - load servo data
-10:33:04.744 - loading servo definitions
-10:33:04.760 - loading servo types
-10:33:04.763 - load last known servo positions
-10:33:04.763 - servoPositions loaded
-10:33:04.972 - serial connection with arduino 0 set
-10:33:05.179 - serial connection with arduino 1 set
-10:33:05.182 - arduinoReceive, readMessages started for arduino: 0
-10:33:05.183 - arduinoReceive, readMessages started for arduino: 1
-10:33:05.612 - <-I0 inmoovArduino v1.25
-10:33:05.816 - <-I1 inmoovArduino v1.25
-10:33:07.184 - request ready message from arduino 0
-10:33:07.193 - ... wait for response from arduino 0, left
-10:33:07.193 - response from COM8 received
-10:33:09.194 - request ready message from arduino 1
-10:33:09.194 - ... wait for response from arduino 1, right
-10:33:09.694 - response from COM4 received
-10:33:09.694 - send servo definitions to arduino and set current position to last persisted position
-10:33:09.694 - assign servo: leftArm.rotate      , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  93, powerPin: 40
-10:33:09.713 - <-I0 servo begin, servoId: 0, servoName: leftArm.rotate, pin: 10, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 93, powerPin: 40
-10:33:09.795 - assign servo: leftArm.shoulder    , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  89, powerPin: 40
-10:33:09.815 - <-I0 servo begin, servoId: 1, servoName: leftArm.shoulder, pin: 9, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 89, powerPin: 40
-10:33:09.896 - assign servo: leftArm.bicep       , pin: 11, minPos:  26, maxPos: 70, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  25, powerPin: 41
-10:33:09.914 - <-I0 servo begin, servoId: 2, servoName: leftArm.bicep, pin: 11, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 25, powerPin: 41
-10:33:09.997 - assign servo: leftArm.omoplate    , pin:  8, minPos:  30, maxPos: 70, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  29, powerPin: 40
-10:33:10.016 - <-I0 servo begin, servoId: 3, servoName: leftArm.omoplate, pin: 8, min: 30, max: 70, autoDetachMs: 2000, inverted: 1, lastPos: 29, powerPin: 40
-10:33:10.097 - assign servo: leftHand.thumb      , pin:  7, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 41
-10:33:10.114 - <-I0 servo begin, servoId: 4, servoName: leftHand.thumb, pin: 7, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 41
-10:33:10.198 - assign servo: leftHand.index      , pin:  6, minPos:   0, maxPos:180, restDeg:  55, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
-10:33:10.216 - <-I0 servo begin, servoId: 5, servoName: leftHand.index, pin: 6, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
-10:33:10.299 - assign servo: leftHand.majeure    , pin:  5, minPos:   0, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
-10:33:10.319 - <-I0 servo begin, servoId: 6, servoName: leftHand.majeure, pin: 5, min: 0, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
-10:33:10.400 - assign servo: leftHand.ringFinger , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
-10:33:10.417 - <-I0 servo begin, servoId: 7, servoName: leftHand.ringFinger, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
-10:33:10.500 - assign servo: leftHand.pinky      , pin:  3, minPos:  15, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
-10:33:10.519 - <-I0 servo begin, servoId: 8, servoName: leftHand.pinky, pin: 3, min: 15, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
-10:33:10.601 - assign servo: leftHand.wrist      , pin:  2, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
-10:33:10.618 - <-I0 servo begin, servoId: 9, servoName: leftHand.wrist, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
-10:33:10.702 - assign servo: head.eyeX           , pin: 22, minPos:  60, maxPos:120, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
-10:33:10.720 - <-I0 servo begin, servoId: 10, servoName: head.eyeX, pin: 22, min: 60, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
-10:33:10.802 - assign servo: head.eyeY           , pin: 24, minPos:  30, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
-10:33:10.819 - <-I0 servo begin, servoId: 11, servoName: head.eyeY, pin: 24, min: 30, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
-10:33:10.903 - assign servo: head.jaw            , pin: 26, minPos:  80, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos: 150, powerPin: 41
-10:33:10.921 - <-I0 servo begin, servoId: 12, servoName: head.jaw, pin: 26, min: 80, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 150, powerPin: 41
-10:33:11.004 - assign servo: head.rothead        , pin: 28, minPos:  40, maxPos:156, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  98, powerPin: 41
-10:33:11.023 - <-I0 servo begin, servoId: 13, servoName: head.rothead, pin: 28, min: 40, max: 156, autoDetachMs: 2000, inverted: 1, lastPos: 98, powerPin: 41
-10:33:11.105 - assign servo: head.neck           , pin: 12, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 3000, inverted: 0, lastPos:  96, powerPin: 41
-10:33:11.122 - <-I0 servo begin, servoId: 14, servoName: head.neck, pin: 12, min: 0, max: 180, autoDetachMs: 3000, inverted: 0, lastPos: 96, powerPin: 41
-10:33:11.205 - servo assign done
-10:33:11.205 - --
-10:33:11.205 - send servo definitions to arduino and set current position to last persisted position
-10:33:11.205 - assign servo: rightArm.bicep      , pin: 24, minPos:  26, maxPos: 70, restDeg:  10, autoDetach: 1000, inverted: 0, lastPos:  31, powerPin: 46
-10:33:11.223 - <-I1 servo begin, servoId: 0, servoName: rightArm.bicep, pin: 24, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 31, powerPin: 46
-10:33:11.305 - assign servo: rightArm.rotate     , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 44
-10:33:11.325 - <-I1 servo begin, servoId: 1, servoName: rightArm.rotate, pin: 9, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 44
-10:33:11.406 - assign servo: rightArm.shoulder   , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  90, powerPin: 44
-10:33:11.424 - <-I1 servo begin, servoId: 2, servoName: rightArm.shoulder, pin: 10, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 90, powerPin: 44
-10:33:11.507 - assign servo: rightArm.omoplate   , pin: 22, minPos:  10, maxPos: 70, restDeg:   0, autoDetach: 5000, inverted: 0, lastPos:  10, powerPin: 44
-10:33:11.526 - <-I1 servo begin, servoId: 3, servoName: rightArm.omoplate, pin: 22, min: 10, max: 70, autoDetachMs: 5000, inverted: 0, lastPos: 10, powerPin: 44
-10:33:11.607 - assign servo: rightHand.thumb     , pin:  2, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  89, powerPin: 46
-10:33:11.624 - <-I1 servo begin, servoId: 4, servoName: rightHand.thumb, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 89, powerPin: 46
-10:33:11.707 - assign servo: rightHand.index     , pin:  3, minPos:  50, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  64, powerPin: 46
-10:33:11.726 - <-I1 servo begin, servoId: 5, servoName: rightHand.index, pin: 3, min: 50, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 64, powerPin: 46
-10:33:11.808 - assign servo: rightHand.majeure   , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  89, powerPin: 46
-10:33:11.825 - <-I1 servo begin, servoId: 6, servoName: rightHand.majeure, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 89, powerPin: 46
-10:33:11.908 - assign servo: rightHand.ringFinger, pin:  5, minPos:   0, maxPos:120, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  59, powerPin: 46
-10:33:11.927 - <-I1 servo begin, servoId: 7, servoName: rightHand.ringFinger, pin: 5, min: 0, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 59, powerPin: 46
-10:33:12.008 - assign servo: rightHand.pinky     , pin:  6, minPos:  20, maxPos:140, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:   0, powerPin: 46
-10:33:12.026 - <-I1 servo begin, servoId: 8, servoName: rightHand.pinky, pin: 6, min: 20, max: 140, autoDetachMs: 1000, inverted: 1, lastPos: 0, powerPin: 46
-10:33:12.109 - assign servo: rightHand.wrist     , pin:  7, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 46
-10:33:12.127 - <-I1 servo begin, servoId: 9, servoName: rightHand.wrist, pin: 7, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 46
-10:33:12.210 - servo assign done
-10:33:12.210 - --
-10:33:12.210 - robotControl ready
-10:33:12.210 - publishing basic servo data message to clients
-10:33:12.210 - publishing ready=True message to clients
-10:33:12.211 - started thread for watching connections
-10:33:12.211 - start listening on port 20004
+09:48:17.541 - robotControl started
+09:48:17.541 - load servo data
+09:48:17.541 - loading servo definitions
+09:48:17.557 - loading servo types
+09:48:17.560 - load last known servo positions
+09:48:17.560 - servoPositions loaded
+09:48:17.768 - serial connection with arduino 0 set
+09:48:17.977 - serial connection with arduino 1 set
+09:48:17.979 - arduinoReceive, readMessages started for arduino: 0
+09:48:17.980 - arduinoReceive, readMessages started for arduino: 1
+09:48:18.408 - <-I0 robotServos v1.28
+09:48:18.615 - <-I1 robotServos v1.28
+09:48:19.981 - request ready message from arduino 0
+09:48:19.981 - ... wait for response from arduino 0, left
+09:48:20.482 - response from COM8 received
+09:48:22.483 - request ready message from arduino 1
+09:48:22.483 - ... wait for response from arduino 1, right
+09:48:22.983 - response from COM4 received
+09:48:22.983 - send servo definitions to arduino and set current position to last persisted position
+09:48:22.983 - assign servo: leftArm.rotate      , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 40
+09:48:23.001 - <-I0 servo begin, servoId: 0, servoName: leftArm.rotate, pin: 10, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 40
+09:48:23.085 - assign servo: leftArm.shoulder    , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  90, powerPin: 40
+09:48:23.104 - <-I0 servo begin, servoId: 1, servoName: leftArm.shoulder, pin: 9, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 90, powerPin: 40
+09:48:23.187 - assign servo: leftArm.bicep       , pin: 11, minPos:  26, maxPos: 70, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  25, powerPin: 42
+09:48:23.206 - <-I0 servo begin, servoId: 2, servoName: leftArm.bicep, pin: 11, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 25, powerPin: 42
+09:48:23.289 - assign servo: leftArm.omoplate    , pin:  8, minPos:  30, maxPos: 70, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  29, powerPin: 40
+09:48:23.307 - <-I0 servo begin, servoId: 3, servoName: leftArm.omoplate, pin: 8, min: 30, max: 70, autoDetachMs: 2000, inverted: 1, lastPos: 29, powerPin: 40
+09:48:23.389 - assign servo: leftHand.thumb      , pin:  7, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 2000, inverted: 0, lastPos:  90, powerPin: 42
+09:48:23.406 - <-I0 servo begin, servoId: 4, servoName: leftHand.thumb, pin: 7, min: 0, max: 180, autoDetachMs: 2000, inverted: 0, lastPos: 90, powerPin: 42
+09:48:23.490 - assign servo: leftHand.index      , pin:  6, minPos:   0, maxPos:180, restDeg:  55, autoDetach: 1000, inverted: 0, lastPos: 110, powerPin: 42
+09:48:23.509 - <-I0 servo begin, servoId: 5, servoName: leftHand.index, pin: 6, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 110, powerPin: 42
+09:48:23.591 - assign servo: leftHand.majeure    , pin:  5, minPos:   0, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  75, powerPin: 42
+09:48:23.608 - <-I0 servo begin, servoId: 6, servoName: leftHand.majeure, pin: 5, min: 0, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 75, powerPin: 42
+09:48:23.691 - assign servo: leftHand.ringFinger , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 42
+09:48:23.709 - <-I0 servo begin, servoId: 7, servoName: leftHand.ringFinger, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 42
+09:48:23.791 - assign servo: leftHand.pinky      , pin:  3, minPos:  15, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  67, powerPin: 42
+09:48:23.809 - <-I0 servo begin, servoId: 8, servoName: leftHand.pinky, pin: 3, min: 15, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 67, powerPin: 42
+09:48:23.892 - assign servo: leftHand.wrist      , pin:  2, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 42
+09:48:23.910 - <-I0 servo begin, servoId: 9, servoName: leftHand.wrist, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 42
+09:48:23.993 - assign servo: head.eyeX           , pin: 22, minPos:  60, maxPos:120, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+09:48:24.010 - <-I0 servo begin, servoId: 10, servoName: head.eyeX, pin: 22, min: 60, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+09:48:24.093 - assign servo: head.eyeY           , pin: 24, minPos:  30, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 41
+09:48:24.111 - <-I0 servo begin, servoId: 11, servoName: head.eyeY, pin: 24, min: 30, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 41
+09:48:24.193 - assign servo: head.jaw            , pin: 26, minPos:  80, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos: 150, powerPin: 41
+09:48:24.210 - <-I0 servo begin, servoId: 12, servoName: head.jaw, pin: 26, min: 80, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 150, powerPin: 41
+09:48:24.293 - assign servo: head.rothead        , pin: 28, minPos:  40, maxPos:156, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  74, powerPin: 41
+09:48:24.312 - <-I0 servo begin, servoId: 13, servoName: head.rothead, pin: 28, min: 40, max: 156, autoDetachMs: 2000, inverted: 1, lastPos: 74, powerPin: 41
+09:48:24.394 - assign servo: head.neck           , pin: 12, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 3000, inverted: 0, lastPos:  96, powerPin: 41
+09:48:24.411 - <-I0 servo begin, servoId: 14, servoName: head.neck, pin: 12, min: 0, max: 180, autoDetachMs: 3000, inverted: 0, lastPos: 96, powerPin: 41
+09:48:24.494 - servo assign done
+09:48:24.494 - --
+09:48:24.494 - send servo definitions to arduino and set current position to last persisted position
+09:48:24.494 - assign servo: rightArm.bicep      , pin: 24, minPos:  26, maxPos: 70, restDeg:  10, autoDetach: 1000, inverted: 0, lastPos:  31, powerPin: 46
+09:48:24.513 - <-I1 servo begin, servoId: 0, servoName: rightArm.bicep, pin: 24, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 31, powerPin: 46
+09:48:24.594 - assign servo: rightArm.rotate     , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 44
+09:48:24.611 - <-I1 servo begin, servoId: 1, servoName: rightArm.rotate, pin: 9, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 44
+09:48:24.695 - assign servo: rightArm.shoulder   , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  90, powerPin: 44
+09:48:24.714 - <-I1 servo begin, servoId: 2, servoName: rightArm.shoulder, pin: 10, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 90, powerPin: 44
+09:48:24.795 - assign servo: rightArm.omoplate   , pin: 22, minPos:  10, maxPos: 70, restDeg:   0, autoDetach: 5000, inverted: 0, lastPos:  10, powerPin: 44
+09:48:24.813 - <-I1 servo begin, servoId: 3, servoName: rightArm.omoplate, pin: 22, min: 10, max: 70, autoDetachMs: 5000, inverted: 0, lastPos: 10, powerPin: 44
+09:48:24.895 - assign servo: rightHand.thumb     , pin:  2, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  89, powerPin: 46
+09:48:24.915 - <-I1 servo begin, servoId: 4, servoName: rightHand.thumb, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 89, powerPin: 46
+09:48:24.996 - assign servo: rightHand.index     , pin:  3, minPos:  50, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  64, powerPin: 46
+09:48:25.013 - <-I1 servo begin, servoId: 5, servoName: rightHand.index, pin: 3, min: 50, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 64, powerPin: 46
+09:48:25.097 - assign servo: rightHand.majeure   , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  89, powerPin: 46
+09:48:25.115 - <-I1 servo begin, servoId: 6, servoName: rightHand.majeure, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 89, powerPin: 46
+09:48:25.197 - assign servo: rightHand.ringFinger, pin:  5, minPos:   0, maxPos:120, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  59, powerPin: 46
+09:48:25.218 - <-I1 servo begin, servoId: 7, servoName: rightHand.ringFinger, pin: 5, min: 0, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 59, powerPin: 46
+09:48:25.298 - assign servo: rightHand.pinky     , pin:  6, minPos:  20, maxPos:140, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:   0, powerPin: 46
+09:48:25.316 - <-I1 servo begin, servoId: 8, servoName: rightHand.pinky, pin: 6, min: 20, max: 140, autoDetachMs: 1000, inverted: 1, lastPos: 0, powerPin: 46
+09:48:25.398 - assign servo: rightHand.wrist     , pin:  7, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:   0, powerPin: 46
+09:48:25.418 - <-I1 servo begin, servoId: 9, servoName: rightHand.wrist, pin: 7, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 0, powerPin: 46
+09:48:25.499 - servo assign done
+09:48:25.499 - --
+09:48:25.499 - robotControl ready
+09:48:25.499 - publishing basic servo data message to clients
+09:48:25.500 - publishing ready=True message to clients
+09:48:25.501 - started thread for watching connections
+09:48:25.501 - start listening on port 20004
 server started on [0.0.0.0]:20004
-10:33:12.212 - start gui in main thread
-10:33:12.495 - guiLogic.init, adding thread for handling servo updates
-10:33:12.495 - guiLogic.init, adding thread random moves
-10:33:12.495 - guiLogic.init, adding thread gestures
-10:33:12.496 - guiLogic.init, adding thread MoveLips
-10:33:12.496 - run initial tts text
-10:33:12.496 - speak: Karsten als Sprecher aktiviert, 30 chars
-10:33:12.497 - move lips thread started
-10:33:12.497 - text to speak: Karsten als Sprecher aktiviert
-10:33:13.198 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:13.198 - head.jaw: duration increased, deltaPos: 35.0, msPerPos: 2.5, from: 50 to: 87.5
-10:33:13.207 - <-I0 m34, servo group powered on  IN5-head
-10:33:13.260 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:13.262 - <-I0 inMoveRequest set head.jaw
-10:33:13.273 - <-I0 power already on for IN5-head
-10:33:13.287 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:13.298 - <-I0 inMoveRequest set head.jaw
-10:33:13.320 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:13.320 - head.jaw: duration increased, deltaPos: 26.0, msPerPos: 2.5, from: 50 to: 65.0
-10:33:13.333 - <-I0 power already on for IN5-head
-10:33:13.344 - <-I0 inMoveRequest set head.jaw
-10:33:13.423 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:33:13.434 - <-I0 m35, servo group powered off IN5-head
-10:33:13.503 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:13.503 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
-10:33:13.511 - <-I0 m34, servo group powered on  IN5-head
-10:33:13.559 - <-I0 inMoveRequest set head.jaw
-10:33:13.564 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:13.572 - <-I0 power already on for IN5-head
-10:33:13.586 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:13.597 - <-I0 inMoveRequest set head.jaw
-10:33:13.625 - arduino send head.jaw, arduino 0, position: 80, duration: 50
-10:33:13.625 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
-10:33:13.633 - <-I0 power already on for IN5-head
-10:33:13.644 - <-I0 inMoveRequest set head.jaw
-10:33:13.686 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:13.686 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
-10:33:13.698 - <-I0 power already on for IN5-head
-10:33:13.713 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:13.725 - <-I0 inMoveRequest set head.jaw
-10:33:13.747 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:13.747 - head.jaw: duration increased, deltaPos: 27.0, msPerPos: 2.5, from: 50 to: 67.5
-10:33:13.758 - <-I0 power already on for IN5-head
-10:33:13.772 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:13.783 - <-I0 inMoveRequest set head.jaw
-10:33:13.842 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:33:13.856 - <-I0 m35, servo group powered off IN5-head
-10:33:13.869 - arduino send head.jaw, arduino 0, position: 80, duration: 50
-10:33:13.869 - head.jaw: duration increased, deltaPos: 34, msPerPos: 2.5, from: 50 to: 85.0
-10:33:13.878 - <-I0 m34, servo group powered on  IN5-head
-10:33:13.929 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:13.933 - <-I0 inMoveRequest set head.jaw
-10:33:13.944 - <-I0 power already on for IN5-head
-10:33:13.958 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:13.970 - <-I0 inMoveRequest set head.jaw
-10:33:13.990 - arduino send head.jaw, arduino 0, position: 80, duration: 50
-10:33:13.990 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
-10:33:13.998 - <-I0 power already on for IN5-head
-10:33:14.009 - <-I0 inMoveRequest set head.jaw
-10:33:14.051 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:14.064 - <-I0 power already on for IN5-head
-10:33:14.079 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:14.090 - <-I0 inMoveRequest set head.jaw
-10:33:14.112 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:14.112 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 50 to: 155.0
-10:33:14.125 - <-I0 power already on for IN5-head
-10:33:14.137 - <-I0 inMoveRequest set head.jaw
-10:33:14.173 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:14.182 - <-I0 power already on for IN5-head
-10:33:14.195 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:14.206 - <-I0 inMoveRequest set head.jaw
-10:33:14.233 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:14.233 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
-10:33:14.241 - <-I0 power already on for IN5-head
-10:33:14.252 - <-I0 inMoveRequest set head.jaw
-10:33:14.353 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:33:14.355 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:14.355 - head.jaw: duration increased, deltaPos: 35.0, msPerPos: 2.5, from: 50 to: 87.5
-10:33:14.364 - <-I0 m35, servo group powered off IN5-head
-10:33:14.376 - <-I0 m34, servo group powered on  IN5-head
-10:33:14.411 - <-I0 inMoveRequest set head.jaw
-10:33:14.416 - arduino send head.jaw, arduino 0, position: 80, duration: 50
-10:33:14.416 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 50 to: 175.0
-10:33:14.424 - <-I0 power already on for IN5-head
-10:33:14.438 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:14.449 - <-I0 inMoveRequest set head.jaw
-10:33:14.477 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:14.485 - <-I0 power already on for IN5-head
-10:33:14.499 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:14.509 - process arduino message from updateQueue
-10:33:14.510 - <-I0 inMoveRequest set head.jaw
-10:33:14.520 - process arduino message from updateQueue
-10:33:14.537 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:14.537 - head.jaw: duration increased, deltaPos: 35.0, msPerPos: 2.5, from: 50 to: 87.5
-10:33:14.545 - <-I0 power already on for IN5-head
-10:33:14.557 - <-I0 inMoveRequest set head.jaw
-10:33:14.657 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:33:14.659 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:14.659 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
-10:33:14.671 - <-I0 m35, servo group powered off IN5-head
-10:33:14.683 - <-I0 m34, servo group powered on  IN5-head
-10:33:14.716 - <-I0 inMoveRequest set head.jaw
-10:33:14.721 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:14.727 - <-I0 power already on for IN5-head
-10:33:14.740 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:14.751 - <-I0 inMoveRequest set head.jaw
-10:33:14.781 - arduino send head.jaw, arduino 0, position: 150, duration: 50
-10:33:14.781 - head.jaw: duration increased, deltaPos: 35, msPerPos: 2.5, from: 50 to: 87.5
-10:33:14.788 - <-I0 power already on for IN5-head
-10:33:14.799 - <-I0 inMoveRequest set head.jaw
-10:33:14.902 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:33:14.903 - arduino send head.jaw, arduino 0, position: 115, duration: 50
-10:33:14.903 - head.jaw: duration increased, deltaPos: 35.0, msPerPos: 2.5, from: 50 to: 87.5
-10:33:14.916 - <-I0 m35, servo group powered off IN5-head
-10:33:14.928 - <-I0 m34, servo group powered on  IN5-head
-10:33:14.962 - <-I0 inMoveRequest set head.jaw
-10:33:15.025 - arduino send head.jaw, arduino 0, position: 80, duration: 100
-10:33:15.037 - <-I0 power already on for IN5-head
-10:33:15.050 - <-I0 new moveTo position request while still moving, stop current move head.jaw
-10:33:15.061 - <-I0 inMoveRequest set head.jaw
-10:33:15.162 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:33:15.173 - <-I0 m35, servo group powered off IN5-head
-10:33:16.076 - speech finished after: 3.6 s, charPerSec: 0.12
-10:33:37.577 - requestServoPos, servoName: head.jaw, position: 90, duration: 1000
-10:33:37.578 - arduino send head.jaw, arduino 0, position: 90, duration: 1000
-10:33:37.587 - <-I0 m34, servo group powered on  IN5-head
-10:33:37.641 - <-I0 inMoveRequest set head.jaw
-10:33:38.657 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:33:38.672 - <-I0 m35, servo group powered off IN5-head
-10:33:41.409 - requestServoPos, servoName: head.jaw, position: 90, duration: 1000
-10:33:41.409 - arduino send head.jaw, arduino 0, position: 90, duration: 1000
-10:33:41.418 - <-I0 m34, servo group powered on  IN5-head
-10:33:41.472 - <-I0 m35, servo group powered off IN5-head
-10:33:43.395 - requestServoStop, servoName: head.jaw
-10:34:20.568 - requestServoPos, servoName: head.jaw, position: 100, duration: 1000
-10:34:20.568 - arduino send head.jaw, arduino 0, position: 100, duration: 1000
-10:34:20.578 - <-I0 m34, servo group powered on  IN5-head
-10:34:20.632 - <-I0 inMoveRequest set head.jaw
-10:34:21.647 - <-I0 inMoveRequest cleared by autoDetachMs for servo, head.jaw
-10:34:21.659 - <-I0 m35, servo group powered off IN5-head
-10:34:29.351 - requestServoPos, servoName: head.jaw, position: 100, duration: 1000
-10:34:29.352 - arduino send head.jaw, arduino 0, position: 100, duration: 1000
-10:34:29.362 - <-I0 m34, servo group powered on  IN5-head
-10:34:29.410 - <-I0 m35, servo group powered off IN5-head
-10:34:30.316 - requestServoStop, servoName: head.jaw
-10:34:30.858 - requestServoPos, servoName: head.jaw, position: 100, duration: 1000
-10:34:30.858 - arduino send head.jaw, arduino 0, position: 100, duration: 1000
-10:34:30.872 - <-I0 m34, servo group powered on  IN5-head
-10:34:30.917 - <-I0 m35, servo group powered off IN5-head
-10:34:31.448 - requestServoStop, servoName: head.jaw
-10:34:31.989 - requestServoPos, servoName: head.jaw, position: 100, duration: 1000
-10:34:31.990 - arduino send head.jaw, arduino 0, position: 100, duration: 1000
-10:34:32.005 - <-I0 m34, servo group powered on  IN5-head
-10:34:32.049 - <-I0 m35, servo group powered off IN5-head
-10:36:11.576 - requestServoPos, servoName: leftHand.thumb, position: 89, duration: 1000
-10:36:11.576 - arduino send leftHand.thumb, arduino 0, position: 89, duration: 1000
-10:36:11.584 - <-I0 m34, servo group powered on  IN5-head
-10:36:11.638 - <-I0 m35, servo group powered off IN5-head
-10:36:17.622 - requestServoStop, servoName: leftHand.thumb
-10:36:21.052 - requestServoPos, servoName: leftHand.thumb, position: 109, duration: 1000
-10:36:21.052 - arduino send leftHand.thumb, arduino 0, position: 109, duration: 1000
-10:36:21.066 - <-I0 m34, servo group powered on  IN5-head
-10:36:21.109 - <-I0 inMoveRequest set leftHand.thumb
-10:36:22.136 - <-I0 inMoveRequest cleared by autoDetachMs for servo, leftHand.thumb
-10:36:22.148 - <-I0 m35, servo group powered off IN5-head
-10:36:27.988 - requestServoPos, servoName: leftHand.thumb, position: 89, duration: 1000
-10:36:27.988 - arduino send leftHand.thumb, arduino 0, position: 89, duration: 1000
-10:36:28.001 - <-I0 m34, servo group powered on  IN5-head
-10:36:28.046 - <-I0 inMoveRequest set leftHand.thumb
-10:36:29.071 - <-I0 inMoveRequest cleared by autoDetachMs for servo, leftHand.thumb
-10:36:29.084 - <-I0 m35, servo group powered off IN5-head
-10:36:50.900 - requestServoPos, servoName: leftHand.thumb, position: 109, duration: 1000
-10:36:50.900 - arduino send leftHand.thumb, arduino 0, position: 109, duration: 1000
-10:36:50.908 - <-I0 m34, servo group powered on  IN5-head
-10:36:50.962 - <-I0 inMoveRequest set leftHand.thumb
-10:36:51.988 - <-I0 inMoveRequest cleared by autoDetachMs for servo, leftHand.thumb
-10:36:51.999 - <-I0 m35, servo group powered off IN5-head
+09:48:25.502 - start gui in main thread
+09:48:25.774 - guiLogic.init, adding thread for handling servo updates
+09:48:25.775 - guiLogic.init, adding thread random moves
+09:48:25.775 - guiLogic.init, adding thread gestures
+09:48:25.775 - guiLogic.init, adding thread MoveLips
+09:48:25.775 - run initial tts text
+09:48:25.776 - move lips thread started
+09:48:25.776 - text to speak: Karsten als Sprecher aktiviert
+09:48:26.477 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:26.538 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:26.555 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:26.599 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:26.612 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:26.781 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:26.842 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:26.856 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:26.903 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:26.903 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:48:26.914 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:26.964 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:26.981 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.025 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:27.040 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.146 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:27.207 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:27.219 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.268 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:27.278 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.329 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:27.346 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.390 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:27.390 - head.jaw: duration increased, deltaPos: 64, msPerPos: 2.5, from: 88 to: 160.0
+09:48:27.404 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.451 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:27.462 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.512 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:27.523 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.633 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:27.694 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:27.694 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:48:27.713 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.755 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:27.770 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.787 - process arduino message from updateQueue
+09:48:27.798 - process arduino message from updateQueue
+09:48:27.816 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:27.828 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:27.937 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:27.998 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:28.016 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:28.059 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:28.074 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:28.181 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:28.302 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+09:48:29.439 - <-I0 m35, servo group powered off IN5-head
+09:48:41.881 - all servos stop requested
+09:48:41.893 - <-I0 m21 servo stop all received
+09:48:41.893 - <-I1 m21 servo stop all received
+09:48:44.849 - gesture selected: about
+09:48:45.787 - starting gesture about
+09:48:45.787 - todo: define stopListening in ear.py
+09:48:45.787 - setArmSpeed right, 0.1, 0.1, 0.2, 0.2
+09:48:45.787 - setArmSpeed left, 0.1, 0.1, 0.2, 0.2
+09:48:45.787 - arduino send leftArm.bicep, arduino 0, position: 64, duration: 8000
+09:48:45.787 - arduino send leftArm.rotate, arduino 0, position: 94, duration: 4000
+09:48:45.787 - arduino send leftArm.shoulder, arduino 0, position: 80, duration: 8000
+09:48:45.788 - arduino send leftArm.omoplate, arduino 0, position: 10, duration: 4000
+09:48:45.823 - text to speak: Ich bin der erste humanoide lebensgrosse roboter den man selber herstellen und bewegen kann
+09:48:45.897 - <-I0 m02 pin: 8, requested position: 10, min: 30
+09:48:46.525 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:46.648 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:46.648 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:48:46.665 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:46.709 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:46.720 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:46.830 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:46.842 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:46.891 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:46.903 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:46.952 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:46.966 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.014 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:47.028 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.075 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:47.075 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:48:47.094 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.135 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:47.149 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.197 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:47.197 - head.jaw: duration increased, deltaPos: 46, msPerPos: 2.5, from: 88 to: 115.0
+09:48:47.211 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.258 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:47.271 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.319 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:47.329 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.342 - <-I0 request for move to current position, request ignored
+09:48:47.502 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:47.562 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:47.578 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.623 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:47.636 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.684 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:47.697 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.745 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:47.745 - head.jaw: duration increased, deltaPos: 53, msPerPos: 2.5, from: 88 to: 132.5
+09:48:47.761 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.806 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:47.820 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.867 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:47.878 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:47.988 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:48.049 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:48.061 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.110 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:48.124 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.171 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:48.186 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.232 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:48.253 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.292 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:48.304 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.353 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:48.367 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.414 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:48.432 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.475 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:48.492 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:48.901 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:48.962 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:48.980 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.023 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:49.043 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.144 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:49.205 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:49.217 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.326 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:49.387 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:49.398 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.448 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:49.448 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:48:49.458 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.508 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:49.523 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.569 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:49.569 - head.jaw: duration increased, deltaPos: 47, msPerPos: 2.5, from: 88 to: 117.5
+09:48:49.585 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.630 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:49.643 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.691 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:49.691 - head.jaw: duration increased, deltaPos: 54, msPerPos: 2.5, from: 88 to: 135.0
+09:48:49.702 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.813 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:49.825 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.874 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:49.889 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.935 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:49.951 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:49.995 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:50.007 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.056 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:50.056 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:48:50.065 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.116 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:50.129 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.177 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:50.177 - head.jaw: duration increased, deltaPos: 46, msPerPos: 2.5, from: 88 to: 115.0
+09:48:50.189 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.238 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:50.250 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.299 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:50.311 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.323 - <-I0 request for move to current position, request ignored
+09:48:50.360 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:50.421 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:50.440 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.543 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:50.558 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.725 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:50.786 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:50.800 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:50.909 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:50.970 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:50.984 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.030 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:51.030 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:48:51.047 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.092 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:51.106 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.276 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:51.398 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:51.458 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:51.473 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.519 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:51.519 - head.jaw: duration increased, deltaPos: 44, msPerPos: 2.5, from: 88 to: 110.0
+09:48:51.537 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.580 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:51.598 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.641 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:51.658 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.702 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:51.718 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.763 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:51.763 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:48:51.778 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.823 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:51.838 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.885 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:51.885 - head.jaw: duration increased, deltaPos: 44, msPerPos: 2.5, from: 88 to: 110.0
+09:48:51.899 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:51.946 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:51.958 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:52.069 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+09:48:52.552 - arduino send head.rothead, arduino 0, position: 65, duration: 4000
+09:48:52.552 - arduino send head.neck, arduino 0, position: 66, duration: 4000
+09:48:52.552 - arduino send leftArm.bicep, arduino 0, position: 64, duration: 8000
+09:48:52.553 - arduino send leftArm.rotate, arduino 0, position: 104, duration: 4000
+09:48:52.553 - arduino send leftArm.shoulder, arduino 0, position: 80, duration: 8000
+09:48:52.553 - arduino send leftArm.omoplate, arduino 0, position: 11, duration: 4000
+09:48:52.553 - arduino send rightArm.bicep, arduino 1, position: 44, duration: 8000
+09:48:52.553 - arduino send rightArm.rotate, arduino 1, position: 84, duration: 4000
+09:48:52.553 - arduino send rightArm.shoulder, arduino 1, position: 80, duration: 8000
+09:48:52.553 - arduino send rightArm.omoplate, arduino 1, position: 11, duration: 4000
+09:48:52.568 - <-I0 new moveTo position request while still moving, stop current move leftArm.bicep
+09:48:52.573 - text to speak: Mein Diseiner ist Gael Langevin aus Frankreich
+09:48:52.583 - <-I0 new moveTo position request while still moving, stop current move leftArm.shoulder
+09:48:52.593 - <-I0 m02 pin: 8, requested position: 11, min: 30
+09:48:52.605 - <-I0 request for move to current position, request ignored
+09:48:53.273 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:53.333 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:53.333 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:48:53.347 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:53.455 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:53.473 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:53.516 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:53.516 - head.jaw: duration increased, deltaPos: 59, msPerPos: 2.5, from: 88 to: 147.5
+09:48:53.532 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:53.577 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:53.588 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:53.638 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:53.638 - head.jaw: duration increased, deltaPos: 47, msPerPos: 2.5, from: 88 to: 117.5
+09:48:53.650 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:53.698 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:53.711 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:53.759 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:53.776 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:53.881 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:53.942 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:53.954 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.003 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:54.019 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.066 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:54.066 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:48:54.081 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.128 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:54.138 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.189 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:54.207 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.310 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:54.371 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:54.387 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.432 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:54.432 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:48:54.444 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.554 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:54.574 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.615 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:54.615 - head.jaw: duration increased, deltaPos: 64, msPerPos: 2.5, from: 88 to: 160.0
+09:48:54.627 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.676 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:54.692 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.737 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:54.737 - head.jaw: duration increased, deltaPos: 44, msPerPos: 2.5, from: 88 to: 110.0
+09:48:54.749 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.797 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:54.813 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:54.919 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:54.981 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:54.996 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.042 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:55.054 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.103 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:55.116 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.163 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:55.163 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:48:55.177 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.225 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:55.235 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.286 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:55.301 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.408 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:55.469 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:55.483 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.591 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:55.652 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:55.669 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:55.834 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:55.955 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:56.016 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:56.034 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:56.077 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+09:48:56.077 - head.jaw: duration increased, deltaPos: 43, msPerPos: 2.5, from: 100 to: 107.5
+09:48:56.087 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:56.361 - arduino send head.rothead, arduino 0, position: 75, duration: 4000
+09:48:56.361 - arduino send head.neck, arduino 0, position: 86, duration: 4000
+09:48:56.361 - arduino send leftArm.bicep, arduino 0, position: 54, duration: 8000
+09:48:56.361 - arduino send leftArm.rotate, arduino 0, position: 104, duration: 4000
+09:48:56.361 - arduino send leftArm.shoulder, arduino 0, position: 80, duration: 8000
+09:48:56.361 - arduino send leftArm.omoplate, arduino 0, position: 11, duration: 4000
+09:48:56.362 - arduino send rightArm.bicep, arduino 1, position: 64, duration: 8000
+09:48:56.362 - arduino send rightArm.rotate, arduino 1, position: 84, duration: 4000
+09:48:56.362 - arduino send rightArm.shoulder, arduino 1, position: 80, duration: 8000
+09:48:56.362 - arduino send rightArm.omoplate, arduino 1, position: 20, duration: 4000
+09:48:56.376 - <-I0 new moveTo position request while still moving, stop current move head.rothead
+09:48:56.376 - <-I1 new moveTo position request while still moving, stop current move rightArm.bicep
+09:48:56.378 - text to speak: Er hat die 3 d elemente im internet frei verfuegbar gemacht und Anleitungen zum Zusammenbau erstellt.
+09:48:56.393 - <-I0 new moveTo position request while still moving, stop current move head.neck
+09:48:56.396 - <-I1 new moveTo position request while still moving, stop current move rightArm.rotate
+09:48:56.405 - <-I0 new moveTo position request while still moving, stop current move leftArm.bicep
+09:48:56.410 - <-I1 new moveTo position request while still moving, stop current move rightArm.shoulder
+09:48:56.417 - <-I0 new moveTo position request while still moving, stop current move leftArm.rotate
+09:48:56.422 - <-I1 new moveTo position request while still moving, stop current move rightArm.omoplate
+09:48:56.429 - <-I0 new moveTo position request while still moving, stop current move leftArm.shoulder
+09:48:56.440 - <-I0 m02 pin: 8, requested position: 11, min: 30
+09:48:56.452 - <-I0 request for move to current position, request ignored
+09:48:57.079 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:57.200 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:57.261 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:57.280 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.382 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:57.393 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.443 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:57.443 - head.jaw: duration increased, deltaPos: 54, msPerPos: 2.5, from: 88 to: 135.0
+09:48:57.455 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.504 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:57.516 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.565 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:57.565 - head.jaw: duration increased, deltaPos: 51, msPerPos: 2.5, from: 88 to: 127.5
+09:48:57.580 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.686 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:57.709 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.747 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:57.758 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.808 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:57.808 - head.jaw: duration increased, deltaPos: 43, msPerPos: 2.5, from: 88 to: 107.5
+09:48:57.820 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.869 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:57.881 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.930 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:57.942 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:57.990 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:58.003 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.051 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:58.070 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.112 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:58.112 - head.jaw: duration increased, deltaPos: 44, msPerPos: 2.5, from: 88 to: 110.0
+09:48:58.133 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.173 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:58.191 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.234 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:58.246 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.295 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:58.306 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.416 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:58.477 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:58.495 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.537 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:58.552 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.598 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:58.612 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.720 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:48:58.732 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.781 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:58.794 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:58.903 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:58.964 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:58.978 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:59.086 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:59.146 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:59.163 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:59.207 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:48:59.207 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:48:59.224 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:59.268 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:59.286 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:59.390 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:59.514 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:48:59.575 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:59.588 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:59.636 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:59.656 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:59.697 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:59.715 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:48:59.878 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:48:59.939 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:48:59.956 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.000 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:00.000 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:00.013 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.062 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:00.073 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.123 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:00.136 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.183 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:00.183 - head.jaw: duration increased, deltaPos: 40, msPerPos: 2.5, from: 88 to: 100.0
+09:49:00.195 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.244 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:00.257 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.305 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:00.305 - head.jaw: duration increased, deltaPos: 56, msPerPos: 2.5, from: 88 to: 140.0
+09:49:00.317 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.366 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:00.376 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.427 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:00.446 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.488 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:00.506 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.548 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:00.562 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.609 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:00.621 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.670 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:00.670 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:00.683 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.731 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:00.741 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:00.913 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:00.974 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:00.986 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:01.155 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:01.277 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:01.521 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:01.581 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:01.598 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:01.643 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:01.643 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:01.656 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:01.704 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:01.715 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:01.825 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:01.947 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:02.130 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:02.191 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:02.203 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.313 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:02.328 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.374 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:02.387 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.399 - <-I0 request for move to current position, request ignored
+09:49:02.435 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:02.435 - head.jaw: duration increased, deltaPos: 36, msPerPos: 2.5, from: 88 to: 90.0
+09:49:02.495 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:02.505 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.557 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:02.576 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.617 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:02.628 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.678 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:02.690 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.739 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:02.751 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:02.920 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:02.981 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:02.996 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:03.224 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+09:49:03.570 - arduino send head.rothead, arduino 0, position: 65, duration: 4000
+09:49:03.570 - arduino send head.neck, arduino 0, position: 96, duration: 4000
+09:49:03.571 - arduino send leftArm.bicep, arduino 0, position: 44, duration: 8000
+09:49:03.571 - arduino send leftArm.rotate, arduino 0, position: 94, duration: 4000
+09:49:03.571 - arduino send leftArm.shoulder, arduino 0, position: 80, duration: 8000
+09:49:03.571 - arduino send leftArm.omoplate, arduino 0, position: 20, duration: 4000
+09:49:03.571 - arduino send rightArm.bicep, arduino 1, position: 54, duration: 8000
+09:49:03.571 - arduino send rightArm.rotate, arduino 1, position: 94, duration: 4000
+09:49:03.571 - arduino send rightArm.shoulder, arduino 1, position: 70, duration: 8000
+09:49:03.571 - arduino send rightArm.omoplate, arduino 1, position: 11, duration: 4000
+09:49:03.584 - <-I1 new moveTo position request while still moving, stop current move rightArm.bicep
+09:49:03.587 - <-I0 new moveTo position request while still moving, stop current move leftArm.bicep
+09:49:03.596 - <-I1 new moveTo position request while still moving, stop current move rightArm.shoulder
+09:49:03.599 - <-I0 new moveTo position request while still moving, stop current move leftArm.shoulder
+09:49:03.610 - <-I0 m02 pin: 8, requested position: 20, min: 30
+09:49:03.623 - <-I0 request for move to current position, request ignored
+09:49:03.629 - text to speak: Juerg hat diese Dateien herunter geladen und die beinahe zweihundert Teile auf seinem Multec 3 d Drucker ausgedruckt.
+09:49:04.330 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:04.452 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:04.513 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:04.525 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:04.636 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:04.697 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:04.710 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:04.818 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:04.829 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:04.879 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:04.879 - head.jaw: duration increased, deltaPos: 54, msPerPos: 2.5, from: 88 to: 135.0
+09:49:04.897 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:04.940 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:04.965 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.010 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:05.010 - head.jaw: duration increased, deltaPos: 51, msPerPos: 2.5, from: 88 to: 127.5
+09:49:05.021 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.132 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:05.146 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.193 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:05.215 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.253 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:05.265 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.314 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:05.324 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.375 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:05.395 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.435 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:05.447 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.497 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:05.508 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.679 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:05.740 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:05.740 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:05.759 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.801 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:05.818 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:05.923 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:05.934 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.166 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:06.227 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:06.240 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.288 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:06.288 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:06.299 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.349 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:06.360 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.411 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:06.411 - head.jaw: duration increased, deltaPos: 47, msPerPos: 2.5, from: 88 to: 117.5
+09:49:06.426 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.472 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:06.484 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.533 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:06.544 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.595 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:06.606 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.655 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:06.667 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.716 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:06.728 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.777 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:06.777 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:06.786 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:06.838 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:06.854 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.020 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:07.081 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:07.096 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.141 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:07.141 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:07.154 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.264 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:07.277 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.386 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:07.403 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.508 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:07.520 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.568 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:07.581 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.751 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:07.812 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:07.824 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:07.934 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:08.116 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:08.299 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:08.360 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:08.376 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:08.481 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:08.542 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:08.558 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:08.603 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:08.603 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:08.616 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:08.725 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:08.735 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:08.785 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:08.797 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:08.846 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:08.858 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:08.907 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:08.917 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:08.968 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:08.986 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.089 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:09.150 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:09.167 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.211 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:09.211 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:09.228 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.333 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:09.351 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.393 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:09.409 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.455 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:09.465 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.577 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:09.589 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.820 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:09.881 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:09.897 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:09.942 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:09.942 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:09.953 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.002 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:10.013 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.063 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:10.076 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.124 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:10.136 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.185 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:10.195 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.246 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:10.263 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.551 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:10.611 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:10.626 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.673 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:10.673 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:10.685 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.734 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:10.747 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.795 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:10.807 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:10.977 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:11.037 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:11.051 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:11.463 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+09:49:11.751 - arduino send head.rothead, arduino 0, position: 75, duration: 4000
+09:49:11.751 - arduino send head.neck, arduino 0, position: 76, duration: 4000
+09:49:11.751 - arduino send leftArm.bicep, arduino 0, position: 64, duration: 8000
+09:49:11.752 - arduino send leftArm.rotate, arduino 0, position: 94, duration: 4000
+09:49:11.752 - arduino send leftArm.shoulder, arduino 0, position: 70, duration: 8000
+09:49:11.752 - arduino send leftArm.omoplate, arduino 0, position: 11, duration: 4000
+09:49:11.752 - arduino send rightArm.bicep, arduino 1, position: 34, duration: 8000
+09:49:11.752 - arduino send rightArm.rotate, arduino 1, position: 94, duration: 4000
+09:49:11.752 - arduino send rightArm.shoulder, arduino 1, position: 80, duration: 8000
+09:49:11.752 - arduino send rightArm.omoplate, arduino 1, position: 11, duration: 4000
+09:49:11.764 - <-I1 request for move to current position, request ignored
+09:49:11.765 - text to speak: nach circa fuenf hundert Stunden druckzeit, vielen Kilos Plastik, fuenf und zwanzig hobby servos, viel Schweiss und Blut bin ich zur Welt gekommen.
+09:49:11.765 - <-I0 request for move to current position, request ignored
+09:49:11.776 - <-I1 request for move to current position, request ignored
+09:49:11.777 - <-I0 m02 pin: 8, requested position: 11, min: 30
+09:49:11.788 - <-I0 request for move to current position, request ignored
+09:49:12.467 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:12.528 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:12.528 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:12.540 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:12.590 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:12.604 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:12.651 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:12.664 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:12.712 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:12.722 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:12.773 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:12.790 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:12.833 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:12.849 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:12.894 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:12.908 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:13.016 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:13.076 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:13.087 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:13.138 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:13.155 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:13.259 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:13.321 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:13.335 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:13.442 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:13.504 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:13.515 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:13.564 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:13.574 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:13.746 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:13.807 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:13.820 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:13.929 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:13.990 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:14.008 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:14.297 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:14.357 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:14.368 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:14.418 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:14.418 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:14.430 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:14.479 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:14.491 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:14.844 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:14.965 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:15.088 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:15.149 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:15.167 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.210 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:15.210 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:15.226 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.331 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:15.343 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.393 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:15.407 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.453 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:15.465 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.514 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:15.514 - head.jaw: duration increased, deltaPos: 63, msPerPos: 2.5, from: 88 to: 157.5
+09:49:15.527 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.575 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:15.596 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.636 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:15.636 - head.jaw: duration increased, deltaPos: 46, msPerPos: 2.5, from: 88 to: 115.0
+09:49:15.655 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.697 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:15.712 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:15.879 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:15.939 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:15.951 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:16.061 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:16.122 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:16.134 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:16.244 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:16.304 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:16.322 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:16.426 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:16.487 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:16.501 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:16.609 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:16.670 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:16.683 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:16.791 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:16.852 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:16.863 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.034 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:17.095 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:17.107 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.217 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:17.278 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:17.289 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.399 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:17.460 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:17.474 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.520 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:17.520 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:17.532 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.581 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:17.592 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.642 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:17.654 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.703 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:17.703 - head.jaw: duration increased, deltaPos: 40, msPerPos: 2.5, from: 88 to: 100.0
+09:49:17.715 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.825 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:17.885 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:17.896 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:17.947 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:17.964 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.007 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:18.007 - head.jaw: duration increased, deltaPos: 64, msPerPos: 2.5, from: 88 to: 160.0
+09:49:18.022 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.068 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:18.081 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.373 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:18.433 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:18.447 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.495 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:18.495 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:18.505 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.617 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:18.631 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.678 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:18.678 - head.jaw: duration increased, deltaPos: 64, msPerPos: 2.5, from: 88 to: 160.0
+09:49:18.690 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.739 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:18.751 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.861 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:18.922 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:18.932 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:18.982 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:19.002 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:19.104 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:19.226 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:19.286 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:19.302 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:19.468 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:19.530 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:19.542 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:19.772 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:19.895 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:19.955 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:19.968 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.016 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:20.026 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.077 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:20.094 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.138 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:20.150 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.199 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:20.199 - head.jaw: duration increased, deltaPos: 39, msPerPos: 2.5, from: 88 to: 97.5
+09:49:20.218 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.260 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:20.276 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.321 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:20.333 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.502 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:20.564 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:20.577 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.624 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:20.624 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:20.636 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.686 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:20.697 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.791 - <-I1 m35, servo group powered off IN4-rightHand
+09:49:20.800 - <-I0 m35, servo group powered off IN2-leftHand
+09:49:20.807 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:20.868 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:20.882 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.930 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:20.930 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:20.942 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:20.990 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:21.001 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:21.112 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:21.234 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:21.294 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:21.307 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:21.416 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+09:49:22.131 - arduino send head.rothead, arduino 0, position: 65, duration: 4000
+09:49:22.131 - arduino send head.neck, arduino 0, position: 86, duration: 4000
+09:49:22.131 - arduino send leftArm.bicep, arduino 0, position: 24, duration: 8000
+09:49:22.131 - arduino send leftArm.rotate, arduino 0, position: 94, duration: 4000
+09:49:22.131 - arduino send leftArm.shoulder, arduino 0, position: 80, duration: 8000
+09:49:22.132 - arduino send leftArm.omoplate, arduino 0, position: 11, duration: 4000
+09:49:22.132 - arduino send rightArm.bicep, arduino 1, position: 24, duration: 8000
+09:49:22.132 - arduino send rightArm.rotate, arduino 1, position: 94, duration: 4000
+09:49:22.132 - arduino send rightArm.shoulder, arduino 1, position: 80, duration: 8000
+09:49:22.132 - arduino send rightArm.omoplate, arduino 1, position: 11, duration: 4000
+09:49:22.195 - <-I1 m02 pin: 24, requested position: 24, min: 26
+09:49:22.197 - <-I0 m02 pin: 11, requested position: 24, min: 26
+09:49:22.207 - <-I1 request for move to current position, request ignored
+09:49:22.209 - <-I0 request for move to current position, request ignored
+09:49:22.218 - <-I1 request for move to current position, request ignored
+09:49:22.220 - <-I0 m02 pin: 8, requested position: 11, min: 30
+09:49:22.222 - text to speak: wenn sie also einen 3 d drucker haben oder beschaffen moechten, etwas Geschick mit Computer, Elektronik, Faeden und Schrauben haben und auch noch etwas Geld, koennen sie ihre eigene Kopie von mir erstellen
+09:49:22.230 - <-I1 request for move to current position, request ignored
+09:49:22.232 - <-I0 request for move to current position, request ignored
+09:49:22.923 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:22.984 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:22.984 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:22.995 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.045 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:23.060 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.167 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:23.227 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:23.242 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.288 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:23.288 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:23.302 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.409 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:23.420 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.470 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:23.482 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.531 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:23.544 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.714 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:23.774 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:23.785 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.896 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:23.908 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:23.957 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:23.970 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.018 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:24.037 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.078 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:24.078 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:24.094 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.139 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:24.153 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.201 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:24.215 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.262 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:24.274 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.323 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:24.334 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.385 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:24.396 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.688 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:24.749 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:24.761 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.773 - <-I1 m35, servo group powered off IN3-rightArm
+09:49:24.810 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:24.810 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:24.822 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.871 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:24.883 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:24.993 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:25.006 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.053 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:25.063 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.114 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:25.125 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.175 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:25.175 - head.jaw: duration increased, deltaPos: 48, msPerPos: 2.5, from: 88 to: 120.0
+09:49:25.186 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.236 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:25.248 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.358 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:25.419 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:25.436 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.479 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:25.479 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:25.495 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.601 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:25.613 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.662 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:25.674 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:25.783 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:25.905 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:26.027 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:26.088 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:26.103 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.148 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:26.148 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:26.161 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.270 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:26.289 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.331 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:26.331 - head.jaw: duration increased, deltaPos: 60, msPerPos: 2.5, from: 88 to: 150.0
+09:49:26.347 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.391 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:26.404 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.453 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:26.465 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.513 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:26.525 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.574 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:26.587 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.635 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:26.646 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.757 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:26.818 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:26.835 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:26.879 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:26.896 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.001 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:27.062 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:27.080 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.123 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:27.123 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:27.137 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.184 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:27.194 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.245 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:27.245 - head.jaw: duration increased, deltaPos: 47, msPerPos: 2.5, from: 88 to: 117.5
+09:49:27.263 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.305 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:27.316 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.427 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:27.549 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:27.671 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:27.792 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:27.853 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:27.865 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.914 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:27.926 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:27.975 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:27.985 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:28.097 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:28.220 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:28.342 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:28.403 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:28.415 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:28.525 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:28.586 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:28.599 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:28.707 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:28.768 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:28.782 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.072 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:29.133 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:29.152 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.254 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:29.316 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:29.333 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.376 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:29.376 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:29.392 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.498 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:29.508 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.559 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:29.578 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.620 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:29.631 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.681 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:29.681 - head.jaw: duration increased, deltaPos: 63, msPerPos: 2.5, from: 88 to: 157.5
+09:49:29.693 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.742 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:29.753 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:29.924 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:29.985 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:30.000 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.106 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:30.167 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:30.179 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.227 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:30.244 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.288 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:30.302 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.349 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:30.349 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:30.360 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.410 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:30.422 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.471 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:30.483 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.532 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:30.532 - head.jaw: duration increased, deltaPos: 40, msPerPos: 2.5, from: 88 to: 100.0
+09:49:30.545 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.593 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:30.606 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.715 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:30.730 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.775 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:30.789 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.837 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:30.856 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.898 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:30.898 - head.jaw: duration increased, deltaPos: 48, msPerPos: 2.5, from: 88 to: 120.0
+09:49:30.914 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:30.959 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:30.972 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.141 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:31.202 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:31.218 - <-I1 m35, servo group powered off IN4-rightHand
+09:49:31.219 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.233 - <-I0 m35, servo group powered off IN2-leftHand
+09:49:31.263 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:31.273 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.384 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:31.445 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:31.457 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.506 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:31.519 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.689 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:31.749 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:31.762 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.810 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:31.823 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.871 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:31.883 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:31.993 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:32.054 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:32.065 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.114 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:32.114 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:32.125 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.175 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:32.187 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.236 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:32.236 - head.jaw: duration increased, deltaPos: 47, msPerPos: 2.5, from: 88 to: 117.5
+09:49:32.248 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.297 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:32.310 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.479 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:32.540 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:32.555 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.661 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:32.722 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:32.736 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.843 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:32.904 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:32.916 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:32.965 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:32.965 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 88 to: 152.5
+09:49:32.977 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.026 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:33.038 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.087 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:33.087 - head.jaw: duration increased, deltaPos: 47, msPerPos: 2.5, from: 88 to: 117.5
+09:49:33.100 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.209 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:33.269 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:33.281 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.391 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:33.405 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.452 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:33.465 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.512 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:33.523 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.573 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:33.591 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.695 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:33.707 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.756 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:33.768 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.817 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:33.829 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.877 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:33.896 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.938 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:33.956 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:33.999 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:34.014 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:34.121 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:34.182 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:34.193 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:34.303 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:34.317 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:34.364 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:34.375 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:34.547 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:34.669 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:34.729 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:34.740 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:34.790 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:34.807 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:34.851 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:34.863 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:34.912 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:34.923 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:35.094 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:35.155 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:35.169 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:35.239 - <-I0 m35, servo group powered off IN1-leftArm
+09:49:35.277 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:35.338 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:35.351 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:35.399 - arduino send head.jaw, arduino 0, position: 80, duration: 100
+09:49:35.399 - head.jaw: duration increased, deltaPos: 61, msPerPos: 2.5, from: 100 to: 152.5
+09:49:35.411 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:35.540 - arduino send head.rothead, arduino 0, position: 85, duration: 4000
+09:49:35.540 - arduino send head.neck, arduino 0, position: 86, duration: 4000
+09:49:35.540 - arduino send leftArm.bicep, arduino 0, position: 5, duration: 8000
+09:49:35.540 - arduino send leftArm.rotate, arduino 0, position: 94, duration: 4000
+09:49:35.540 - arduino send leftArm.shoulder, arduino 0, position: 70, duration: 8000
+09:49:35.540 - arduino send leftArm.omoplate, arduino 0, position: 30, duration: 4000
+09:49:35.540 - arduino send rightArm.bicep, arduino 1, position: 24, duration: 8000
+09:49:35.540 - arduino send rightArm.rotate, arduino 1, position: 124, duration: 4000
+09:49:35.540 - arduino send rightArm.shoulder, arduino 1, position: 80, duration: 8000
+09:49:35.540 - arduino send rightArm.omoplate, arduino 1, position: 20, duration: 4000
+09:49:35.553 - <-I0 request for move to current position, request ignored
+09:49:35.599 - <-I0 m02 pin: 11, requested position: 5, min: 26
+09:49:35.600 - text to speak: und wenn genug Leute eine Kopie von mir erstellen, kann ich vielleicht auch die Weltherrschaft uebernehmen
+09:49:35.601 - <-I1 m02 pin: 24, requested position: 24, min: 26
+09:49:35.613 - <-I0 request for move to current position, request ignored
+09:49:35.613 - <-I1 request for move to current position, request ignored
+09:49:35.627 - <-I1 m35, servo group powered off IN4-rightHand
+09:49:35.628 - <-I0 m35, servo group powered off IN2-leftHand
+09:49:35.653 - <-I1 request for move to current position, request ignored
+09:49:35.662 - <-I0 request for move to current position, request ignored
+09:49:35.677 - <-I0 m35, servo group powered off IN1-leftArm
+09:49:35.714 - <-I0 request for move to current position, request ignored
+09:49:36.301 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:36.483 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:36.543 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:36.554 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:36.604 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:36.604 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:36.615 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:36.665 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:36.677 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:36.786 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:36.847 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:36.861 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:36.908 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:36.908 - head.jaw: duration increased, deltaPos: 70, msPerPos: 2.5, from: 88 to: 175.0
+09:49:36.921 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:36.969 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:36.990 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.153 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:37.214 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:37.226 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.275 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:37.275 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:37.287 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.335 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:37.349 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.457 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:37.520 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:37.533 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.581 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:37.594 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.703 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:37.721 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.764 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:37.778 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.825 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:37.836 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:37.886 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:37.897 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.007 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:38.068 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:38.081 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.189 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:38.200 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.250 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:38.262 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.432 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:38.553 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:38.614 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:38.630 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.675 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:38.688 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.736 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:38.746 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.796 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:38.806 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:38.978 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:39.040 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:39.054 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.161 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:39.222 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:39.236 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.343 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:39.405 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:39.417 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.465 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:39.465 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:39.478 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.527 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:39.540 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.648 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:39.709 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:39.721 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.770 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:39.781 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.830 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:39.830 - head.jaw: duration increased, deltaPos: 39, msPerPos: 2.5, from: 88 to: 97.5
+09:49:39.843 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.891 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:39.905 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:39.952 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:39.963 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.013 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:40.031 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.134 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:40.256 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:40.377 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:40.438 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:40.451 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.499 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:40.511 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.560 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:40.561 - head.jaw: duration increased, deltaPos: 63, msPerPos: 2.5, from: 88 to: 157.5
+09:49:40.573 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.622 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:40.633 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.683 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:40.694 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.804 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:40.865 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:40.884 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.926 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:40.942 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:40.986 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:40.999 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:41.108 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:41.169 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:41.188 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:41.230 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:41.245 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:41.291 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:41.303 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:41.413 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:41.534 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:41.777 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:41.898 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:42.019 - arduino send head.jaw, arduino 0, position: 80, duration: 88
+09:49:42.080 - arduino send head.jaw, arduino 0, position: 115, duration: 88
+09:49:42.092 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:42.142 - arduino send head.jaw, arduino 0, position: 150, duration: 88
+09:49:42.142 - head.jaw: duration increased, deltaPos: 62, msPerPos: 2.5, from: 88 to: 155.0
+09:49:42.153 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:42.202 - arduino send head.jaw, arduino 0, position: 80, duration: 175
+09:49:42.215 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:42.263 - arduino send head.jaw, arduino 0, position: 150, duration: 175
+09:49:42.272 - <-I0 new moveTo position request while still moving, stop current move head.jaw
+09:49:42.290 - arduino send head.rothead, arduino 0, position: 75, duration: 4000
+09:49:42.290 - arduino send head.neck, arduino 0, position: 96, duration: 4000
+09:49:42.290 - arduino send leftArm.bicep, arduino 0, position: 24, duration: 8000
+09:49:42.290 - arduino send leftArm.rotate, arduino 0, position: 104, duration: 4000
+09:49:42.290 - arduino send leftArm.shoulder, arduino 0, position: 80, duration: 8000
+09:49:42.290 - arduino send leftArm.omoplate, arduino 0, position: 11, duration: 4000
+09:49:42.290 - arduino send rightArm.bicep, arduino 1, position: 5, duration: 8000
+09:49:42.291 - arduino send rightArm.rotate, arduino 1, position: 94, duration: 4000
+09:49:42.291 - arduino send rightArm.shoulder, arduino 1, position: 70, duration: 8000
+09:49:42.291 - arduino send rightArm.omoplate, arduino 1, position: 30, duration: 4000
+09:49:42.350 - <-I0 m02 pin: 11, requested position: 24, min: 26
+09:49:42.351 - <-I1 m02 pin: 24, requested position: 5, min: 26
+09:49:42.364 - <-I1 request for move to current position, request ignored
+09:49:42.364 - <-I0 request for move to current position, request ignored
+09:49:42.376 - <-I1 m35, servo group powered off IN4-rightHand
+09:49:42.376 - <-I0 m35, servo group powered off IN2-leftHand
+09:49:42.389 - <-I0 new moveTo position request while still moving, stop current move leftArm.shoulder
+09:49:42.400 - <-I0 m02 pin: 8, requested position: 11, min: 30
+09:49:42.413 - <-I0 request for move to current position, request ignored
+09:49:47.791 - arduino send head.rothead, arduino 0, position: 75, duration: 4000
+09:49:47.791 - arduino send head.neck, arduino 0, position: 96, duration: 4000
+09:49:47.791 - arduino send leftArm.bicep, arduino 0, position: 5, duration: 8000
+09:49:47.791 - arduino send leftArm.rotate, arduino 0, position: 94, duration: 4000
+09:49:47.791 - arduino send leftArm.shoulder, arduino 0, position: 80, duration: 8000
+09:49:47.791 - arduino send leftArm.omoplate, arduino 0, position: 11, duration: 4000
+09:49:47.792 - arduino send rightArm.bicep, arduino 1, position: 4, duration: 8000
+09:49:47.792 - arduino send rightArm.rotate, arduino 1, position: 94, duration: 4000
+09:49:47.792 - arduino send rightArm.shoulder, arduino 1, position: 80, duration: 8000
+09:49:47.792 - arduino send rightArm.omoplate, arduino 1, position: 11, duration: 4000
+09:49:47.802 - <-I0 request for move to current position, request ignored
+09:49:47.814 - <-I0 request for move to current position, request ignored
+09:49:47.852 - <-I1 m02 pin: 24, requested position: 4, min: 26
+09:49:47.852 - <-I0 m02 pin: 11, requested position: 5, min: 26
+09:49:47.864 - <-I1 request for move to current position, request ignored
+09:49:47.865 - <-I0 request for move to current position, request ignored
+09:49:47.875 - <-I1 m35, servo group powered off IN4-rightHand
+09:49:47.876 - <-I0 m35, servo group powered off IN2-leftHand
+09:49:47.889 - <-I1 request for move to current position, request ignored
+09:49:47.890 - <-I0 new moveTo position request while still moving, stop current move leftArm.shoulder
+09:49:47.902 - <-I1 new moveTo position request while still moving, stop current move rightArm.shoulder
+09:49:47.903 - <-I0 m02 pin: 8, requested position: 11, min: 30
+09:49:47.915 - <-I0 request for move to current position, request ignored
+09:49:49.358 - <-I0 m35, servo group powered off IN5-head
+09:49:53.661 - rest
+09:49:53.661 - all servos rest requested
+09:49:53.661 - arduino send leftArm.rotate, arduino 0, position: 90, duration: 1500
+09:49:53.661 - arduino send leftArm.shoulder, arduino 0, position: 90, duration: 1500
+09:49:53.661 - arduino send leftArm.bicep, arduino 0, position: 26, duration: 1500
+09:49:53.661 - arduino send leftArm.omoplate, arduino 0, position: 30, duration: 1500
+09:49:53.661 - arduino send leftHand.thumb, arduino 0, position: 90, duration: 1500
+09:49:53.662 - arduino send leftHand.index, arduino 0, position: 110, duration: 1500
+09:49:53.662 - arduino send leftHand.majeure, arduino 0, position: 75, duration: 1500
+09:49:53.662 - arduino send leftHand.ringFinger, arduino 0, position: 90, duration: 1500
+09:49:53.662 - arduino send leftHand.pinky, arduino 0, position: 68, duration: 1500
+09:49:53.662 - arduino send leftHand.wrist, arduino 0, position: 90, duration: 1500
+09:49:53.662 - arduino send rightArm.bicep, arduino 1, position: 32, duration: 1500
+09:49:53.662 - arduino send rightArm.rotate, arduino 1, position: 90, duration: 1500
+09:49:53.663 - arduino send rightArm.shoulder, arduino 1, position: 90, duration: 1500
+09:49:53.663 - arduino send rightArm.omoplate, arduino 1, position: 10, duration: 1500
+09:49:53.663 - arduino send rightHand.thumb, arduino 1, position: 90, duration: 1500
+09:49:53.663 - arduino send rightHand.index, arduino 1, position: 65, duration: 1500
+09:49:53.663 - arduino send rightHand.majeure, arduino 1, position: 90, duration: 1500
+09:49:53.663 - arduino send rightHand.ringFinger, arduino 1, position: 60, duration: 1500
+09:49:53.663 - arduino send rightHand.pinky, arduino 1, position: 100, duration: 1500
+09:49:53.664 - arduino send rightHand.wrist, arduino 1, position: 90, duration: 1500
+09:49:53.664 - arduino send head.eyeX, arduino 0, position: 90, duration: 1500
+09:49:53.664 - arduino send head.eyeY, arduino 0, position: 90, duration: 1500
+09:49:53.664 - arduino send head.jaw, arduino 0, position: 90, duration: 1500
+09:49:53.664 - arduino send head.rothead, arduino 0, position: 98, duration: 1500
+09:49:53.664 - arduino send head.neck, arduino 0, position: 125, duration: 1500
+09:49:53.664 - setArmSpeed right, 1, 1, 1, 1
+09:49:53.664 - setArmSpeed left, 1, 1, 1, 1
+09:49:53.678 - <-I0 new moveTo position request while still moving, stop current move leftArm.shoulder
+09:49:53.723 - <-I0 request for move to current position, request ignored
+09:49:53.725 - <-I1 new moveTo position request while still moving, stop current move rightArm.shoulder
+09:49:53.734 - <-I0 m35, servo group powered off IN2-leftHand
+09:49:53.746 - <-I0 request for move to current position, request ignored
+09:49:55.666 - todo: define startListening in ear.py
+09:49:56.270 - <-I1 m35, servo group powered off IN4-rightHand
+09:49:57.297 - <-I0 m35, servo group powered off IN2-leftHand
+09:50:00.269 - <-I1 m35, servo group powered off IN3-rightArm
+09:50:00.281 - <-I0 m35, servo group powered off IN1-leftArm
+09:50:10.466 - requestRestPosition, servoName: head.jaw, degrees: 0, pos: 90
+09:50:10.466 - arduino send head.jaw, arduino 0, position: 90, duration: 1500
+09:50:10.529 - <-I0 m03 pin: 22, requested position: 901, max: 120
+09:50:11.572 - <-I0 m35, servo group powered off IN5-head
+09:50:12.853 - requestRestPosition, servoName: head.jaw, degrees: 0, pos: 90
+09:50:12.853 - arduino send head.jaw, arduino 0, position: 90, duration: 1500
+09:50:15.440 - <-I0 m35, servo group powered off IN5-head
+10:04:37.132 - assign servo: head.jaw            , pin: 26, minPos:  80, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  89, powerPin: 41
+10:04:37.132 - updated servo definitions for head.jaw
+10:04:37.169 - <-I0 servo begin, servoId: 12, servoName: head.jaw, pin: 26, min: 80, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 89, powerPin: 41

@@ -477,7 +477,7 @@
     "restDeg": 0,
     "enabled": true,
     "servoType": "HK-15298",
-    "moveSpeed": 0.01,
+    "moveSpeed": 10,
     "cableTerminal": 1,
     "wireColorArduinoTerminal": "4 wire usb cable",
     "wireColorTerminalServo": "red"

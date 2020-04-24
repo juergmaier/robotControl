@@ -53,7 +53,9 @@ def requestServoPosition(servoName, position, duration, filterSequence=True):
     servoDerived = config.servoDerivedDict[servoName]
     servoCurrent = config.servoCurrentDict[servoName]
 
-    config.log(f"arduino send {servoName}, arduino {servoStatic.arduino}, position: {position:.0f}, duration: {duration:.0f}", publish=False)
+    # filter out jaw moves from log as they are very frequent
+    if servoName != "head.jaw":
+        config.log(f"arduino send {servoName}, arduino {servoStatic.arduino}, position: {position:.0f}, duration: {duration:.0f}", publish=False)
 
     # if new position requests come in heigh sequence avoid responding to each one
     # when filterSequence is active
@@ -74,8 +76,8 @@ def requestServoPosition(servoName, position, duration, filterSequence=True):
     deltaPos = abs(config.servoCurrentDict[servoName].position - position)
     minDuration = servoDerived.msPerPos * deltaPos
 
-    # for unfiltered moves increase move duration based on servos properties
-    if duration < minDuration and not filterSequence:
+    # for filtered moves increase move duration based on servos properties
+    if duration < minDuration and filterSequence:
         config.log(f"{servoName}: duration increased, deltaPos: {deltaPos}, msPerPos: {servoDerived.msPerPos}, from: {duration:.0f} to: {minDuration:.1f}")
         duration = minDuration
 
