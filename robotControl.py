@@ -7,10 +7,11 @@ import socket
 import logging
 import os
 import shutil
-import importlib
 
 from rpyc.utils.server import ThreadedServer
+from PyQt5.QtWidgets import QApplication
 
+import inmoovGlobal
 import config
 import arduinoSend
 import arduinoReceive
@@ -19,8 +20,13 @@ import rpcSend
 import threadWatchConnections
 import guiLogic
 import ik
+import i01
+
+#sys.path.append("../camImages")
+import camImages
+
 import stickFigure
-#import i01
+
 
 clients = []
 gestureDir = 'c:/projekte/inmoov/robotControl/marvinGestures'  # change this to marvinGestures once all gestures are verified
@@ -45,11 +51,8 @@ def openSerial(a):
         return True
 
     except Exception as e:
-        config.log(f"exception on serial connect with arduino: {a['arduinoName']}, comPort: {a['comPort']}, {e}")
-        if conn is not None:
-            conn.close()
-        time.sleep(1)
-        return False
+        config.log(f"exception on serial connect with arduino: {a['arduinoName']}, comPort: {a['comPort']}, {e}, going down")
+        os._exit(1)
 
 
 def arduinoReady(a):
@@ -218,6 +221,34 @@ def initServoControl():
     config.serverReady = True
     rpcSend.publishServerReady()
 
+    time.sleep(2)   # time to update
+
+
+def initCameras():
+    '''
+    def __init__(self, name, deviceId, cols, rows, fovH, fovV, rotate, numReads):
+    :return:
+    '''
+    try:
+        camImages.cams.update({inmoovGlobal.EYE_CAM: camImages.UsbCamera("eyecam", 1, 640, 480, 18, 26, -90, 2)})
+        config.log(f"connected with EYE_CAM")
+        try:
+            config.eyecamFrame = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()
+        except Exception as e:
+            config.log(f"could not capture frame from EYE_CAM  {e}")
+            return False
+
+        if config.eyecamFrame is None:
+            return False
+
+        return True
+
+    except Exception as e:
+        config.log(f"problem connecting EYE_CAM")
+        return False
+    # cams[inmoovGlobal.EYE_CAM].takeImage(True)
+
+
 
 if __name__ == '__main__':
 
@@ -252,11 +283,22 @@ if __name__ == '__main__':
 
     config.log(f"{config.serverName} started")
 
+    if not initCameras():
+        config.log(f"could not connect with all cams, going down")
+        exit()
+
     checkOrCreateAllGesturesModule()
 
     initServoControl()
 
-    # starting connection watchdog
+    # just for testing face tracking
+    #arduinoSend.setVerbose('head.neck', True)
+    #arduinoSend.setVerbose('head.rothead', True)
+
+    arduinoSend.requestAllServosRest()
+
+    # START THREADS
+    # starting rpyc connection watchdog
     watchDog = threading.Thread(target=threadWatchConnections.watchDog, args={})
     watchDog.name = "watchDog"
     watchDog.start()
@@ -268,16 +310,24 @@ if __name__ == '__main__':
     rpycThread.name = "rpycListener"
     rpycThread.start()
 
-    import i01
+    # start thread for lips movement
+    config.log("guiLogic.init, adding thread MoveLips")
+    lipsThread = threading.Thread(name="lipsThread", target = i01.MoveLipsThread)
+    lipsThread.start()
 
-    # starting qt5gui
-    # need first to add a matplotlib plugin for qtDesigner
-    # to run the stickfigure in
-    #guiThread = threading.Thread(target=startGui, args={})
-    #guiThread.name = "qt5Gui"
-    #guiThread.start()
     config.log(f"start gui in main thread")
-    guiLogic.startGui()
+
+    app = QApplication([])
+    ''' try to move to init
+    # add on_valueChanged and on_sliderReleased functions
+    # for all servo sliders below the buttons
+    for servoName in config.servoStaticDict:
+        sliderName = servoName.replace('.','_') + 'Slider'
+        addValueChangedFunctionToClass(f'on_{sliderName}_valueChanged', servoGui)
+        addSliderReleasedFunctionToClass(f'on_{sliderName}_sliderReleased', servoGui)
+    '''
+    window = guiLogic.ServoGui()
+    app.exec()
 
 
     # main needs to run the stick figure

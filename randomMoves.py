@@ -2,29 +2,26 @@
 import time
 import random
 
-from PyQt5 import QtCore
+from PyQt5.QtCore import pyqtSlot, QRunnable
 
 import config
 import arduinoSend
 
 
-class RandomMovesThread(QtCore.QThread):
+
+class RandomMovesThread(QRunnable):
     """
     This thread moves all robot servos with random speed and position
     """
     lastAction = time.time()
     moveFactor = 0.7            # the smaller the shorter the moves
 
-    def __init__(self):
-        QtCore.QThread.__init__(self)
-
-
     def moveServos(self):
 
         for servoName, curr in config.servoCurrentDict.items():
 
             if not curr.moving:
-                servoStatic = config.servoStaticDict[servoName]
+                servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
                 if servoStatic.minPos < servoStatic.maxPos:
                     pos = int(random.randint(servoStatic.minPos, servoStatic.maxPos) * self.moveFactor)
                 else:
@@ -46,10 +43,7 @@ class RandomMovesThread(QtCore.QThread):
 
     def run(self):
 
-        while True:
-            while not config.randomMovesActive:
-                time.sleep(1)
-                continue
+        while config.randomMovesActive: # controlled by the gui
 
             maxMoveSeconds = 20
             restSeconds = 8

@@ -27,7 +27,7 @@ def readMessages(arduino):
             try:
                 bytesAvailable = conn.in_waiting
             except Exception as e:
-                config.log(f"exception in arduino: {arduino} in in_waiting, shutting down ...")
+                config.log(f"exception in arduino: {arduino} in in_waiting {e}, shutting down ...")
                 os._exit(1)
 
             if bytesAvailable > 0:
@@ -49,13 +49,13 @@ def readMessages(arduino):
                     moving =     recvB[2] & 0x02 > 0
                     attached =   recvB[2] & 0x04 > 0
                     autoDetach = recvB[2] & 0x08 > 0
-                    verbose =    recvB[2] & 0x10 > 0
+                    servoVerbose =    recvB[2] & 0x10 > 0
 
                     servoUniqueId = (arduino * 100) + pin
                     servoName = config.servoNameByArduinoAndPin[servoUniqueId]
 
-                    if verbose:
-                        config.log(f"servo update, {recvB[0]:02X},{recvB[1]:02X},{recvB[2]:02X}, arduino: {arduino}, pin: {pin:2}, servo: {servoName}, pos {position:3}, assigned: {assigned}, moving {moving}, attached {attached}, autoDetach: {autoDetach}, verbose: {verbose}", publish=False)
+                    if servoVerbose:
+                        config.log(f"servo update, {recvB[0]:02X},{recvB[1]:02X},{recvB[2]:02X}, arduino: {arduino}, pin: {pin:2}, servo: {servoName}, pos {position:3}, assigned: {assigned}, moving {moving}, attached {attached}, autoDetach: {autoDetach}, verbose: {servoVerbose}", publish=False)
 
                     degrees = config.evalDegFromPos(servoName, position)
                     #config.log(f'arduino, servoName: {servoName}, moving: {moving}')
@@ -64,7 +64,7 @@ def readMessages(arduino):
                     #if servoName == 'leftArm.rotate':
                     #    config.log(f"leftArm.rotate new position: {position}")
 
-                    config.servoCurrentDict[servoName].updateData(degrees, position, assigned, moving, attached, autoDetach, verbose)
+                    config.servoCurrentDict[servoName].updateData(degrees, position, assigned, moving, attached, autoDetach, servoVerbose)
                     if position != prevPosition:
                         ik.updateDhChain()
 

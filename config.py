@@ -7,6 +7,7 @@ import time
 import logging
 #from collections import deque
 import queue
+from typing import Dict
 
 import rpcSend
 import robotControl
@@ -35,7 +36,7 @@ SERVO_STATIC_DEFINITIONS_FILE = 'servoStaticDefinitions.json'
 SERVO_TYPE_DEFINITIONS_FILE = 'servoTypeDefinitions.json'
 PERSISTED_SERVO_POSITIONS_FILE = 'persistedServoPositions.json'
 
-servoStaticDict = {}    # the static definitions of all servos from the json file
+servoStaticDict: Dict[str,object] = {}    # the static definitions of all servos from the json file
 servoTypeDict = {}      # servo properties given by manufacturer
 servoDerivedDict = {}   # useful derived values for servo accessible by servoDerivedDict[<servoName>]
 servoCurrentDict = {}   # all dynamic servo values accessible by servoCurrentDict[<servoName>]
@@ -67,6 +68,8 @@ connectionWatchInterval = 5
 simulateServoMoves = False
 
 verbose = False
+
+eyecamFrame = None
 
 
 '''
@@ -361,7 +364,7 @@ def loadServoPositions():
     # check for valid persisted position
     for servoName in servoStaticDict:
 
-        servoStatic = servoStaticDict[servoName]
+        servoStatic: cServoStatic = servoStaticDict[servoName]
 
         # try to assign the persisted last known servo position
         try:

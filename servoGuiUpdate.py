@@ -2,35 +2,40 @@
 import time
 
 from PyQt5 import QtCore
+from PyQt5.QtCore import QObject, pyqtSignal, QRunnable, pyqtSlot
 
 import config
 import arduinoSend
 
 # work on update messages of servos
 
-class GuiUpdateThread(QtCore.QThread):
+class GuiUpdateSignals(QObject):
+    update = pyqtSignal(int, int)
+
+#class GuiUpdateThread(QtCore.QThread):
+class GuiUpdateThread(QRunnable):
     """
     This checks for new data in the guiUpdateQueue
     the queue can have different types of data based on the type attribute
     """
-
     # signal for gui update
     # raises guiLogic.updateGui
-    updateGui = QtCore.pyqtSignal(int, int)
+    #updateGui = QtCore.pyqtSignal(int, int)
 
     def __init__(self):
-        QtCore.QThread.__init__(self)
+        #QtCore.QThread.__init__(self)
+        super(GuiUpdateThread, self).__init__()
+        #self.updateGuiSignal = QtCore.pyqtSignal(int, int)
+        self.signals = GuiUpdateSignals()
 
 
+    @pyqtSlot()
     def run(self):
 
         time.sleep(2)       # wait for gui to startup
-        #config.setUpdateRunning(False)
 
         while True:
-            #if config.getUpdateRunning():
-            #    time.sleep(0.01)
-            #    continue
+
             time.sleep(0.01)
             updateData = config.getOldestUpdateMessage()
 
@@ -54,7 +59,7 @@ class GuiUpdateThread(QtCore.QThread):
                         return
 
                     #Data = {'type', 'assigned', 'moving', 'detached', 'position', 'degree'}
-                    servoStatic = config.servoStaticDict[servoName]
+                    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
                     servoDerived = config.servoDerivedDict[servoName]
 
                     if servoStatic is None:
@@ -68,13 +73,13 @@ class GuiUpdateThread(QtCore.QThread):
                     config.updateServoCurrent(servoName, updateData)
 
                     # inform the gui about the changed servo information using the unique servoId
-                    self.updateGui.emit(config.SERVO_UPDATE, servoDerived.servoUniqueId)
+                    self.signals.update.emit(config.SERVO_UPDATE, servoDerived.servoUniqueId)
 
 
 
                 elif updateData['type'] == config.ARDUINO_UPDATE:
                         config.log("process arduino message from updateQueue")
                         if updateData['connected']:
-                            self.updateGui.emit(config.ARDUINO_UPDATE, updateData['arduino'])
+                            self.signals.update.emit(config.ARDUINO_UPDATE, updateData['arduino'])
 
 

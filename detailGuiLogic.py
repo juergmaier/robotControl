@@ -21,7 +21,7 @@ class detailGui(QtWidgets.QDialog, detailQtGui.Ui_ServoDetails):
         self.servoName = ""
 
     def initUI(self, servoName):
-        servoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
         self.servoName = servoName
         self.setWindowTitle(servoName)
         self.Arduino.setValue(servoStatic.arduino)
@@ -61,7 +61,7 @@ class detailGui(QtWidgets.QDialog, detailQtGui.Ui_ServoDetails):
         self.servoType = selection
 
     def save(self):
-        servoStatic = config.servoStaticDict[self.servoName]
+        servoStatic: config.cServoStatic = config.servoStaticDict[self.servoName]
         servoStatic.arduino = self.Arduino.value()
         servoStatic.pin = self.Pin.value()
         servoStatic.powerPin = self.PowerPin.value()

@@ -3,19 +3,18 @@
 import os
 import sys
 
-
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, QThreadPool, QRunnable
 from PyQt5 import uic, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QAbstractSlider
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 
-
+import inmoovGlobal
 import config
 import servoGuiUpdate
 import randomMoves
 import i01
 import detailGuiLogic
 import arduinoSend
-
+import eyeCamFunctions
 
 sliderInMove = None
 
@@ -86,7 +85,13 @@ def addSliderReleasedFunctionToClass(functionName, cls):
     setattr(cls, functionName, fn)
 
 
-class servoGui(QMainWindow):
+class RandomMoves(QRunnable):
+    @pyqtSlot()
+    def run(self):
+        randomMoves.RandomMovesThread()
+
+
+class ServoGui(QMainWindow):
 
     prevSelectedServoButton = None
     selectedServoName = None
@@ -100,40 +105,48 @@ class servoGui(QMainWindow):
 
         #QtWidgets.QDialog.__init__(self, *args, **kwargs)
         #self.setupUi(self)
-        super(servoGui, self).__init__()
+        super(ServoGui, self).__init__()
+
         uic.loadUi('robotControlGui.ui', self)
+
+        # add on_valueChanged and on_sliderReleased functions
+        # for all servo sliders below the buttons
+        for servoName in config.servoStaticDict:
+            sliderName = servoName.replace('.', '_') + 'Slider'
+            addValueChangedFunctionToClass(f'on_{sliderName}_valueChanged', ServoGui)
+            addSliderReleasedFunctionToClass(f'on_{sliderName}_sliderReleased', ServoGui)
 
         self.servoNameFormat = "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">ServoName</span></p></body></html>"
 
+        self.threadpool = QThreadPool()
         self.threads = []
-        self.gestureThread = None
 
         # start thread for checking servoUpdates received from servoControl
         config.log("guiLogic.init, adding thread for handling servo updates")
         servoUpdateThread = servoGuiUpdate.GuiUpdateThread()
-        servoUpdateThread.updateGui.connect(self.updateGui)
-        self.threads.append(servoUpdateThread)
-        servoUpdateThread.start()
+        servoUpdateThread.signals.update.connect(self.updateGui)
+        #self.signals.updateGui.connect(self.run)
+        self.threadpool.start(servoUpdateThread)
+
+        #servoUpdateThread.updateGui.connect(self.updateGui)
+        #self.threads.append(servoUpdateThread)
+        #servoUpdateThread.start()
 
         # start thread for random moves
-        config.log("guiLogic.init, adding thread random moves")
-        randomMovesThread = randomMoves.RandomMovesThread()
-        self.threads.append(randomMovesThread)
-        randomMovesThread.start()
+        #config.log("guiLogic.init, adding thread random moves")
+        #randomMovesThread = randomMoves.RandomMovesThread()
+        #self.threads.append(randomMovesThread)
+        #randomMovesThread.start()
 
         # start thread for gesture playing
-        config.log("guiLogic.init, adding thread gestures")
-        gestureThread = i01.GestureThread()
-        self.threads.append(gestureThread)
-        gestureThread.name = "gestureThread"
-        gestureThread.start()
+        #config.log("guiLogic.init, adding thread gestures")
+        #gestureThread = i01.GestureThread()
+        #self.threads.append(gestureThread)
+        #gestureThread.name = "gestureThread"
+        #gestureThread.start()
+        #gesturePlay = i01.GesturePlay()
+        #self.threadpool.start(gesturePlay)
 
-        # start thread for lips movement
-        config.log("guiLogic.init, adding thread MoveLips")
-        lipsThread = i01.MoveLipsThread()
-        self.threads.append(lipsThread)
-        lipsThread.name = "lipsThread"
-        lipsThread.start()
 
         config.log(f"run initial tts text")
         i01.mouth.speakBlocking("Karsten als Sprecher aktiviert")
@@ -141,7 +154,18 @@ class servoGui(QMainWindow):
         self.minCommentCenter = self.minComment.geometry().center().x()
         self.maxCommentCenter = self.maxComment.geometry().center().x()
 
+        # comboBox for special functions
+        self.specialFunctions.addItem("capture reference face")
+        self.specialFunctions.activated[str].connect(self.specialFunctionSelected)
+
         self.show()
+
+
+    def specialFunctionSelected(self, text):
+        config.log(f"specialFunction selected {text}")
+
+        if text == "capture reference face":
+            success = eyeCamFunctions.newFaceRecording()
 
 
     @classmethod
@@ -358,7 +382,7 @@ class servoGui(QMainWindow):
 
 
     def on_Rest_pressed(self):
-        servoStatic = config.servoStaticDict[self.selectedServoName]
+        servoStatic: config.cServoStatic = config.servoStaticDict[self.selectedServoName]
         degrees = servoStatic.restDeg
         position = config.evalPosFromDeg(self.selectedServoName, degrees)
         config.log(f"requestRestPosition, servoName: {self.selectedServoName}, degrees: {degrees}, pos: {position}")
@@ -410,7 +434,7 @@ class servoGui(QMainWindow):
             config.log(f"stop swiping called but swiping is not active")
             return
 
-        servoStatic = config.servoStaticDict[config.swipingServoName]
+        servoStatic: config.cServoStatic = config.servoStaticDict[config.swipingServoName]
         restPos = config.evalPosFromDeg(config.swipingServoName, servoStatic.restDeg)
         arduinoSend.requestServoPosition(config.swipingServoName, restPos, config.SWIPE_MOVE_DURATION)
         config.swipingServoName = None
@@ -419,13 +443,10 @@ class servoGui(QMainWindow):
 
 
     def on_Verbose_stateChanged(self):
-        if self.Verbose.isChecked():
-            state = True
-        else:
-            state = False
+        verboseOn = self.Verbose.isChecked()
 
-        config.log(f"requestSetVerbose, servoName: {self.selectedServoName}, state: {state}")
-        arduinoSend.setVerbose(self.selectedServoName, state)
+        config.log(f"requestSetVerbose, servoName: {self.selectedServoName}, verboseOn: {verboseOn}")
+        arduinoSend.setVerbose(self.selectedServoName, verboseOn)
 
 
     def startRandomMoves(self):
@@ -457,10 +478,36 @@ class servoGui(QMainWindow):
     def on_randomMoves_pressed(self):
         config.log(f"randomMovesClicked")
         if config.randomMovesActive:
-            self.stopRandomMoves()
+            config.randomMovesActive = False    # this stops the thread
         else:
             self.stopSelfRunningActivities()
-            self.startRandomMoves()
+            randomMoves = RandomMoves()
+            self.threadpool.start(randomMoves)
+
+
+    def on_locateFaces_pressed(self):
+
+        if not eyeCamFunctions.isFaceTrackingActive:
+
+            config.log(f"start face tracking and face recognition")
+            faceTracking = eyeCamFunctions.FaceTracking()
+            faceRecognition = eyeCamFunctions.FaceRecognition()
+
+            eyeCamFunctions.isFaceTrackingActive = True
+            self.threadpool.start(faceTracking)
+            self.threadpool.start(faceRecognition)
+
+            self.locateFaces.setStyleSheet("background-color: green; color: white;")
+            i01.mouth.speakBlocking("gesichtsverfolgung aktiviert")
+
+        else:
+            self.locateFaces.setStyleSheet("background-color: lightGray; color: black;")
+            config.log("stop face tracking")
+
+            eyeCamFunctions.isFaceTrackingActive = False
+
+            i01.mouth.speakBlocking("gesichtsverfolgung beendet")
+
 
 
     def on_stopAllServos_pressed(self):
@@ -489,7 +536,7 @@ class servoGui(QMainWindow):
 
     def on_RequestPositionSlider_sliderReleased(self):
         # position needs to be in range min/max
-        servoStatic = config.servoStaticDict[self.selectedServoName]
+        servoStatic: config.cServoStatic = config.servoStaticDict[self.selectedServoName]
         if self.RequestPositionSlider.value() < servoStatic.minPos:
             self.RequestPositionSlider.setValue(servoStatic.minPos)
         if self.RequestPositionSlider.value() > servoStatic.maxPos:
@@ -534,7 +581,7 @@ class servoGui(QMainWindow):
 
     def setServoGuiValues(self, servoName: str):
 
-        servoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
         servoDerived = config.servoDerivedDict[servoName]
         servoType = config.servoTypeDict[servoStatic.servoType]
 
@@ -678,7 +725,7 @@ class servoGui(QMainWindow):
                 config.log(f"problem with sliderName: {sliderName}")
 
             # check for updated servo is the currently shown servo in the GUI
-            if servoGui.selectedServoName != servoName:
+            if self.selectedServoName != servoName:
                 return
 
             assigned = servoCurrent.assigned
@@ -712,7 +759,7 @@ class servoGui(QMainWindow):
 
         #config.log("gui update done")
 
-
+'''
 def startGui():
 
     # qt gui
@@ -727,4 +774,4 @@ def startGui():
 
     _ = servoGui()
     sys.exit(app.exec())
-
+'''

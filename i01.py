@@ -1,14 +1,14 @@
 import time
 import config
 
-from PyQt5 import QtCore
+from PyQt5.QtCore import pyqtSlot, QRunnable
 
 import pyttsx3
 
 import allGestures
 import arduinoSend
 
-
+'''
 class GestureThread(QtCore.QThread):
     """
     This thread plays a gesture file
@@ -27,16 +27,24 @@ class GestureThread(QtCore.QThread):
             config.log(f"starting gesture {config.gestureName}")
             callableFunction = getattr(allGestures, config.gestureName)
             callableFunction()
+'''
+class GesturePlay(QRunnable):
+    @pyqtSlot()
+    def run(self):
+        config.log(f"starting gesture {config.gestureName}")
+        callableFunction = getattr(allGestures, config.gestureName)
+        callableFunction()
 
 
-
-class MoveLipsThread(QtCore.QThread):
+class MoveLipsThread(QRunnable):
 
     def __init__(self):
-        QtCore.QThread.__init__(self)
+        super(MoveLipsThread, self).__init__()
+        #QtCore.QThread.__init__(self)
         self.mouthOpen = "aehij"
         self.mouthClosed = "bmp "
 
+    @pyqtSlot()
     def run(self):
         config.log(f"move lips thread started")
         secondsPerChar = 0.055
@@ -109,6 +117,8 @@ class Mouth:
 
     def speakBlocking(self, text):
         #config.log(f"speak: {text}, {len(text)} chars")
+        self.engine = pyttsx3.init()        # may be necessary
+
         speechStart = time.time()
         self.engine.say(text)
 
