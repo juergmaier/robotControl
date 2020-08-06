@@ -21,7 +21,7 @@ class RandomMovesThread(QRunnable):
         for servoName, curr in config.servoCurrentDict.items():
 
             if not curr.moving:
-                servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+                servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
                 if servoStatic.minPos < servoStatic.maxPos:
                     pos = int(random.randint(servoStatic.minPos, servoStatic.maxPos) * self.moveFactor)
                 else:

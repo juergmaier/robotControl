@@ -128,6 +128,12 @@ class ServoGui(QMainWindow):
         #self.signals.updateGui.connect(self.run)
         self.threadpool.start(servoUpdateThread)
 
+        #mouthThread = i01.MouthThread()
+        #self.threadpool.start(mouthThread)
+
+        #lipsThread = i01.MoveLipsThread()
+        #self.threadpool.start(lipsThread)
+
         #servoUpdateThread.updateGui.connect(self.updateGui)
         #self.threads.append(servoUpdateThread)
         #servoUpdateThread.start()
@@ -144,12 +150,10 @@ class ServoGui(QMainWindow):
         #self.threads.append(gestureThread)
         #gestureThread.name = "gestureThread"
         #gestureThread.start()
-        #gesturePlay = i01.GesturePlay()
-        #self.threadpool.start(gesturePlay)
+        gesturePlay = i01.GesturePlay()
+        self.threadpool.start(gesturePlay)
 
-
-        config.log(f"run initial tts text")
-        i01.mouth.speakBlocking("Karsten als Sprecher aktiviert")
+        i01.mouth.speakBlocking("ich bin jetzt bereit")
 
         self.minCommentCenter = self.minComment.geometry().center().x()
         self.maxCommentCenter = self.maxComment.geometry().center().x()
@@ -382,7 +386,7 @@ class ServoGui(QMainWindow):
 
 
     def on_Rest_pressed(self):
-        servoStatic: config.cServoStatic = config.servoStaticDict[self.selectedServoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[self.selectedServoName]
         degrees = servoStatic.restDeg
         position = config.evalPosFromDeg(self.selectedServoName, degrees)
         config.log(f"requestRestPosition, servoName: {self.selectedServoName}, degrees: {degrees}, pos: {position}")
@@ -434,7 +438,7 @@ class ServoGui(QMainWindow):
             config.log(f"stop swiping called but swiping is not active")
             return
 
-        servoStatic: config.cServoStatic = config.servoStaticDict[config.swipingServoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[config.swipingServoName]
         restPos = config.evalPosFromDeg(config.swipingServoName, servoStatic.restDeg)
         arduinoSend.requestServoPosition(config.swipingServoName, restPos, config.SWIPE_MOVE_DURATION)
         config.swipingServoName = None
@@ -487,15 +491,21 @@ class ServoGui(QMainWindow):
 
     def on_locateFaces_pressed(self):
 
+        config.log(f"on_locateFaces_pressed, isFaceTrackingActive: {eyeCamFunctions.isFaceTrackingActive}")
         if not eyeCamFunctions.isFaceTrackingActive:
+
+            eyeCamFunctions.isFaceTrackingActive = True
 
             config.log(f"start face tracking and face recognition")
             faceTracking = eyeCamFunctions.FaceTracking()
-            faceRecognition = eyeCamFunctions.FaceRecognition()
+            #faceRecognition = eyeCamFunctions.FaceRecognition(faceTracking)
+            recognizeFaces = eyeCamFunctions.RecognizeFaces(faceTracking)
 
-            eyeCamFunctions.isFaceTrackingActive = True
             self.threadpool.start(faceTracking)
-            self.threadpool.start(faceRecognition)
+            self.threadpool.start(recognizeFaces)
+
+            # increase autoDetach time to speed up eye movement during scan
+            arduinoSend.setAutoDetach('head.eyeX', 5000)
 
             self.locateFaces.setStyleSheet("background-color: green; color: white;")
             i01.mouth.speakBlocking("gesichtsverfolgung aktiviert")
@@ -504,10 +514,7 @@ class ServoGui(QMainWindow):
             self.locateFaces.setStyleSheet("background-color: lightGray; color: black;")
             config.log("stop face tracking")
 
-            eyeCamFunctions.isFaceTrackingActive = False
-
-            i01.mouth.speakBlocking("gesichtsverfolgung beendet")
-
+            eyeCamFunctions.stopFaceTracking()
 
 
     def on_stopAllServos_pressed(self):
@@ -536,7 +543,7 @@ class ServoGui(QMainWindow):
 
     def on_RequestPositionSlider_sliderReleased(self):
         # position needs to be in range min/max
-        servoStatic: config.cServoStatic = config.servoStaticDict[self.selectedServoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[self.selectedServoName]
         if self.RequestPositionSlider.value() < servoStatic.minPos:
             self.RequestPositionSlider.setValue(servoStatic.minPos)
         if self.RequestPositionSlider.value() > servoStatic.maxPos:
@@ -581,7 +588,7 @@ class ServoGui(QMainWindow):
 
     def setServoGuiValues(self, servoName: str):
 
-        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
         servoDerived = config.servoDerivedDict[servoName]
         servoType = config.servoTypeDict[servoStatic.servoType]
 

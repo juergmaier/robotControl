@@ -21,7 +21,7 @@ class detailGui(QtWidgets.QDialog, detailQtGui.Ui_ServoDetails):
         self.servoName = ""
 
     def initUI(self, servoName):
-        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
         self.servoName = servoName
         self.setWindowTitle(servoName)
         self.Arduino.setValue(servoStatic.arduino)
@@ -61,7 +61,7 @@ class detailGui(QtWidgets.QDialog, detailQtGui.Ui_ServoDetails):
         self.servoType = selection
 
     def save(self):
-        servoStatic: config.cServoStatic = config.servoStaticDict[self.servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[self.servoName]
         servoStatic.arduino = self.Arduino.value()
         servoStatic.pin = self.Pin.value()
         servoStatic.powerPin = self.PowerPin.value()
@@ -74,6 +74,10 @@ class detailGui(QtWidgets.QDialog, detailQtGui.Ui_ServoDetails):
         servoStatic.minDeg = self.MinDegrees.value()
         servoStatic.maxDeg = self.MaxDegrees.value()
         servoStatic.autoDetach = self.AutoDetach.value()
+
+        config.log(f"new autoDetach: {self.AutoDetach.value()}")
+        config.log(f"servoStatic autoDetach: {servoStatic.autoDetach}")
+
         servoStatic.inverted = self.Inverted.isChecked()
         servoStatic.restDeg = self.RestDegrees.value()
         servoStatic.servoType = self.ServoType.currentText()
@@ -82,8 +86,11 @@ class detailGui(QtWidgets.QDialog, detailQtGui.Ui_ServoDetails):
         servoStatic.wireColorArduinoTerminal = self.CableArduinoTerminal.text()
         servoStatic.wireColorTerminalServo = self.CableTerminalServo.text()
 
+        config.servoStaticDict[self.servoName] = servoStatic
+        config.marvinShares.updateServoStaticDict(self.servoName, servoStatic)
+
         # update derived servo values too
-        servoDerived = config.cServoDerived(self.servoName)
+        servoDerived = config.ServoDerived(self.servoName)
         config.servoDerivedDict.update({self.servoName: servoDerived})
 
         # update arduino too

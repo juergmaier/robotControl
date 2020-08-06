@@ -5,16 +5,16 @@ import simplejson as json
 import os
 import time
 import logging
-#from collections import deque
+from dateutil import relativedelta
 import queue
 from typing import Dict
-
+import num2words as n2w
 import rpcSend
-import robotControl
+
 
 numArduinos = 2
-arduinoData = [{'arduinoIndex': 0, 'arduinoName': 'left', 'comPort': 'COM8', 'connected': False},
-               {'arduinoIndex': 1, 'arduinoName': 'right', 'comPort': 'COM4', 'connected': False}]
+arduinoData = [{'arduinoIndex': 0, 'arduinoName': 'left, lower arduino', 'comPort': 'COM8', 'connected': False},
+               {'arduinoIndex': 1, 'arduinoName': 'right, upper arduino', 'comPort': 'COM4', 'connected': False}]
 arduinoConn = [None] * numArduinos
 
 numServos = 0
@@ -32,9 +32,9 @@ serverReady = False
 
 guiUpdateQueue = queue.Queue(100)  # deque(maxlen=None) dequeue is not thread safe
 
-SERVO_STATIC_DEFINITIONS_FILE = 'servoStaticDefinitions.json'
-SERVO_TYPE_DEFINITIONS_FILE = 'servoTypeDefinitions.json'
-PERSISTED_SERVO_POSITIONS_FILE = 'persistedServoPositions.json'
+SERVO_STATIC_DEFINITIONS_FILE = 'c:/projekte/inmoov/robotControl/servoStaticDefinitions.json'
+SERVO_TYPE_DEFINITIONS_FILE = 'c:/projekte/inmoov/robotControl/servoTypeDefinitions.json'
+PERSISTED_SERVO_POSITIONS_FILE = 'c:/projekte/inmoov/robotControl/persistedServoPositions.json'
 
 servoStaticDict: Dict[str,object] = {}    # the static definitions of all servos from the json file
 servoTypeDict = {}      # servo properties given by manufacturer
@@ -69,7 +69,9 @@ simulateServoMoves = False
 
 verbose = False
 
-eyecamFrame = None
+eyecamImage = None
+
+marvinShares = None
 
 
 '''
@@ -96,32 +98,34 @@ cServoStatic:   robot specific definitions about the servo use
     "cableTerminal": 5,
     "wireColorArduinoTerminal": "grey",
     "wireColorTerminalServo": "BROWN/white"
-    
+
 cServoType:     manufacture specific definitions of the servo
 
 cServoDerived:  intermediate useful values 
 '''
 
-class cServoStatic:
+
+class ServoStatic:
     def __init__(self, servoDefinition):
         self.__dict__ = servoDefinition
 
 
-class cServoType:
+class ServoType:
     def __init__(self, servoTypeDefinition):
         self.__dict__ = servoTypeDefinition
 
 
-class cServoDerived:
-    '''
+class ServoDerived:
+    """
     Useful preevaluated values with servo
-    '''
+    """
+
     def __init__(self, servoName):
 
         servoStatic = servoStaticDict[servoName]
         servoType = servoTypeDict[servoStatic.servoType]
 
-        self.servoUniqueId = (servoStatic.arduino*100) + servoStatic.pin
+        self.servoUniqueId = (servoStatic.arduino * 100) + servoStatic.pin
         self.degRange = servoStatic.maxDeg - servoStatic.minDeg
         self.posRange = servoStatic.maxPos - servoStatic.minPos
 
@@ -134,14 +138,14 @@ class cServoDerived:
         # robotControl checks requested move durations against the max speed possible and
         # increases move duration if necessary
         # ATTENTION: servoTypeSpeed is s/60 deg, moveSpeed is ms/60 deg!!
-        if (servoStatic.moveSpeed/1000) > servoType.typeSpeed:
+        if (servoStatic.moveSpeed / 1000) > servoType.typeSpeed:
             self.msPerPos = servoStatic.moveSpeed / 60
         else:
             self.msPerPos = servoType.typeSpeed * 1000 / 60
 
 
-class cServoCurrent:
-    '''
+class ServoCurrent:
+    """
     cServoCurrent:  the current status and position of the servo
         servoName
         assigned
@@ -152,7 +156,8 @@ class cServoCurrent:
         position
         degrees
         timeOfLastMoveRequest
-    '''
+    """
+
     def __init__(self, servoName):
         self.servoName = servoName
         self.assigned = False
@@ -165,7 +170,7 @@ class cServoCurrent:
         self.timeOfLastMoveRequest = time.time()
 
     def updateData(self, newDegrees, newPosition, newAssigned, newMoving, newAttached, newAutoDetach,
-                            newVerbose):
+                   newVerbose):
         self.degrees = newDegrees
         self.position = newPosition
         self.assigned = newAssigned
@@ -185,6 +190,9 @@ class objectview(object):
     """
     def __init__(self, d):
         self.__dict__ = d
+
+
+speakQueue = queue.Queue()     # say whatever is set into the queue
 
 
 def loadServoDefinitions():
@@ -215,12 +223,12 @@ def loadServoDefinitions():
 
 
     for servoTypeName, servoTypeData in servoTypeDefinitions.items():
-        servoType = cServoType(servoTypeData)
+        servoType = ServoType(servoTypeData)
         servoTypeDict.update({servoTypeName: servoType})
 
     for servoName in servoStaticDefinitions:
 
-        servoStatic = cServoStatic(servoStaticDefinitions[servoName])
+        servoStatic = ServoStatic(servoStaticDefinitions[servoName])
         servoType = servoTypeDict[servoStatic.servoType]
 
         # data cleansing
@@ -247,7 +255,7 @@ def loadServoDefinitions():
         # add objects to the servoDictionaries
         servoStaticDict.update({servoName: servoStatic})
 
-        servoDerived = cServoDerived(servoName)
+        servoDerived = ServoDerived(servoName)
         servoDerivedDict.update({servoName: servoDerived})
 
         # create a dict to find servo name from arduino and pin (for messages from arduino)
@@ -262,13 +270,6 @@ def log(msg, publish=True):
 
     if publish:
         rpcSend.publishLog(f"{serverName} - " + msg)
-
-
-def setArduinoStatus(arduino, newStatus):
-
-    global arduinoData
-
-    arduinoData[arduino]['connected'] = newStatus
 
 
 def setAutoDetach(servoStatic, newValue):
@@ -364,7 +365,7 @@ def loadServoPositions():
     # check for valid persisted position
     for servoName in servoStaticDict:
 
-        servoStatic: cServoStatic = servoStaticDict[servoName]
+        servoStatic: ServoStatic = servoStaticDict[servoName]
 
         # try to assign the persisted last known servo position
         try:
@@ -380,7 +381,7 @@ def loadServoPositions():
             p = servoStatic.maxPos
 
         # create cServoCurrent object
-        servoCurrent = cServoCurrent(servoName)
+        servoCurrent = ServoCurrent(servoName)
 
         servoCurrent.position = p
 
@@ -463,4 +464,115 @@ def setRandomMovesActive(state):
     global randomMovesActive
     randomMovesActive = state
     log(f"random moves state: {state}")
+
+
+def shortTimeDiff(diff : relativedelta, mask : str='ymdHMS', numSpans: int=6):
+    """
+    convert a relativdelta timespan into
+    - textual
+    - speakable text difference
+    - speakable text since
+    format.
+    :param diff:
+    :param mask: select the timespans to use (e.g. "h" would return only full hours)
+    :param numSpans: shortens results for long timespans by stopping the interpretation
+            e.g. passing in 5 years, 2 months, 4 days, 1 hour, 5 minutes, 31 seconds with mask "ymdHMS" and numSpans=2
+            results in 5 years 2 months
+    :return: all 3 forms of the time difference
+    """
+
+    def combineSpanWords(span: str):
+        """
+        replace "," with "und" between second last ana last span
+        """
+        words = span.split(" ")
+        if len(words) > 2:
+            firstPart = [w + " " for i, w in enumerate(words) if i < len(words) - 3]
+            secondPart = [w + " " for i, w in enumerate(words) if i >= len(words) - 3]
+            phraseDiff = ("".join(firstPart)[0:-2] + " und " + "".join(secondPart))[0:-3]
+        else:
+            phraseDiff = span[0:-2]
+        return phraseDiff
+
+
+    resultText = ""
+    resultSpeechDiff = ""
+    resultSpeechSince = ""
+
+    if 'y' in mask and numSpans>0:
+        if diff.years == 1:
+            resultText += "1 jahr, "
+            resultSpeechDiff += "ein jahr, "
+            resultSpeechSince += "einem jahr, "
+            numSpans -= 1
+        if diff.years > 1:
+            resultText += f"{diff.years} jahre, "
+            resultSpeechDiff += f"{n2w.num2words(diff.years, lang='de')} jahre, "
+            resultSpeechSince += f"{n2w.num2words(diff.years, lang='de')} jahren, "
+            numSpans -= 1
+
+    if 'm' in mask and numSpans>0:
+        if diff.months == 1:
+            resultText += "1 monat, "
+            resultSpeechDiff += "ein monat, "
+            resultSpeechSince += "einem monat, "
+            numSpans -= 1
+        if diff.months > 1:
+            resultText += f"{diff.months} monaten, "
+            resultSpeechDiff += f"{n2w.num2words(diff.months, lang='de')} monate, "
+            resultSpeechSince += f"{n2w.num2words(diff.months, lang='de')} monaten, "
+            numSpans -= 1
+
+    if 'd' in mask and numSpans>0:
+        if diff.days == 1:
+            resultText += "1 tag, "
+            resultSpeechDiff += "ein tag, "
+            resultSpeechSince += "einem tag, "
+            numSpans -= 1
+        if diff.days > 1:
+            resultText += f"{diff.days} tage, "
+            resultSpeechDiff += f"{n2w.num2words(diff.days, lang='de')} tage, "
+            resultSpeechSince += f"{n2w.num2words(diff.days, lang='de')} tagen, "
+            numSpans -= 1
+
+    if 'H' in mask and numSpans>0:
+        if diff.hours == 1:
+            resultText += "1 stunde, "
+            resultSpeechDiff += "eine stunde, "
+            resultSpeechSince += "einer stunde, "
+            numSpans -= 1
+        if diff.hours > 1:
+            resultText += f"{diff.hours} stunden, "
+            resultSpeechDiff += f"{n2w.num2words(diff.hours, lang='de')} stunden, "
+            resultSpeechSince += f"{n2w.num2words(diff.hours, lang='de')} stunden, "
+            numSpans -= 1
+
+    if 'M' in mask and numSpans>0:
+        if diff.minutes == 1:
+            resultText += "1 minute, "
+            resultSpeechDiff += "eine minute, "
+            resultSpeechSince += "einer minute, "
+            numSpans -= 1
+        if diff.minutes > 1:
+            resultText += f"{diff.minutes} minuten, "
+            resultSpeechDiff += f"{n2w.num2words(diff.minutes, lang='de')} minuten, "
+            resultSpeechSince += f"{n2w.num2words(diff.minutes, lang='de')} minuten, "
+            numSpans -= 1
+
+    if 'S' in mask and numSpans>0:
+        if diff.seconds == 1:
+            resultText += "1 sekunde, "
+            resultSpeechDiff += "eine sekunde, "
+            resultSpeechSince += "einer sekunde, "
+            numSpans -= 1
+        if diff.minutes > 1:
+            resultText += f"{diff.seconds} sekunden, "
+            resultSpeechDiff += f"{n2w.num2words(diff.seconds, lang='de')} sekunden, "
+            resultSpeechSince += f"{n2w.num2words(diff.seconds, lang='de')} sekunden, "
+            numSpans -= 1
+
+    # add " und " in speech
+    phraseDiff = combineSpanWords(resultSpeechDiff)
+    phraseSince = combineSpanWords(resultSpeechSince)
+    return (resultText, phraseDiff, phraseSince)
 

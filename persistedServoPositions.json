@@ -19,11 +19,11 @@
   "rightHand.ringFinger": 59,
   "rightHand.pinky": 100,
   "rightHand.wrist": 90,
-  "head.eyeX": 90,
-  "head.eyeY": 90,
-  "head.jaw": 90,
-  "head.rothead": 54,
-  "head.neck": 123,
+  "head.eyeX": 93,
+  "head.eyeY": 85,
+  "head.jaw": 80,
+  "head.rothead": 104,
+  "head.neck": 98,
   "torso.topStom": 90,
   "torso.midStom": 90
 }

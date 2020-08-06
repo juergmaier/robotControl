@@ -65,6 +65,10 @@ def readMessages(arduino):
                     #    config.log(f"leftArm.rotate new position: {position}")
 
                     config.servoCurrentDict[servoName].updateData(degrees, position, assigned, moving, attached, autoDetach, servoVerbose)
+                    # update the shared dict too
+                    if config.marvinShares is not None:
+                        config.marvinShares.updateServoCurrentDict(servoName, config.servoCurrentDict[servoName])
+
                     if position != prevPosition:
                         ik.updateDhChain()
 
@@ -115,9 +119,9 @@ def readMessages(arduino):
                 msgID = recvB[0:3].decode()
 
 
-                if msgID == "!A0":  # "inmoov ready"
+                if msgID == "!A0":  # "arduino ready"
 
-                    config.setArduinoStatus(arduino, True)
+                    config.arduinoData[arduino]['connected'] = True
 
                     info = {'type': config.ARDUINO_UPDATE, 'arduino': arduino, 'connected': True}
                     config.guiUpdateQueue.put(info)

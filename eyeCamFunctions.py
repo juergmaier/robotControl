@@ -1,9 +1,11 @@
 
 
-import sys
 import time
+import datetime
+from dateutil.relativedelta import relativedelta
 import glob
 import os
+import simplejson as json
 
 import numpy as np
 import cv2
@@ -14,7 +16,7 @@ from collections import OrderedDict
 import num2words as n2w
 from dataclasses import dataclass
 
-from PyQt5.QtCore import pyqtSlot, QThreadPool, QRunnable
+from PyQt5.QtCore import pyqtSlot, QRunnable
 
 import inmoovGlobal
 import config
@@ -28,31 +30,18 @@ MAX_ROTHEAD_DEGREES = 60
 ROTHEAD_SWIPE_STEP_DEGREES = 3
 
 # for face recognition the encodings of the known persons
-knownFacesEncodings=[]              # needed as list to pass into face_recognition
+knownFacesEncodings = []              # needed as list to pass into face_recognition
 
 isFaceTrackingActive = False
 
-imageNr = 0                   # numbered images
-facesFolder = "faceImages"
-facesFolderWithMarks = "faceImagesWithMarks"
-
-newLocations = OrderedDict()
-prevLocations = OrderedDict()
-newFace = None
-objectIdInRecognition = None
-recognizedFaces = {}        # dict of KnownFace by objectId
-unknownFaces = {}           # dict of unknown faces by objectId
-
-class FaceTracking(QRunnable):
-    @pyqtSlot()
-    def run(self):
-        locateFaces()
+facesFolder: str = "faceImages"
+facesFolderWithMarks: str = "faceImagesWithMarks"
 
 
 # von pyimagesearch
 # tracking of persons in image sequences
 # CAUTION: with more than 1 person an ID-Switch may occur
-class CentroidTracker():
+class PersonTracker:
     def __init__(self, maxDisappeared=50):
         # initialize the next unique object ID along with two ordered
         # dictionaries used to keep track of mapping a given object
@@ -197,19 +186,20 @@ class CentroidTracker():
         return self.objects
 
 
-
+"""
 class FaceRecognition(QRunnable):
     @pyqtSlot()
     def run(self):
         recognizeFaces()
-
+"""
 
 @dataclass()
 class FaceFacts:
     name: str
     file: str
     encodingIndex: int
-    announced: False
+    announced: bool             # person greeted
+    lastVerification : float    # for repeating person recognition to verify faceId->name relation
 
 
 class KnownFaces:
@@ -220,7 +210,7 @@ class KnownFaces:
     def load(self):
 
         knownFacesFolder = "c:/Projekte/InMoov/robotControl/knownFaces"
-        name = "Unknown"
+
         for folder in os.listdir(knownFacesFolder):
             folderPath = os.path.join(knownFacesFolder, folder)
             if os.path.isfile(folderPath):
@@ -236,11 +226,12 @@ class KnownFaces:
                             if os.path.isfile(fullPath[:-4] + ".npy"):
                                 with open(encodingFile, 'rb') as f:
                                     self.knownFacesEncoding.append(np.load(f))
-                                    self.knownFaces.append(FaceFacts(folder, file, index, False))
-                                    config.log(f"encoding found and loaded for: {folder}/{file}")
+                                    self.knownFaces.append(FaceFacts(folder, file, index, False, 0))
+                                    config.log(f"knownFaces, encoding found and loaded for: {folder}/{file}")
 
                             else:
                                 # no encoding file exists, create it
+                                config.log(f"try to create encoding for file: {fullPath}")
                                 image = face_recognition.load_image_file(f"{fullPath}")
                                 w,h = image.shape[:2]
                                 top, right, bottom, left = face_recognition.face_locations(image)[0]
@@ -258,29 +249,30 @@ class KnownFaces:
                                 #cv2.imshow("face only", faceImage)
                                 #cv2.waitKey(500)
 
-                                encoding = face_recognition.face_encodings(image)
+                                encoding = face_recognition.face_encodings(faceImage)
                                 if len(encoding) == 1:
                                     np.save(encodingFile, encoding[0])
                                     config.log(f"encoding file created for: {folder}/{file}")
                                     self.knownFacesEncoding.append(encoding[0])
-                                    self.knownFaces.append(FaceFacts(folder, file, index, False))
+                                    self.knownFaces.append(FaceFacts(folder, file, index, False, time.time()))
                     else:
                         config.log(f"unexpected folder structure in {knownFacesFolder}")
 
 
-    def recognizeFace(self, faceImage):
+    def recognizeThisFace(self, faceImage):
 
         # a new face, compare it against the known faces
         unknownEncoding = face_recognition.face_encodings(faceImage)
         if len(unknownEncoding) == 0:
-            config.log(f"could not create encoding for face")
+            config.log(f"face recognizer: could not create encoding for face")
             return None
 
+        config.log(f"face recognizer: encoding for face created")
         # compare the image against the known faces (returns indices of knownFacesEncodings)
         result = face_recognition.face_distance(self.knownFacesEncoding, unknownEncoding[0])
 
         if len(result) == 0:
-            config.log(f"unknown person")
+            config.log(f"face recognizer: unknown person")
             return None
         else:
             # find best match (smallest eucledian distance of face properties)
@@ -291,259 +283,546 @@ class KnownFaces:
                     bestMatch = match
                     bestImage = i
 
-            config.log(f"best match: {bestMatch:.2f}, name: {self.knownFaces[bestImage].name}, file: {self.knownFaces[bestImage].file}")
+            if bestMatch > 0.7:
+                config.log(f"face recognizer: unknown person, best match: {bestMatch:.2f}")
+                return None
+
+            config.log(f"face recognizer: best match: {bestMatch:.2f}, name: {self.knownFaces[bestImage].name}, file: {self.knownFaces[bestImage].file}")
             return self.knownFaces[bestImage].name
 
 
-class ScanForPeople:
-    def __init__(self):
-        self.rotheadCurrentDegrees = 0
-        self.rotheadSwipeStepDegrees = 2
+class ScanForPerson:
+    def __init__(self, faceTracking):
+        self.faceTracking = faceTracking    # handle to outer class
+        self.scanActive = False
+        self.startRotheadMove = time.time()
+        self.camSteadyDuration = 0.5
+        self.rotheadSwipeStepDegrees = 5
         self.rotheadMaxDegrees = 50
         self.rotheadMinDegrees = -50
-        self.rotheadNewDegrees = 0
+        self.rotheadNextDegrees = 0
 
-    def nextRotheadDegrees(self):
-        self.rotheadCurrentDegrees
-        self.rotheadNewDegrees  = config.servoCurrentDict['head.rothead'].degrees + self.rotheadSwipeStepDegrees
+
+    def scan(self):
+        if not self.scanActive:
+            self.scanActive = True
+            config.log(f"scan for person started")
+            i01.mouth.speakBlocking("ich suche nach personen")
+
+            # set default positions of eyes and neck for scan
+            self.faceTracking.moveCam('head.eyeX', 0, 50)
+            self.faceTracking.moveCam('head.eyeY', 0, 50)
+            self.faceTracking.moveCam('head.neck', -10, 500)
+
+        self.setRotheadNextDegrees()
+
+
+    def setRotheadNextDegrees(self):
+        self.rotheadNextDegrees = config.servoCurrentDict['head.rothead'].degrees + self.rotheadSwipeStepDegrees
         #self.rotheadNewDegrees = self.rotheadNewDegrees + self.rotheadSwipeStepDegrees
 
-        if self.rotheadNewDegrees > self.rotheadMaxDegrees:
-            self.rotheadNewDegrees = self.rotheadMaxDegrees
+        if self.rotheadNextDegrees > self.rotheadMaxDegrees:
+            self.rotheadNextDegrees = self.rotheadMaxDegrees
             self.rotheadSwipeStepDegrees = -self.rotheadSwipeStepDegrees
 
-        if self.rotheadNewDegrees < self.rotheadMinDegrees:
-            self.rotheadNewDegrees = self.rotheadMinDegrees
+        if self.rotheadNextDegrees < self.rotheadMinDegrees:
+            self.rotheadNextDegrees = self.rotheadMinDegrees
             self.rotheadSwipeStepDegrees = -self.rotheadSwipeStepDegrees
 
-        return self.rotheadNewDegrees
+
+    def stopScan(self):
+        self.scanActive = False
+        config.log(f"scan for person stopped")
+        i01.mouth.speakBlocking("eine person gesehen")
 
 
-def xyOffsetFace(startX, startY, endX, endY, w, h):
+class CenterOnPerson:
+    """
+    move eye and head servos to center person in image
+    """
 
-    faceXCenter = (startX + endX) / 2
-    xOffset = faceXCenter - (w/2)
-    fovH = camImages.cams[inmoovGlobal.EYE_CAM].fovH
-    faceXAngle = fovH / w * xOffset
-    config.log(f"w: {w}, faceXCenter: {faceXCenter:.0f}, xOffset: {xOffset:.0f}, fovH: {fovH}, faceXAngle: {faceXAngle:.1f}")
-
-    faceYCenter = (startY + endY) / 2
-    yOffset = faceYCenter - (h/2)
-    fovV = camImages.cams[inmoovGlobal.EYE_CAM].fovV
-    faceYAngle = -fovV / h * yOffset
-    config.log(f"h: {h}, faceYCenter: {faceYCenter:.0f}, yOffset: {yOffset:.0f}, fovV: {fovV}, faceYAngle: {faceYAngle:.1f}")
-
-    return faceXAngle, faceYAngle
+    def __init__(self, faceTracking):
+        self.faceTracking = faceTracking    # handle to outer class
+        self.moveEyeX = False
+        self.moveEyeY = False
+        self.moveRothead = False
+        self.moveNeck = False
+        self.moveStartTime = time.time()
+        self.eyeXDampFactor = 0.5
+        self.eyeYDampFactor = 0.3
 
 
-def locateFaces():
-    '''
+    @staticmethod
+    def calcRotheadCorrection(faceXAngle, faceWidth):
+
+        # use face width to get an approximate distance to the person
+        faceWidthDegrees = camImages.cams[inmoovGlobal.EYE_CAM].fovH / 240 * faceWidth
+        faceWidthInCm = 16
+        approxDist = faceWidthInCm / np.tan(np.radians(faceWidthDegrees))
+        config.log(f"faceWidth: {faceWidth}, faceWidthDegrees: {faceWidthDegrees:.1f}, approxDist: {approxDist:.0f}")
+
+        # from current angles of rothead and eyeX and the approxDist calc new rothead angle with eyeX-Angle 0
+        d1 = np.tan(np.radians(faceXAngle)) * approxDist
+        d2 = np.sqrt(approxDist * approxDist - d1 * d1)
+        d3 = d2 + 13  # 13 is distance from eye to rothead
+        correction = np.degrees(np.arctan(d1 / d3))
+        config.log(f"rothead correction: {correction:.1f} degrees")
+
+        return correction
+
+
+    def adjustCam(self, faceXAngle, faceYAngle, faceWidth):
+
+        # It's assumed to be save to access the degrees value without locking
+        # if a factor to dampen the moves is not good enough it might need a pid controller
+        currRotheadDegrees = config.servoCurrentDict['head.rothead'].degrees
+        currNeckDegrees = config.servoCurrentDict['head.neck'].degrees
+        currEyeXDegrees = config.servoCurrentDict['head.eyeX'].degrees
+        currEyeYDegrees = config.servoCurrentDict['head.eyeY'].degrees
+
+        # if person is already close to the image center check for center exeX and compensate with rothead
+        if abs(faceXAngle) < 3:
+
+            # check for high eyeX offset
+            if abs(currEyeXDegrees) > 5:
+                config.log(f"zero eyeX and move rothead, faceXAngle: {faceXAngle:.1f}, currEyeXDegrees: {currEyeXDegrees:.1f}")
+
+                corrAngleRothead = self.calcRotheadCorrection(faceXAngle, faceWidth)
+                newRotheadDegrees = currRotheadDegrees + corrAngleRothead
+                self.moveStartTime = time.time()
+                self.faceTracking.moveCam('head.eyeX', 0, 80)
+                self.faceTracking.moveCam('head.rothead', newRotheadDegrees, 80)
+
+        # if person is off center and eye movement is still possible try to follow with eye
+        elif abs(faceXAngle) < 8 and abs(currEyeXDegrees) < 10:
+            newEyeXDegrees = currEyeXDegrees + (faceXAngle * self.eyeXDampFactor)
+            config.log(f"center person in image with eyeX move, newEyeX: {newEyeXDegrees:.1f}, faceXAngle: {faceXAngle:.1f}")
+            self.moveStartTime = time.time()
+            self.faceTracking.moveCam('head.eyeX', newEyeXDegrees, 30)
+            self.moveEyeX = True
+
+        else:  # move rothead to center on person, move eyeX to 0 within same time span
+            config.log(f"center person in image with rothead: {faceXAngle:.1f}, currEyeXDegrees: {currEyeXDegrees:.1f}")
+            corrAngleRothead = self.calcRotheadCorrection(faceXAngle, faceWidth)
+            newRotheadDegrees = currRotheadDegrees + corrAngleRothead
+
+            self.faceTracking.moveCam('head.eyeX', 0, 80)
+            self.faceTracking.moveCam('head.rothead', newRotheadDegrees, 80)
+
+        # check for needed neck move
+        if abs(faceYAngle) < 2:
+            # person is close to image center, check for eyeY offset
+            if abs(currEyeYDegrees) > 3:
+                config.log(f"zero eyeY and move neck: {faceYAngle:.1f}, currEyeYDegrees: {currEyeYDegrees:.1f}")
+                newNeckDegrees = currNeckDegrees + faceYAngle + (currEyeYDegrees * self.eyeYDampFactor)
+
+                self.faceTracking.moveCam('head.eyeY', 0, 80)
+                self.faceTracking.moveCam('head.neck', newNeckDegrees, 80)
+
+
+        # if person is off center and eye movement is still possible follow with eye first
+        elif abs(faceYAngle) < 8 and abs(currEyeYDegrees) < 10:
+            newEyeYDegrees = currEyeYDegrees - faceYAngle * self.eyeYDampFactor
+            config.log(f"center person in image with eyeY move: {newEyeYDegrees:.1f}, faceYAngle: {faceYAngle:.1f}")
+
+            self.faceTracking.moveCam('head.eyeY', newEyeYDegrees, 30)
+
+
+        else:  # move neck to center on person, move eyeY to 0 within same time span
+            config.log(f"center person in image with neck: {faceYAngle:.1f}, currEyeYDegrees: {currEyeYDegrees:.1f}")
+            newNeckDegrees = currNeckDegrees + faceYAngle + currEyeYDegrees * self.eyeYDampFactor
+
+            self.faceTracking.moveCam('head.eyeY', 0, 80)
+            self.faceTracking.moveCam('head.neck', newNeckDegrees, 80)
+
+
+
+def copyFaceFromImage(image, faceStartLeft, faceEndRight, faceStartTop, faceEndBottom):
+    # add a frame area around the face rectangle to get a more complete picture of the person
+    w, h = image.shape[0:2]
+    frameWidth = int(0.3 * (faceEndRight - faceStartLeft))
+    left1 = faceStartLeft - frameWidth if faceStartLeft > frameWidth else 0
+    top1 = faceStartTop - frameWidth if faceStartTop > frameWidth else 0
+    right1 = faceEndRight + frameWidth if faceEndRight + frameWidth < w else w
+    bottom1 = faceEndBottom + frameWidth if faceEndBottom + frameWidth < h else h
+
+    return image[top1:bottom1, left1:right1].copy()
+
+
+class FaceTracking(QRunnable):
+    """
     this function is started as a thread from the gui (guiLogic.py)
     in this implementation a face tracker is added, trying to find the movements
     of all faces in relation to the last taken image.
     It also detects new faces in the image which can than be passed to the face recognizer
-    '''
-    global newLocations, prevLocations, objectIdInRecognition, newFace
+    """
+    #@pyqtSlot()
 
-    # find last image number used in faces folder to save images with a unique file name
-    # this allows easier testing and can be ignored, if we have no interrest in the image history
-    filesInFolder = glob.glob(facesFolder + "/*")
-    if len(filesInFolder) == 0:
-        imageNr = 0
-    else:
-        latestFile = max(filesInFolder, key=os.path.getctime)
-        imageNr = int(os.path.basename(latestFile)[:-4]) + 1
+    def __init__(self):
+        super().__init__()
+        self.newLocations = OrderedDict()
+        self.prevLocations = OrderedDict()
+        self.faceToRecognize = None
+        self.faceIdInRecognition = None
+        self.recognizedFaces = {}  # dict of recognized faces by faceId
+        self.unknownFaces = {}  # dict of unknown faces by faceIdId
+        self.imageNr = self.evalNextImageNumber()
 
-    # verify cam
-    config.eyecamFrame = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()
-    w, h = config.eyecamFrame.shape[0:2]
+        # create the person tracker
+        self.tracker = PersonTracker()
+        self.scanForPerson = ScanForPerson(self)
+        self.centerOnPerson = CenterOnPerson(self)
+        self.timeLastPersonDetected = time.time()
+        self.camMoveStartTime = 0
+        self.camMoveHead = False
+        self.camMoveEye = False
+        self.rotheadDegreesImage = 0
 
-    # create the person tracker
-    tracker = CentroidTracker()
-    scanForPeople = ScanForPeople()
+        # verify cam
+        _ = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()  # verify available cam
 
-    lastAnalysis = time.time()
 
-    scanDelay = 5
+    @staticmethod
+    def xyOffsetFace(startX, startY, endX, endY, w, h):
 
-    while isFaceTrackingActive:
+        faceXCenter = (startX + endX) / 2
+        xOffset = faceXCenter - (w / 2)
+        fovH = camImages.cams[inmoovGlobal.EYE_CAM].fovH
+        faceXAngle = fovH / w * xOffset
+        config.log(
+            f"centerFace, startX: {startX}, endX: {endX}, w: {w}, faceXCenter: {faceXCenter:.0f}, xOffset: {xOffset:.0f}, fovH: {fovH}, faceXAngle: {faceXAngle:.1f}")
 
-        rects = []      # the bounding boxes of all faces in this image
+        faceYCenter = (startY + endY) / 2
+        yOffset = faceYCenter - (h / 2)
+        fovV = camImages.cams[inmoovGlobal.EYE_CAM].fovV
+        faceYAngle = -fovV / h * yOffset
+        config.log(
+            f"centerFace, startY: {startY}, endY: {endY}, h: {h}, faceYCenter: {faceYCenter:.0f}, yOffset: {yOffset:.0f}, fovV: {fovV}, faceYAngle: {faceYAngle:.1f}")
 
-        # limit analysis to 10/sec
-        if time.time() - lastAnalysis < 0.1:
-            time.sleep(lastAnalysis + 0.1 - time.time())
+        return faceXAngle, faceYAngle
 
-        lastAnalysis = time.time()
 
-        #capture image
-        config.eyecamFrame = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()
+    def evalNextImageNumber(self):
+        # find last image number used in faces folder to save images with a unique file name
+        # this allows easier testing and can be ignored, if we have no interrest in the image history
+        filesInFolder = glob.glob(facesFolder + "/*")
+        if len(filesInFolder) == 0:
+            return 0
+        else:
+            latestFile = max(filesInFolder, key=os.path.getctime)
+            return int(os.path.basename(latestFile)[:-4]) + 1
 
-        if config.eyecamFrame is None:
-            config.log(f"eyecam image not available")
-            time.sleep(5)
-            continue
 
-        # downsize image to increase speed in face search
-        faceFrame = cv2.resize(config.eyecamFrame, (240,320))
-        #faceFrame = faceFrameBGR[:,:,::-1]
+    def waitForSteadyCam(self):
+        # depending on servos moved wait for a steady cam image
+        if self.camMoveHead:
+            requestedRotheadDegrees = self.scanForPerson.rotheadNextDegrees
 
-        h, w = faceFrame.shape[0:2]     #
-        start = time.time()
+            # wait with timeout for rothead to move to requested degrees
+            while time.time() - self.camMoveStartTime < 2:
+                # check actual position matches expected position
+                # this is inaccureate because we do not have a measured servo position available
+                currentRotheadDegrees = config.servoCurrentDict['head.rothead'].degrees
+                if abs(currentRotheadDegrees - requestedRotheadDegrees) < 2:
+                    break
+                time.sleep(0.05)
+            config.log(f"rothead moved in {time.time()-self.camMoveStartTime:.2f} s to {currentRotheadDegrees}")
+            time.sleep(0.2)
 
-        # Find all the faces in the current frame of video
-        faceLocations = face_recognition.face_locations(faceFrame)
+        if self.camMoveEye:
+            # for eye moves wait a fixed time
+            while time.time() - self.camMoveStartTime < 0.4:
+                time.sleep(0.05)
 
-        #config.log(f"detection duration: {start - time.time()}")
+        self.camMoveHead = False
+        self.camMoveEye = False
 
-        if len(faceLocations) == 0:
-            config.log("face locator: keine Person erkannt")
-            scanDelay -= 1
-            if scanDelay == 0:
-                newRotheadDegrees = scanForPeople.nextRotheadDegrees()
-                arduinoSend.requestServoDegrees('head.rothead', newRotheadDegrees, 100, filterSequence=False)
-                scanDelay = 2
+
+    def moveCam(self, servoName, degrees, duration):
+        #config.log(f"moveCam, {servoName}, degrees: {degrees} ")
+        arduinoSend.requestServoDegrees(servoName, degrees, duration, filterSequence=False)
+        if servoName in ['head.rothead', 'head.neck']:
+            self.camMoveHead = True
+        else:
+            self.camMoveEye = True
+        self.camMoveStartTime = time.time()
+
+
+    def writeLastSeenFile(self, lastSeenFile):
+        # update last seen timestamp in person folder
+        with open(lastSeenFile, 'w') as outfile:
+            json.dump(datetime.datetime.fromtimestamp(time.time()), outfile, default=str)
+
+
+    def addOrRemovePerson(self, person):
+        '''
+        called by face recognizer thread that tries to identify the faceIdInRecognition
+        :param person: name of the recognized person or None
+        '''
+        # check for new or already recognized person
+        if person is None:
+            # the face is unknown, check if it was recognized before
+            if self.faceIdInRecognition in self.recognizedFaces:
+                # if the faceId is unknown now remove it from the recognizedFaces dict
+                del self.recognizedFaces[self.faceIdInRecognition]
+            # add or update the face facts in the unknownFaces dict
+            self.unknownFaces.update({self.faceIdInRecognition: FaceFacts("", "", 0, False, time.time())})
+        else:
+            # the faceId is attached to a person, check for switch of the person behind this faceId
+            if self.faceIdInRecognition in self.recognizedFaces:
+                if person != self.recognizedFaces[self.faceIdInRecognition].name:
+                    # the faceId is now bound to another person, update the person in the recognized faces dict
+                    config.log(f"faceId changed for {person}")
+                    self.recognizedFaces.update(
+                        {self.faceIdInRecognition: FaceFacts(person, "", 0, False, time.time())})
+                else:
+                    self.recognizedFaces[self.faceIdInRecognition].lastVerification = time.time()
+            else:
+                self.recognizedFaces.update(
+                    {self.faceIdInRecognition: FaceFacts(person, "", 0, False, time.time())})
+
+
+    def run(self):
+        while isFaceTrackingActive:
+
+            rects = []      # the bounding boxes of all faces in this image
+
+            # capture image
+            self.waitForSteadyCam()
+
+            config.eyecamImage = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()   # capture image for tracking
+            self.rotheadDegreesImage = config.servoCurrentDict['head.rothead'].degrees
+            self.eyeXDegreesImage = config.servoCurrentDict['head.eyeX'].degrees
+
+            self.imageNr += 1
+            config.log(f"eyecam image taken {self.imageNr}, rothead: {self.rotheadDegreesImage} degrees, eyeX: {self.eyeXDegreesImage}")
+
+            # in scan mode start move to next scan position while we analyze the last taken image
+            if self.scanForPerson.scanActive:
+                self.scanForPerson.scan()
+                self.moveCam('head.rothead', self.scanForPerson.rotheadNextDegrees, 80)
+
+            # for testing only: load image
+            #config.eyecamFrame = cv2.imread(f'{facesFolder}/1108.jpg')
+
+            cv2.imshow("eyeCam", config.eyecamImage)
+            cv2.waitKey(1)
+            snapFileName = f"{facesFolder}/{self.imageNr:4.0f}.jpg"
+            cv2.imwrite(snapFileName, config.eyecamImage)
+
+            if config.eyecamImage is None:
+                config.log(f"eyecam image not available")
+                time.sleep(5)
                 continue
 
-        if len(faceLocations) == 1:
-            config.log("face locator: eine Person erkannt")
-            scanDelay = 5
+            # downsize image to increase speed in face search
+            faceFrame = cv2.resize(config.eyecamImage, (240, 320))
+            #faceFrame = faceFrameBGR[:,:,::-1]
 
-        if len(faceLocations) > 1:
-            config.log(f"face locator: {n2w.num2words(len(newLocations), lang='de')} personen erkannt")
-            scanDelay = 5
+            h, w = faceFrame.shape[0:2]     #
+            #start = time.time()
 
-        if len(faceLocations) > 0:
+            # Find all the faces in the current frame of video
+            faceLocations = face_recognition.face_locations(faceFrame)
 
-            # save the image for later replay (used for testing only)
-            imageNr += 1
-            cv2.imwrite(f"{facesFolder}/{imageNr:04.0f}.jpg", faceFrame)
+            #config.log(f"detection duration: {start - time.time()}")
 
-            # add face areas in image to the rects list
-            for top, right, bottom, left in faceLocations:
-                rects.append((left, top, right, bottom))
+            if len(faceLocations) == 0:
+                config.log("face locator: no person located")
 
-                # for verification draw a box around each face
-                cv2.rectangle(faceFrame, (left, top), (right, bottom), (0, 0, 255), 2)
+                # if we are not scanning (rothead) retry to locate faces with current rothead
+                if not self.scanForPerson.scanActive:
+                    if time.time() - self.timeLastPersonDetected < 2:
+                        config.log(f"face locator: no person detected but not in scan and no timeout, retry")
+                        continue
+
+                    config.log(f"face locator: time since last person seen: {time.time()-self.timeLastPersonDetected:.2f}, resume scan")
+                    self.scanForPerson.scan()
+                    continue
 
 
-            # update the tracker using face rectangles
-            newLocations = tracker.update(rects)    # returns OrderedDict, face locations by objectId
+            if len(faceLocations) == 1:
+                config.log("face locator: located 1 person")
 
-            # loop over the tracked faces
-            for (objectId, centroid) in newLocations.items():
+            if len(faceLocations) > 1:
+                config.log(f"face locator: located {len(self.newLocations)} persons")
 
-                cX, cY, left, right, top, bottom = centroid
+            if len(faceLocations) > 0:
 
-                # check for unknown person
-                if objectId not in recognizedFaces:
-                    config.log(f"face locator: unknown person detected")
+                if self.scanForPerson.scanActive:
+                    self.scanForPerson.stopScan()
 
-                    # check for currently running face recognition
-                    if objectIdInRecognition is None:
+                    # go back to rothead degrees of image
+                    config.log(f"return rothead to detected person")
+                    self.moveCam('head.rothead', self.rotheadDegreesImage, 50)
+                    self.waitForSteadyCam()
+                    #i01.mouth.speakBlocking("jemanden gefunden")
 
-                        config.log(f"face locator: set image and flag for recognizer, objectId: {objectId}")
-                        newFace = faceFrame[top:bottom, left:right]
-                        objectIdInRecognition = objectId    # triggers face recognition
+                self.timeLastPersonDetected = time.time()
+
+                # save the image for later replay (used for testing only)
+                #imageNr += 1
+                #cv2.imwrite(f"{facesFolder}/{imageNr:04.0f}.jpg", faceFrame)
+
+                # add face areas in image to the rects list
+                for top, right, bottom, left in faceLocations:
+                    rects.append((left, top, right, bottom))
+
+                    # for verification draw a box around each face
+                    #cv2.rectangle(faceFrame, (left, top), (right, bottom), (0, 0, 255), 2)
+
+
+                # update the tracker using face rectangles
+                newLocations = self.tracker.update(rects)    # returns OrderedDict, face locations by objectId
+
+                # loop over the tracked faces
+                for (faceId, centroid) in newLocations.items():
+
+                    cX, cY, left, right, top, bottom = centroid
+
+                    # check for already identified person
+                    if faceId in self.recognizedFaces:
+
+                        person = self.recognizedFaces[faceId].name
+                        config.log(f"already identified person: {person}")
+
+                        # check for greeting done
+                        if not self.recognizedFaces[faceId].announced:
+                            config.log(f"recognized person: {person}")
+                            i01.mouth.speakBlocking(f"hallo {person}")
+                            self.recognizedFaces[faceId].announced = True
+
+                            # check for last seen file
+                            # special handling of jsonized datatime necessary, json.load() will fail
+                            lastSeenFile = f"c:/projekte/inmoov/robotControl/knownFaces/{person}/lastSeen.json"
+                            if os.path.exists(lastSeenFile):
+                                #config.log(f"json file exists")
+                                f = open(lastSeenFile, 'r')
+                                content = f.read()      # json.dump adds "\ to the datetime
+                                try:
+                                    lastSeen = datetime.datetime.strptime(content[3:-3], '%y-%m-%d %H:%M:%S.%f')
+                                    diff = relativedelta(datetime.datetime.fromtimestamp(time.time()), lastSeen)
+                                    diffTxt, diffSpan, diffSince = config.shortTimeDiff(diff, 'ymdHMS', numSpans=2)
+                                    config.log(f"last seen: {lastSeen}, {diffTxt}, {diffSpan}, {diffSince}")
+                                    if cX % 2 == 0:
+                                        i01.mouth.speakBlocking(f"ich habe dich seit {diffSince} nicht mehr gesehen")
+                                    else:
+                                        i01.mouth.speakBlocking(f"ich habe dich vor {diffSpan} das letzte mal gesehen")
+
+                                except Exception as e:
+                                    config.log(f"conversion of last seen date failed {e}, date: {content}")
+
+                            else:
+                                i01.mouth.speakBlocking(f"ich habe keine Aufzeichnung, wann ich dich das letzte mal gesehen habe.")
+
+                            self.writeLastSeenFile(lastSeenFile)
+
+
+                        # check for repeated name verification
+                        if time.time() - self.recognizedFaces[faceId].lastVerification > 5:
+                            # verify that we still have the same person attached to objectId
+                            if self.faceIdInRecognition is None:
+                                self.faceToRecognize = copyFaceFromImage(faceFrame, left, right, top, bottom)
+                                self.faceIdInRecognition = faceId    # triggers face recognition
+
                     else:
-                        config.log(f"face locator: face recognizer currently busy")
+                        config.log(f"face locator: unknown person detected")
 
-                else:
-                    if not recognizedFaces[objectId].announced:
-                        config.log(f"recognized person: {recognizedFaces[objectId].name}")
-                        i01.mouth.speakBlocking(f"hallo {recognizedFaces[objectId].name}")
-                        recognizedFaces[objectId].announced = True
+                        # check for currently running face recognition
+                        if self.faceIdInRecognition is None:
+                            config.log(f"face locator: pass image to recognizer, objectId: {faceId}")
 
-                # for visualization add ID, face center and line of move to the frame
-                text = "ID {}".format(objectId)
-                cv2.putText(faceFrame, text, (cX - 10, cY - 10),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                cv2.circle(faceFrame, (cX, cY), 4, (0, 255, 0), -1)
+                            self.faceToRecognize = copyFaceFromImage(faceFrame, left, right, top, bottom)
 
-                if objectId in prevLocations:  # check for previous location known
-                    cv2.line(faceFrame, (cX, cY),
-                             (prevLocations[objectId][0], prevLocations[objectId][1]), (0, 255, 0), 2)
-                    #print(f"line {centroid}, {prevLocations[objectId]}")
+                            self.faceIdInRecognition = faceId    # triggers face recognition
+
+                        else:
+                            config.log(f"face locator: face recognizer currently busy")
 
 
+                    # for visualization add ID, face center and line of move to the frame
+                    text = "ID {}".format(faceId)
+                    cv2.putText(faceFrame, text, (cX - 10, cY - 10),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.circle(faceFrame, (cX, cY), 4, (0, 255, 0), -1)
 
-            # Display the results of first found face
-            #for top, right, bottom, left in faceLocations:
-            (top, right, bottom, left) = faceLocations[0]
+                    if faceId in self.prevLocations:  # check for previous location known
+                        cv2.line(faceFrame, (cX, cY),
+                                 (self.prevLocations[faceId][0], self.prevLocations[faceId][1]), (0, 255, 0), 2)
+                        #print(f"line {centroid}, {prevLocations[objectId]}")
 
-            # save the image with markings
-            cv2.imwrite(f"{facesFolderWithMarks}/{imageNr:04.0f}.jpg", faceFrame)
+                # Display the results of first found face
+                #for top, right, bottom, left in faceLocations:
+                (top, right, bottom, left) = faceLocations[0]
 
-            # Display the resulting  image
-            cv2.imshow('Face', faceFrame)
-            cv2.waitKey(1)
+                # move eyes and head to center face in image
+                # get current angles first
+                config.log(f"image: {self.imageNr:04.0f}.jpg, {w}x{h}")
+                faceXAngle, faceYAngle = FaceTracking.xyOffsetFace(left, top, right, bottom, w, h)
 
-            # move rothead and neck to center face in image
-            # get current angles first
-            config.log(f"image: {imageNr:04.0f}.jpg, {w}x{h}")
-            faceXAngle, faceYAngle = xyOffsetFace(left, top, right, bottom, w, h)
+                # check for movement, use new locations as prevLocations in case we are in the first pass
+                if len(self.prevLocations) == 0:
+                    self.prevLocations = deepcopy(self.newLocations)
 
-            # It's assumed to be save to access the degrees value without locking
-            # if a factor to dampen the moves is not good enough it might need a pid controller
-            currRotheadDegrees = config.servoCurrentDict['head.rothead'].degrees
+                # if person is close to image center and eye has an offset reduce eye offset with rothead move
+                faceWidth = right - left
+                self.centerOnPerson.adjustCam(faceXAngle, faceYAngle, faceWidth)
 
-            # check for movement and try to compensate for it
-            if len(prevLocations) == 0:
-                prevLocations = deepcopy(newLocations)
-
-            camMoveFactor = 0.8
-            if abs(prevLocations[0][0] - newLocations[0][0]) > 10:        # x pixel change
-                camMoveFactor = 1.2
-            newRotheadDegrees = currRotheadDegrees + (camMoveFactor * faceXAngle)
-
-            currNeckDegrees = config.servoCurrentDict['head.neck'].degrees
-            # check for movement and try to compensate for it
-            newNeckDegrees = currNeckDegrees + (0.8 * faceYAngle)
-
-            config.log(
-                f"currRotheadDegrees: {currRotheadDegrees:.0f}, faceXAngle: {faceXAngle:.0f}, newRotheadDegrees: {newRotheadDegrees:.0f}, currNeckDegrees: {currNeckDegrees:.0f}, faceYAngle: {faceYAngle:.0f},  newNeckDegrees: {newNeckDegrees:.0f}")
-
-            # request new positions and do not filter requests as the situation can change quickly
-            arduinoSend.requestServoDegrees('head.rothead', newRotheadDegrees, 100, filterSequence=False)
-            arduinoSend.requestServoDegrees('head.neck', newNeckDegrees, 100, filterSequence=False)
-
-            # use the new locations as the previous locations for the next image analysis
-            prevLocations = deepcopy(newLocations)
+                # use the new locations as the previous locations for the next image analysis
+                self.prevLocations = deepcopy(self.newLocations)
 
 
 
-def recognizeFaces():
-    '''
+class RecognizeFaces(QRunnable):
+    """
     Thread started with locateFaces request
     Thread ends when isFaceTrackingActive is set to False
     When locateFaces detects a new person it requests a person search by setting "objectIdInRecognition"
     If the person is recognized, it adds the objectId and name to the recognizedFaces array
-    '''
+    """
+    def __init__(self, faceTracking):
+        super().__init__()
+        self.faceTracking = faceTracking
+        #self.recognizedFaces = []
+        self.faceToRecognize = None
+        self.knownFaces = KnownFaces()
+        self.knownFaces.load()
+        self.unknownFaces = {}
 
-    global objectIdInRecognition, recognizedFaces
+    def run(self):
 
-    knownFaces = KnownFaces()
-    knownFaces.load()
+        while isFaceTrackingActive:
 
-    while isFaceTrackingActive:
+            # check for new face to recognize
+            if self.faceTracking.faceIdInRecognition is not None:
 
-        # check for new face to recognize
-        if objectIdInRecognition is not None:
+                config.log(f"new request for face recognition")
 
-            config.log(f"new face passed to recognizer")
+                person = self.knownFaces.recognizeThisFace(self.faceTracking.faceToRecognize)
 
-            person = knownFaces.recognizeFace(newFace)
+                self.faceTracking.addOrRemovePerson(person)
 
-            if person is None:
-                unknownFaces.update({objectIdInRecognition: FaceFacts("", "", 0, False)})
+                # make recognition ready for another face to recognize
+                self.faceTracking.faceIdInRecognition = None
+
             else:
-                recognizedFaces.update({objectIdInRecognition: FaceFacts(person, "", 0, False)})
+                time.sleep(0.2)
 
-            # make recognition ready for another face to recognize
-            objectIdInRecognition = None
 
-        else:
-            time.sleep(0.2)
+def stopFaceTracking():
+
+    global isFaceTrackingActive
+
+    isFaceTrackingActive = False
+
+    # reset autoDetach time for eye servo to normal
+    arduinoSend.setAutoDetach('head.eyeX', 1000)
+    arduinoSend.requestServoDegrees('head.eyeX', 0, 500)
+    arduinoSend.requestServoDegrees('head.eyeY', 0, 500)
+    arduinoSend.requestServoDegrees('head.rothead', 0, 500)
+    arduinoSend.requestServoDegrees('head.neck', 0, 500)
+
+    i01.mouth.speakBlocking("gesichtsverfolgung beendet")
 
 
 
@@ -555,15 +834,17 @@ def newFaceRecording():
     Falls eine Aufnahme nicht passt, werde ich dir Anweisungen geben, wie du dich bewegen solltest.
     Die Kamera darf nur deinen eigenen Kopf erfassen, nicht auch andere Personen.
     Es werden 5 Bilder im Abstand von einer Sekunde gemacht, es werden aber nur passende Bilder abgelegt.
-    Während der Aufnahme solltest du stehen bleiben und mir in das rechte Auge sehen, lächeln nicht vergessen.
+    Während der Aufnahme solltest du stehen bleiben und mir in das Gesicht sehen, lächeln nicht vergessen.
     """
-    skipIntro = False
+    skipIntro = True
     if not skipIntro:
         i01.mouth.speakBlocking(instructions)
 
+    arduinoSend.requestServoDegrees('head.rothead', 0, 500)
+    arduinoSend.requestServoDegrees('head.neck', -10, 500)
     for i in range(5):
-        config.eyecamFrame = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()
-        cv2.imshow("eyeCam", config.eyecamFrame)
+        image = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()   # init new person recording
+        cv2.imshow("eyeCam", image)
         cv2.waitKey(1000)
 
     newFaceFolder = "newFace"
@@ -574,11 +855,11 @@ def newFaceRecording():
 
     # remove all files in newFaceFolder
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    dir = os.path.join(BASE_DIR, newFaceFolder)
+    base = os.path.join(BASE_DIR, newFaceFolder)
 
-    for root, dirs, files in os.walk(dir):
+    for root, dirs, files in os.walk(base):
         for file in files:
-            path = os.path.join(dir, file)
+            path = os.path.join(base, file)
             os.remove(path)
 
 
@@ -593,7 +874,7 @@ def newFaceRecording():
 
         frameText = "unpassendes Bild"
 
-        image = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()
+        image = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()    # new person recording
         w, h = image.shape[0:2]
 
         faceLocations = face_recognition.face_locations(image)
@@ -616,7 +897,7 @@ def newFaceRecording():
             # box the face
             for top, right, bottom, left in faceLocations:
 
-                faceXAngle, faceYAngle = xyOffsetFace(left, top, right, bottom, w, h)
+                faceXAngle, faceYAngle = FaceTracking.xyOffsetFace(left, top, right, bottom, w, h)
 
                 # check for valid face position in frame
                 validPosition = True
@@ -643,7 +924,7 @@ def newFaceRecording():
 
                     cv2.imwrite(f"{newFaceFolder}/{imageNr:02.0f}.jpg", faceWithFrame)
                     frameText = "Bild {imageNr} von {numPic}"
-                    i01.mouth.speakBlocking(f"Bild {n2w.num2words(imageNr, lang='de')} von {n2w.num2words(numPic, lang='de')} erfolgreich aufgenommen")
+                    i01.mouth.speakBlocking(f"Bild {n2w.num2words(imageNr+1, lang='de')} von {n2w.num2words(numPic, lang='de')} erfolgreich aufgenommen")
                     imageNr += 1
 
                 else:

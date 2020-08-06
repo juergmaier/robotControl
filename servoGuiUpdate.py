@@ -37,49 +37,49 @@ class GuiUpdateThread(QRunnable):
         while True:
 
             time.sleep(0.01)
-            updateData = config.getOldestUpdateMessage()
+            guiUpdateData = config.getOldestUpdateMessage()
 
-            if updateData is not None:
+            if guiUpdateData is not None:
 
                 #config.log(f"updateData from queue: {updateData}")
                 # check for unexpected data
                 try:
-                    type = updateData['type']
+                    type = guiUpdateData['type']
                 except Exception as e:
-                    config.log(f"msg from queue without a type {updateData}")
+                    config.log(f"msg from queue without a type {guiUpdateData}")
                     continue
 
-                if updateData['type'] == config.SERVO_UPDATE:
+                if guiUpdateData['type'] == config.SERVO_UPDATE:
 
-                    servoName = updateData['servoName']
+                    servoName = guiUpdateData['servoName']
 
                     #config.log(f"servoUpdate {updateData['servoName']}, pos: {updateData['position']}")
-                    if 0 > updateData['position'] > 180:
+                    if 0 > guiUpdateData['position'] > 180:
                         config.log(f"unreasonable position in update message")
                         return
 
                     #Data = {'type', 'assigned', 'moving', 'detached', 'position', 'degree'}
-                    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+                    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
                     servoDerived = config.servoDerivedDict[servoName]
 
                     if servoStatic is None:
                         config.log(f"could not eval servoDefinitions for {servoName}")
                         return
 
-                    del updateData['type']  # remove added type
-                    del updateData['servoName']  # remove added servo name
+                    del guiUpdateData['type']  # remove added type
+                    del guiUpdateData['servoName']  # remove added servo name
 
                     # update the local servo store
-                    config.updateServoCurrent(servoName, updateData)
+                    config.updateServoCurrent(servoName, guiUpdateData)
 
                     # inform the gui about the changed servo information using the unique servoId
                     self.signals.update.emit(config.SERVO_UPDATE, servoDerived.servoUniqueId)
 
 
 
-                elif updateData['type'] == config.ARDUINO_UPDATE:
+                elif guiUpdateData['type'] == config.ARDUINO_UPDATE:
                         config.log("process arduino message from updateQueue")
-                        if updateData['connected']:
-                            self.signals.update.emit(config.ARDUINO_UPDATE, updateData['arduino'])
+                        if guiUpdateData['connected']:
+                            self.signals.update.emit(config.ARDUINO_UPDATE, guiUpdateData['arduino'])
 
 

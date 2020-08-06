@@ -113,20 +113,20 @@ class rpcListener(rpyc.Service):
 
 
     def exposed_requestServoUpdate(self, servoName):
-        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
         servoUpdateData = config.servoCurrentDict[servoName]
         rpcSend.servoUpdate(servoName, servoUpdateData)
 
 
     def exposed_requestServoPos(self, servoName, position, duration):
-        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
         config.log(f"request for servo positioning received, servoName: {servoName}, arduino: {servoStatic.arduino}, pin: {servoStatic.pin}, relPos: {position}, duration: {duration}")
         arduinoSend.requestServoPosition(servoName, position, duration)
 
 
     def exposed_requestServoDegrees(self, servoName, degrees, duration):
         #config.log(f"request for servo degree received, servoName: {servoName}, degrees: {degrees}, duration: {duration}")
-        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
 
         if degrees > servoStatic.maxDeg:
             degrees = servoStatic.maxDeg
@@ -152,7 +152,7 @@ class rpcListener(rpyc.Service):
 
 
     def exposed_requestSetAutoDetach(self, servoName, milliseconds):
-        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
         config.log(f"setAutoDetach received for servo {servoName}, ms: {milliseconds}")
         if servoStatic.autoDetach != milliseconds:
             servoStatic.autoDetach = milliseconds
@@ -268,5 +268,5 @@ class rpcListener(rpyc.Service):
 
     def exposed_setAutoDetach(self, servoName, durationMs):
         config.log(f"set auto detach for servo {servoName} to {durationMs} Ms")
-        servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+        servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
         arduinoSend.setAutoDetach(servoStatic, durationMs)

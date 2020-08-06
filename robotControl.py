@@ -1,5 +1,6 @@
 # noinspection PyBroadException,SpellCheckingInspection
 
+import sys
 import time
 import threading
 import serial
@@ -8,28 +9,28 @@ import logging
 import os
 import shutil
 
-from rpyc.utils.server import ThreadedServer
+
 from PyQt5.QtWidgets import QApplication
 
 import inmoovGlobal
 import config
 import arduinoSend
 import arduinoReceive
-import rpcReceive
 import rpcSend
-import threadWatchConnections
 import guiLogic
 import ik
 import i01
+import marvinShares
+import speaker
+import servoRequests
 
 #sys.path.append("../camImages")
 import camImages
 
-import stickFigure
-
 
 clients = []
-gestureDir = 'c:/projekte/inmoov/robotControl/marvinGestures'  # change this to marvinGestures once all gestures are verified
+# change this to marvinGestures once all gestures are verified
+gestureDir = 'c:/projekte/inmoov/robotControl/marvinGestures'
 
 
 def openSerial(a):
@@ -41,59 +42,34 @@ def openSerial(a):
     try:
         conn = serial.Serial(a['comPort'])
         # try to reset the arduino
-        conn.setDTR(False)
-        time.sleep(0.2)
-        conn.setDTR(True)
+        #conn.setDTR(False)
+        #time.sleep(0.2)
+        #conn.setDTR(True)
         conn.baudrate = 115200
         conn.writeTimeout = 0
         #config.log(f"serial connection with arduino {a['arduinoIndex']}, {a['arduinoName']} on {a['comPort']} initialized")
         config.setSerialConnection(a['arduinoIndex'], conn)
         return True
 
-    except Exception as e:
-        config.log(f"exception on serial connect with arduino: {a['arduinoName']}, comPort: {a['comPort']}, {e}, going down")
-        os._exit(1)
-
-
-def arduinoReady(a):
-
-    # check for response from arduino
-    for i in range(3):
-        time.sleep(2)
-        arduinoSend.requestArduinoReady(a['arduinoIndex'])
-        config.log(f"... wait for response from arduino {a['arduinoIndex']}, {a['arduinoName']}")
-
-        timeout = time.time() + 5
-        while not a['connected']:
-            if time.time() > timeout:
-                break  # from while
-            else:
-                time.sleep(0.5)
-
-        if a['connected']:
-            return True
-        '''
-        else:
-            config.log(f"no response from arduino {a['arduinoIndex']}, {a['arduinoName']}, {a['comPort']}, retry serial connection set up")
-            time.sleep(5)
-            conn = config.arduinoConn[a['arduinoIndex']]
-            if conn is not None:
+    except Exception as eSerial:
+        config.log(f"exception on serial connect with arduino: {a['arduinoName']}, comPort: {a['comPort']}, {eSerial}, going down")
+        if conn is not None:
+            try:
                 conn.close()
-            config.setSerialConnection(a['arduinoIndex'], None)
-            time.sleep(2)
-        '''
-    return False
+            except Exception as e2:
+                config.log(f"conn.close failed, {e2}")
+        sys.exit(1)
 
 
 def assignServos(arduinoIndex):
-    '''
+    """
     servo definitions are stored in a json file
     for each servo handled by the <arduinoIndex> send the definitions to the arduino
     :param arduinoIndex:
     :return:
-    '''
+    """
 
-    config.log(f"send servo definitions to arduino and set current position to last persisted position")
+    config.log(f"send servo definitions to arduino {arduinoIndex} and set current position to last persisted position")
 
     # send servo definition data to arduino and move to rest position
     for servoName, servoStatic in config.servoStaticDict.items():
@@ -200,28 +176,41 @@ def initServoControl():
         serialReadThread.start()
 
     # check for incoming messages from Arduino
+    time.sleep(0.5)
     for a in config.arduinoData:
+        arduinoSend.requestArduinoReady(a['arduinoIndex'])
 
-        # arduinoReady checks for incoming response from Arduino
-        if arduinoReady(a):
-            config.log(f"response from {a['comPort']} received")
+    # wait for response from arduinos
+    for i in range(10):
+        if config.arduinoData[0]['connected'] and config.arduinoData[1]['connected']:
+            break
+        time.sleep(0.5)
 
-    # without connection to arduino stop task
+    # check for connection
     for a in config.arduinoData:
         if not a['connected']:
-            config.log(f"could not get a response from {a['comPort']}, going down")
-            os._exit(1)
+            config.log(f"could not receive serial response from arduino {a['arduinoName']}, {a['comPort']}")
+            conn = config.arduinoConn[a['arduinoIndex']]
+            if conn is not None:
+                try:
+                    conn.close()
+                except Exception as e2:
+                    config.log(f"conn.close failed, {e2}")
+            sys.exit(1)
 
     for a in config.arduinoData:
         assignServos(a['arduinoIndex'])
 
+    # set verbose mode for servos to report more details
+    arduinoSend.setVerbose('head.rothead', True)
+
     config.log(f"robotControl ready")
-    rpcSend.publishBasicData()
+    #rpcSend.publishBasicData()
 
-    config.serverReady = True
-    rpcSend.publishServerReady()
+    #config.serverReady = True
+    #rpcSend.publishServerReady()
 
-    time.sleep(2)   # time to update
+    #time.sleep(2)   # time to update
 
 
 def initCameras():
@@ -230,15 +219,16 @@ def initCameras():
     :return:
     '''
     try:
-        camImages.cams.update({inmoovGlobal.EYE_CAM: camImages.UsbCamera("eyecam", 1, 640, 480, 18, 26, -90, 2)})
+        # def __init__(self, name, deviceId, cols, rows, fovH, fovV, rotate, numReads):'
+        camImages.cams.update({inmoovGlobal.EYE_CAM: camImages.UsbCamera("eyecam", 2, 640, 480, 18, 26, -90, 5)})
         config.log(f"connected with EYE_CAM")
         try:
-            config.eyecamFrame = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()
+            image = camImages.cams[inmoovGlobal.EYE_CAM].takeImage()   # camera initialization
         except Exception as e:
             config.log(f"could not capture frame from EYE_CAM  {e}")
             return False
 
-        if config.eyecamFrame is None:
+        if image is None:
             return False
 
         return True
@@ -291,6 +281,30 @@ if __name__ == '__main__':
 
     initServoControl()
 
+    config.log("start thread marvinShares")
+    config.marvinShares = marvinShares.MarvinShares()
+    config.marvinShares.start()
+    #time.sleep(2)
+
+    # start thread for lips movement
+    config.log("start thread MoveLips")
+    lips = speaker.MoveLips()
+    lipsThread = threading.Thread(name="lipsThread", target = lips.run, args={})
+    lipsThread.start()
+
+    config.log("start thread speaker")
+    speaker = speaker.Speaker() #config.marvinShares.speakRequests)
+    speakerThread = threading.Thread(name="speakerThread", target=speaker.run, args={})
+    speakerThread.start()
+
+    i01.mouth.speakBlocking("sprachserver gestartet")
+    #config.marvinShares.speechRequests.put("sprachserver gestartet")
+
+    config.log(f"start servoRequests thread")
+    servoRequestsThread = threading.Thread(name="servoRequests", target=servoRequests.processServoRequests, args={})
+    servoRequestsThread.start()
+
+
     # just for testing face tracking
     #arduinoSend.setVerbose('head.neck', True)
     #arduinoSend.setVerbose('head.rothead', True)
@@ -299,21 +313,16 @@ if __name__ == '__main__':
 
     # START THREADS
     # starting rpyc connection watchdog
-    watchDog = threading.Thread(target=threadWatchConnections.watchDog, args={})
-    watchDog.name = "watchDog"
-    watchDog.start()
-    config.log(f"started thread for watching connections")
+    #watchDog = threading.Thread(target=threadWatchConnections.watchDog, args={})
+    #watchDog.name = "watchDog"
+    #watchDog.start()
+    #config.log(f"started thread for watching connections")
 
-    config.log(f"start listening on port {config.MY_RPC_PORT}")
-    server = ThreadedServer(rpcReceive.rpcListener(), port=config.MY_RPC_PORT, protocol_config={'allow_public_attrs': True})
-    rpycThread = threading.Thread(target=server.start)
-    rpycThread.name = "rpycListener"
-    rpycThread.start()
-
-    # start thread for lips movement
-    config.log("guiLogic.init, adding thread MoveLips")
-    lipsThread = threading.Thread(name="lipsThread", target = i01.MoveLipsThread)
-    lipsThread.start()
+    #config.log(f"start listening on port {config.MY_RPC_PORT}")
+    #server = ThreadedServer(rpcReceive.rpcListener(), port=config.MY_RPC_PORT, protocol_config={'allow_public_attrs': True})
+    #rpycThread = threading.Thread(target=server.start)
+    #rpycThread.name = "rpycListener"
+    #rpycThread.start()
 
     config.log(f"start gui in main thread")
 

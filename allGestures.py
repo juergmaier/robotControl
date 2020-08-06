@@ -587,7 +587,7 @@ def eyesup():
   i01.finishedGesture()
 
 
-
+"""
 def facerecognizer(): 
   #you need to train at least 2 FACES !   
   i01.cameraOn()
@@ -595,7 +595,7 @@ def facerecognizer():
   fr.setMode(OpenCVFilterFaceRecognizer.Mode.TRAIN)
   fr.train()# it takes some time to train and be able to recognize face
   fr.setMode(OpenCVFilterFaceRecognizer.Mode.RECOGNIZE)
-
+"""
 
 def fighter():
   i01.startedGesture()

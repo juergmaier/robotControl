@@ -24,7 +24,7 @@ def requestArduinoReady(arduino):
 
 def servoAssign(servoName, lastPos):
 
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     servoType = config.servoTypeDict[servoStatic.servoType]
     servoDerived = config.servoDerivedDict[servoName]
 
@@ -36,8 +36,8 @@ def servoAssign(servoName, lastPos):
     msg = f"0,{servoName},{servoStatic.pin},{servoStatic.minPos},{servoStatic.maxPos},{servoStatic.autoDetach:.1f},{inverted},{lastPos},{servoStatic.powerPin}\n"
 
     sendArduinoCommand(servoStatic.arduino, msg)
-
-    config.log(f"assign servo: {servoName:<20}, \
+    if config.servoCurrentDict[servoName].verbose:
+        config.log(f"assign servo: {servoName:<20}, \
 pin: {servoStatic.pin:2}, minPos: {servoStatic.minPos:3}, maxPos:{servoStatic.maxPos:3}, \
 restDeg: {servoStatic.restDeg:3}, autoDetach: {servoStatic.autoDetach:4.0f}, inverted: {inverted}, lastPos: {lastPos:3}, powerPin: {servoStatic.powerPin}")
 
@@ -49,13 +49,14 @@ def requestServoPosition(servoName, position, duration, filterSequence=True):
     """
     # command 1,<arduino>,<servo>,<position>,<duration>
     # e.g. servo=eyeX, position=50, duration=2500: 2,3,50,2500
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
-    servoDerived: config.cServoDerived = config.servoDerivedDict[servoName]
-    servoCurrent: config.cServoCurrent = config.servoCurrentDict[servoName]
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
+    servoDerived: config.ServoDerived = config.servoDerivedDict[servoName]
+    servoCurrent: config.ServoCurrent = config.servoCurrentDict[servoName]
 
     # filter out jaw moves from log as they are very frequent
     if servoName != "head.jaw":
-        config.log(f"arduino send {servoName}, arduino {servoStatic.arduino}, position: {position:.0f}, duration: {duration:.0f}", publish=False)
+        degrees = config.evalDegFromPos(servoName, position)
+        config.log(f"arduino send {servoName}, arduino {servoStatic.arduino}, degrees: {degrees}, position: {position:.0f}, duration: {duration:.0f}", publish=False)
 
     # if new position requests come in high sequence avoid responding to each one
     # when filterSequence is active
@@ -87,13 +88,13 @@ def requestServoPosition(servoName, position, duration, filterSequence=True):
 
 
 def requestServoDegrees(servoName, degrees, duration, filterSequence=False):
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     position = config.evalPosFromDeg(servoName, degrees)
     requestServoPosition(servoName, position, duration, filterSequence)
 
 
 def requestServoStop(servoName):
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     msg = f"2,{servoStatic.pin}\n"
     sendArduinoCommand(servoStatic.arduino, msg)
 
@@ -106,34 +107,34 @@ def requestAllServosStop():
             sendArduinoCommand(i, msg)
     time.sleep(1)   # allow some time to stop
 
-def requestServoStatus(servoName):
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+def requestServoStatus(servoName: str):
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     msg = f"4,{servoStatic.pin}\n"
     sendArduinoCommand(servoStatic.arduino, msg)
 
 
-def setAutoDetach(servoName, milliseconds):
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+def setAutoDetach(servoName: str, milliseconds: int):
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     msg = f"5,{servoStatic.pin},{milliseconds}\n"
     sendArduinoCommand(servoStatic.arduino, msg)
 
 
-def setPosition(servoName, newPos):
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+def setPosition(servoName: str, newPos: int):
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     #servoControl.setPowerPin([servoStatic.powerPin])
     msg = f"6,{servoStatic.pin},{newPos}\n"
     sendArduinoCommand(servoStatic.arduino, msg)
 
 
-def setVerbose(servoName, state):
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+def setVerbose(servoName: str, state: bool):
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     verboseState = 1 if state else 0
     msg = f"7,{servoStatic.pin},{verboseState}\n"
     sendArduinoCommand(servoStatic.arduino, msg)
 
 
-def requestRest(servoName):
-    servoStatic: config.cServoStatic = config.servoStaticDict[servoName]
+def requestRest(servoName: str):
+    servoStatic: config.ServoStatic = config.servoStaticDict[servoName]
     #servoControl.setPowerPin([servoStatic.powerPin])
     if servoStatic.enabled:
         pos = config.evalPosFromDeg(servoName, servoStatic.restDeg)

@@ -1,83 +1,1491 @@
-17:05:47.248 - robotControl started
-17:05:48.168 - connected with EYE_CAM
-17:05:48.352 - load servo data
-17:05:48.352 - loading servo definitions
-17:05:48.368 - loading servo types
-17:05:48.370 - load last known servo positions
-17:05:48.371 - servoPositions loaded
-17:05:48.583 - serial connection with arduino 0 set
-17:05:48.794 - serial connection with arduino 1 set
-17:05:48.796 - arduinoReceive, readMessages started for arduino: 0
-17:05:48.797 - arduinoReceive, readMessages started for arduino: 1
-17:05:49.216 - <-I0 robotServos v1.35
-17:05:49.429 - <-I1 robotServos v1.35
-17:05:50.797 - request ready message from arduino 0
-17:05:50.797 - ... wait for response from arduino 0, left
-17:05:51.298 - response from COM8 received
-17:05:53.298 - request ready message from arduino 1
-17:05:53.298 - ... wait for response from arduino 1, right
-17:05:53.798 - response from COM4 received
-17:05:53.798 - send servo definitions to arduino and set current position to last persisted position
-17:05:53.798 - assign servo: leftArm.rotate      , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 40
-17:05:53.816 - <-I0 servo begin, servoId: 0, servoName: leftArm.rotate, pin: 10, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 40
-17:05:53.899 - assign servo: leftArm.shoulder    , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  90, powerPin: 40
-17:05:53.918 - <-I0 servo begin, servoId: 1, servoName: leftArm.shoulder, pin: 9, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 90, powerPin: 40
-17:05:54.000 - assign servo: leftArm.bicep       , pin: 11, minPos:  26, maxPos: 70, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  26, powerPin: 42
-17:05:54.018 - <-I0 servo begin, servoId: 2, servoName: leftArm.bicep, pin: 11, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 26, powerPin: 42
-17:05:54.100 - assign servo: leftArm.omoplate    , pin:  8, minPos:  30, maxPos: 70, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  30, powerPin: 40
-17:05:54.118 - <-I0 servo begin, servoId: 3, servoName: leftArm.omoplate, pin: 8, min: 30, max: 70, autoDetachMs: 2000, inverted: 1, lastPos: 30, powerPin: 40
-17:05:54.200 - assign servo: leftHand.thumb      , pin:  7, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 2000, inverted: 0, lastPos:  90, powerPin: 42
-17:05:54.219 - <-I0 servo begin, servoId: 4, servoName: leftHand.thumb, pin: 7, min: 0, max: 180, autoDetachMs: 2000, inverted: 0, lastPos: 90, powerPin: 42
-17:05:54.301 - assign servo: leftHand.index      , pin:  6, minPos:   0, maxPos:180, restDeg:  55, autoDetach: 1000, inverted: 0, lastPos: 110, powerPin: 42
-17:05:54.319 - <-I0 servo begin, servoId: 5, servoName: leftHand.index, pin: 6, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 110, powerPin: 42
-17:05:54.401 - assign servo: leftHand.majeure    , pin:  5, minPos:   0, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  75, powerPin: 42
-17:05:54.422 - <-I0 servo begin, servoId: 6, servoName: leftHand.majeure, pin: 5, min: 0, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 75, powerPin: 42
-17:05:54.503 - assign servo: leftHand.ringFinger , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
-17:05:54.520 - <-I0 servo begin, servoId: 7, servoName: leftHand.ringFinger, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 42
-17:05:54.603 - assign servo: leftHand.pinky      , pin:  3, minPos:  15, maxPos:150, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  68, powerPin: 42
-17:05:54.622 - <-I0 servo begin, servoId: 8, servoName: leftHand.pinky, pin: 3, min: 15, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 68, powerPin: 42
-17:05:54.703 - assign servo: leftHand.wrist      , pin:  2, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 42
-17:05:54.721 - <-I0 servo begin, servoId: 9, servoName: leftHand.wrist, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 42
-17:05:54.804 - assign servo: head.eyeX           , pin: 22, minPos:  60, maxPos:120, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 41
-17:05:54.823 - <-I0 servo begin, servoId: 10, servoName: head.eyeX, pin: 22, min: 60, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 41
-17:05:54.905 - assign servo: head.eyeY           , pin: 24, minPos:  30, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 41
-17:05:54.921 - <-I0 servo begin, servoId: 11, servoName: head.eyeY, pin: 24, min: 30, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 41
-17:05:55.005 - assign servo: head.jaw            , pin: 26, minPos:  80, maxPos:150, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 41
-17:05:55.023 - <-I0 servo begin, servoId: 12, servoName: head.jaw, pin: 26, min: 80, max: 150, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 41
-17:05:55.105 - assign servo: head.rothead        , pin: 28, minPos:  40, maxPos:156, restDeg:   0, autoDetach: 2000, inverted: 1, lastPos:  82, powerPin: 41
-17:05:55.122 - <-I0 servo begin, servoId: 13, servoName: head.rothead, pin: 28, min: 40, max: 156, autoDetachMs: 2000, inverted: 1, lastPos: 82, powerPin: 41
-17:05:55.206 - assign servo: head.neck           , pin: 12, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 3000, inverted: 0, lastPos: 121, powerPin: 41
-17:05:55.224 - <-I0 servo begin, servoId: 14, servoName: head.neck, pin: 12, min: 0, max: 180, autoDetachMs: 3000, inverted: 0, lastPos: 121, powerPin: 41
-17:05:55.307 - servo assign done
-17:05:55.307 - --
-17:05:55.307 - send servo definitions to arduino and set current position to last persisted position
-17:05:55.307 - assign servo: rightArm.bicep      , pin: 24, minPos:  26, maxPos: 70, restDeg:  10, autoDetach: 1000, inverted: 0, lastPos:  32, powerPin: 46
-17:05:55.325 - <-I1 servo begin, servoId: 0, servoName: rightArm.bicep, pin: 24, min: 26, max: 70, autoDetachMs: 1000, inverted: 0, lastPos: 32, powerPin: 46
-17:05:55.407 - assign servo: rightArm.rotate     , pin:  9, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 44
-17:05:55.426 - <-I1 servo begin, servoId: 1, servoName: rightArm.rotate, pin: 9, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 44
-17:05:55.507 - assign servo: rightArm.shoulder   , pin: 10, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 5000, inverted: 1, lastPos:  90, powerPin: 44
-17:05:55.525 - <-I1 servo begin, servoId: 2, servoName: rightArm.shoulder, pin: 10, min: 0, max: 180, autoDetachMs: 5000, inverted: 1, lastPos: 90, powerPin: 44
-17:05:55.608 - assign servo: rightArm.omoplate   , pin: 22, minPos:  10, maxPos: 70, restDeg:   0, autoDetach: 5000, inverted: 0, lastPos:  10, powerPin: 44
-17:05:55.627 - <-I1 servo begin, servoId: 3, servoName: rightArm.omoplate, pin: 22, min: 10, max: 70, autoDetachMs: 5000, inverted: 0, lastPos: 10, powerPin: 44
-17:05:55.708 - assign servo: rightHand.thumb     , pin:  2, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  90, powerPin: 46
-17:05:55.725 - <-I1 servo begin, servoId: 4, servoName: rightHand.thumb, pin: 2, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 90, powerPin: 46
-17:05:55.809 - assign servo: rightHand.index     , pin:  3, minPos:  50, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  65, powerPin: 46
-17:05:55.828 - <-I1 servo begin, servoId: 5, servoName: rightHand.index, pin: 3, min: 50, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 65, powerPin: 46
-17:05:55.909 - assign servo: rightHand.majeure   , pin:  4, minPos:   0, maxPos:180, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos:  90, powerPin: 46
-17:05:55.927 - <-I1 servo begin, servoId: 6, servoName: rightHand.majeure, pin: 4, min: 0, max: 180, autoDetachMs: 1000, inverted: 1, lastPos: 90, powerPin: 46
-17:05:56.010 - assign servo: rightHand.ringFinger, pin:  5, minPos:   0, maxPos:120, restDeg:  45, autoDetach: 1000, inverted: 0, lastPos:  59, powerPin: 46
-17:05:56.029 - <-I1 servo begin, servoId: 7, servoName: rightHand.ringFinger, pin: 5, min: 0, max: 120, autoDetachMs: 1000, inverted: 0, lastPos: 59, powerPin: 46
-17:05:56.110 - assign servo: rightHand.pinky     , pin:  6, minPos:  20, maxPos:140, restDeg:  45, autoDetach: 1000, inverted: 1, lastPos: 100, powerPin: 46
-17:05:56.130 - <-I1 servo begin, servoId: 8, servoName: rightHand.pinky, pin: 6, min: 20, max: 140, autoDetachMs: 1000, inverted: 1, lastPos: 100, powerPin: 46
-17:05:56.211 - assign servo: rightHand.wrist     , pin:  7, minPos:   0, maxPos:180, restDeg:   0, autoDetach: 1000, inverted: 0, lastPos:  90, powerPin: 46
-17:05:56.229 - <-I1 servo begin, servoId: 9, servoName: rightHand.wrist, pin: 7, min: 0, max: 180, autoDetachMs: 1000, inverted: 0, lastPos: 90, powerPin: 46
-17:05:56.312 - servo assign done
-17:05:56.312 - --
-17:05:56.312 - robotControl ready
-17:05:56.312 - publishing basic servo data message to clients
-17:05:56.312 - publishing ready=True message to clients
-17:05:58.313 - all servos rest requested
-17:05:58.313 - arduino send leftArm.rotate, arduino 0, position: 90, duration: 1500
-17:05:58.413 - arduino send leftArm.shoulder, arduino 0, position: 90, duration: 1500
-17:05:58.514 - arduino send leftArm.bicep, arduino 0, position: 26, duration: 1500
-17:05:58.575 - exception in arduino: 0 in in_waiting ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)), shutting down ...
+09:58:33.567 - robotControl started
+09:58:34.907 - connected with EYE_CAM
+09:58:34.971 - load servo data
+09:58:34.971 - loading servo definitions
+09:58:34.974 - loading servo types
+09:58:34.975 - load last known servo positions
+09:58:34.975 - servoPositions loaded
+09:58:34.981 - serial connection with arduino 0 set
+09:58:34.988 - serial connection with arduino 1 set
+09:58:34.988 - arduinoReceive, readMessages started for arduino: 0
+09:58:34.989 - arduinoReceive, readMessages started for arduino: 1
+09:58:35.490 - request ready message from arduino 0
+09:58:35.490 - request ready message from arduino 1
+09:58:35.621 - <-I0 robotServos v1.36
+09:58:35.632 - <-I1 robotServos v1.36
+09:58:36.636 - <-I0 request for !A0 received
+09:58:36.637 - <-I1 request for !A0 received
+09:58:37.001 - send servo definitions to arduino 0 and set current position to last persisted position
+09:58:38.510 - servo assign done
+09:58:38.510 - --
+09:58:38.510 - send servo definitions to arduino 1 and set current position to last persisted position
+09:58:39.516 - servo assign done
+09:58:39.516 - --
+09:58:39.516 - robotControl ready
+09:58:39.516 - start thread marvinShares
+09:58:41.372 - start thread MoveLips
+09:58:41.373 - move lips thread started
+09:58:41.373 - start thread speaker
+Imported existing <module 'comtypes.gen' from 'C:\\Miniconda3\\lib\\site-packages\\comtypes\\gen\\__init__.py'>
+Using writeable comtypes cache directory: 'C:\Miniconda3\lib\site-packages\comtypes\gen'
+09:58:41.455 - speaker started
+09:58:41.455 - speak blocking: sprachserver gestartet
+09:58:41.455 - tts request: sprachserver gestartet
+09:58:41.473 - text for lip movement: sprachserver gestartet
+09:58:41.982 - <-I0 m31 powerUp, pin: 28, lastPosition: 98, inverted: 1
+09:58:44.435 - <-I0 m35, servo group powered off IN5-head
+09:58:44.446 - <-I0 m14 pin: 28, head.rothead detached
+09:58:44.474 - start servoRequests thread
+09:58:44.474 - all servos rest requested
+09:58:44.474 - arduino send leftArm.rotate, arduino 0, degrees: 0, position: 90, duration: 1500
+09:58:44.575 - arduino send leftArm.shoulder, arduino 0, degrees: 0, position: 90, duration: 1500
+09:58:44.675 - arduino send leftArm.bicep, arduino 0, degrees: 0, position: 26, duration: 1500
+09:58:44.776 - arduino send leftArm.omoplate, arduino 0, degrees: 0, position: 30, duration: 1500
+09:58:44.877 - arduino send leftHand.thumb, arduino 0, degrees: 45, position: 90, duration: 1500
+09:58:44.977 - arduino send leftHand.index, arduino 0, degrees: 55, position: 110, duration: 1500
+09:58:45.077 - arduino send leftHand.majeure, arduino 0, degrees: 45, position: 75, duration: 1500
+09:58:45.178 - arduino send leftHand.ringFinger, arduino 0, degrees: 45, position: 90, duration: 1500
+09:58:45.280 - arduino send leftHand.pinky, arduino 0, degrees: 45, position: 68, duration: 1500
+09:58:45.380 - arduino send leftHand.wrist, arduino 0, degrees: 0, position: 90, duration: 1500
+09:58:45.481 - arduino send rightArm.bicep, arduino 1, degrees: 10, position: 32, duration: 1500
+09:58:45.581 - arduino send rightArm.rotate, arduino 1, degrees: 0, position: 90, duration: 1500
+09:58:45.681 - arduino send rightArm.shoulder, arduino 1, degrees: 0, position: 90, duration: 1500
+09:58:45.781 - arduino send rightArm.omoplate, arduino 1, degrees: 0, position: 10, duration: 1500
+09:58:45.882 - arduino send rightHand.thumb, arduino 1, degrees: 45, position: 90, duration: 1500
+09:58:45.983 - arduino send rightHand.index, arduino 1, degrees: 45, position: 65, duration: 1500
+09:58:46.084 - arduino send rightHand.majeure, arduino 1, degrees: 45, position: 90, duration: 1500
+09:58:46.184 - arduino send rightHand.ringFinger, arduino 1, degrees: 45, position: 60, duration: 1500
+09:58:46.285 - arduino send rightHand.pinky, arduino 1, degrees: 45, position: 100, duration: 1500
+09:58:46.385 - arduino send rightHand.wrist, arduino 1, degrees: 0, position: 90, duration: 1500
+09:58:46.486 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 1500
+09:58:46.499 - <-I0 m31 powerUp, pin: 28, lastPosition: 98, inverted: 1
+09:58:46.586 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 1500
+09:58:46.787 - arduino send head.rothead, arduino 0, degrees: 0, position: 98, duration: 1500
+09:58:46.801 - <-I0 request for move to current position, request ignored head.rothead
+09:58:46.812 - servo update, 9C,8A,9D, arduino: 0, pin: 28, servo: head.rothead, pos  98, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+09:58:46.812 - <-I0 m99 lastStatusUpdate: 98
+09:58:46.887 - arduino send head.neck, arduino 0, degrees: 0, position: 125, duration: 1500
+09:58:46.988 - start gui in main thread
+09:58:47.135 - guiLogic.init, adding thread for handling servo updates
+09:58:47.136 - speak blocking: ich bin jetzt bereit
+09:58:48.395 - <-I0 m35, servo group powered off IN2-leftHand
+09:58:49.147 - process arduino message from updateQueue
+09:58:49.158 - process arduino message from updateQueue
+09:58:50.224 - <-I1 m35, servo group powered off IN4-rightHand
+09:58:50.243 - speech responds signaled after: 8.8 s, charPerSec: 0.40
+09:58:50.243 - tts request: ich bin jetzt bereit
+09:58:50.251 - text for lip movement: ich bin jetzt bereit
+09:58:50.312 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2013
+09:58:50.324 - servo update, 9C,8A,9D, arduino: 0, pin: 28, servo: head.rothead, pos  98, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+09:58:51.103 - <-I0 m35, servo group powered off IN1-leftArm
+09:58:52.298 - <-I1 m35, servo group powered off IN3-rightArm
+09:58:52.519 - speech responds signaled after: 2.3 s, charPerSec: 0.11
+09:58:53.107 - <-I0 m35, servo group powered off IN5-head
+09:58:53.118 - <-I0 m14 pin: 28, head.rothead detached
+09:58:55.727 - on_locateFaces_pressed, isFaceTrackingActive: False
+09:58:55.727 - start face tracking and face recognition
+09:58:55.736 - knownFaces, encoding found and loaded for: Jürg/04.jpg
+09:58:55.737 - knownFaces, encoding found and loaded for: Jürg/09.jpg
+09:58:55.738 - knownFaces, encoding found and loaded for: Jürg/10.jpg
+09:58:55.738 - knownFaces, encoding found and loaded for: Jürg/14.jpg
+09:58:55.739 - knownFaces, encoding found and loaded for: Schraubenzieher/01.jpg
+09:58:55.740 - knownFaces, encoding found and loaded for: Schraubenzieher/02.jpg
+09:58:55.740 - knownFaces, encoding found and loaded for: Schraubenzieher/03.jpg
+09:58:55.741 - knownFaces, encoding found and loaded for: Schraubenzieher/04.jpg
+09:58:55.742 - speak blocking: gesichtsverfolgung aktiviert
+09:58:55.742 - tts request: gesichtsverfolgung aktiviert
+09:58:55.787 - eyecam image taken 1086, rothead: 0 degrees, eyeX: 0
+09:58:55.790 - text for lip movement: gesichtsverfolgung aktiviert
+09:58:55.862 - face locator: no person located
+09:58:55.862 - face locator: no person detected but not in scan and no timeout, retry
+09:58:55.862 - on_locateFaces_pressed, isFaceTrackingActive: True
+09:58:55.862 - stop face tracking
+09:58:55.862 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 500
+09:58:55.862 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 500
+09:58:55.862 - arduino send head.rothead, arduino 0, degrees: 0, position: 98, duration: 500
+09:58:55.863 - arduino send head.neck, arduino 0, degrees: 0, position: 125, duration: 500
+09:58:55.863 - speak blocking: gesichtsverfolgung beendet
+09:58:55.868 - eyecam image taken 1087, rothead: 0 degrees, eyeX: 0
+09:58:55.873 - <-I0 m31 powerUp, pin: 28, lastPosition: 98, inverted: 1
+09:58:55.917 - face locator: no person located
+09:58:55.917 - face locator: no person detected but not in scan and no timeout, retry
+09:58:55.929 - <-I0 request for move to current position, request ignored head.rothead
+09:58:58.451 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+09:58:58.462 - servo update, 9C,8A,9D, arduino: 0, pin: 28, servo: head.rothead, pos  98, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+09:58:58.582 - speech responds signaled after: 2.8 s, charPerSec: 0.10
+09:58:58.582 - tts request: gesichtsverfolgung beendet
+09:58:58.658 - text for lip movement: gesichtsverfolgung beendet
+09:59:01.294 - speech responds signaled after: 2.7 s, charPerSec: 0.10
+09:59:01.848 - <-I0 m35, servo group powered off IN5-head
+09:59:01.860 - <-I0 m14 pin: 28, head.rothead detached
+10:00:33.048 - on_locateFaces_pressed, isFaceTrackingActive: False
+10:00:33.048 - start face tracking and face recognition
+10:00:33.054 - knownFaces, encoding found and loaded for: Jürg/04.jpg
+10:00:33.054 - knownFaces, encoding found and loaded for: Jürg/09.jpg
+10:00:33.055 - knownFaces, encoding found and loaded for: Jürg/10.jpg
+10:00:33.055 - knownFaces, encoding found and loaded for: Jürg/14.jpg
+10:00:33.055 - knownFaces, encoding found and loaded for: Schraubenzieher/01.jpg
+10:00:33.056 - knownFaces, encoding found and loaded for: Schraubenzieher/02.jpg
+10:00:33.056 - knownFaces, encoding found and loaded for: Schraubenzieher/03.jpg
+10:00:33.057 - knownFaces, encoding found and loaded for: Schraubenzieher/04.jpg
+10:00:33.057 - speak blocking: gesichtsverfolgung aktiviert
+10:00:33.057 - tts request: gesichtsverfolgung aktiviert
+10:00:33.100 - eyecam image taken 1089, rothead: 0 degrees, eyeX: 0
+10:00:33.145 - face locator: no person located
+10:00:33.145 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.146 - text for lip movement: gesichtsverfolgung aktiviert
+10:00:33.164 - eyecam image taken 1090, rothead: 0 degrees, eyeX: 0
+10:00:33.210 - face locator: no person located
+10:00:33.210 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.228 - eyecam image taken 1091, rothead: 0 degrees, eyeX: 0
+10:00:33.274 - face locator: no person located
+10:00:33.274 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.307 - eyecam image taken 1092, rothead: 0 degrees, eyeX: 0
+10:00:33.353 - face locator: no person located
+10:00:33.353 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.371 - eyecam image taken 1093, rothead: 0 degrees, eyeX: 0
+10:00:33.416 - face locator: no person located
+10:00:33.416 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.451 - eyecam image taken 1094, rothead: 0 degrees, eyeX: 0
+10:00:33.504 - face locator: no person located
+10:00:33.505 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.516 - eyecam image taken 1095, rothead: 0 degrees, eyeX: 0
+10:00:33.569 - face locator: no person located
+10:00:33.569 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.579 - eyecam image taken 1096, rothead: 0 degrees, eyeX: 0
+10:00:33.624 - face locator: no person located
+10:00:33.624 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.656 - <-I0 m31 powerUp, pin: 28, lastPosition: 98, inverted: 1
+10:00:33.659 - eyecam image taken 1097, rothead: 0 degrees, eyeX: 0
+10:00:33.703 - face locator: no person located
+10:00:33.703 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.723 - eyecam image taken 1098, rothead: 0 degrees, eyeX: 0
+10:00:33.768 - face locator: no person located
+10:00:33.768 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.787 - eyecam image taken 1099, rothead: 0 degrees, eyeX: 0
+10:00:33.832 - face locator: no person located
+10:00:33.832 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.867 - eyecam image taken 1100, rothead: 0 degrees, eyeX: 0
+10:00:33.913 - face locator: no person located
+10:00:33.913 - face locator: no person detected but not in scan and no timeout, retry
+10:00:33.932 - eyecam image taken 1101, rothead: 0 degrees, eyeX: 0
+10:00:33.977 - face locator: no person located
+10:00:33.977 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.012 - eyecam image taken 1102, rothead: 0 degrees, eyeX: 0
+10:00:34.056 - face locator: no person located
+10:00:34.056 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.075 - eyecam image taken 1103, rothead: 0 degrees, eyeX: 0
+10:00:34.123 - face locator: no person located
+10:00:34.124 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.139 - eyecam image taken 1104, rothead: 0 degrees, eyeX: 0
+10:00:34.199 - face locator: no person located
+10:00:34.200 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.220 - eyecam image taken 1105, rothead: 0 degrees, eyeX: 0
+10:00:34.265 - face locator: no person located
+10:00:34.266 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.283 - eyecam image taken 1106, rothead: 0 degrees, eyeX: 0
+10:00:34.328 - face locator: no person located
+10:00:34.328 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.347 - eyecam image taken 1107, rothead: 0 degrees, eyeX: 0
+10:00:34.393 - face locator: no person located
+10:00:34.393 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.428 - eyecam image taken 1108, rothead: 0 degrees, eyeX: 0
+10:00:34.473 - face locator: no person located
+10:00:34.473 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.492 - eyecam image taken 1109, rothead: 0 degrees, eyeX: 0
+10:00:34.537 - face locator: no person located
+10:00:34.537 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.573 - eyecam image taken 1110, rothead: 0 degrees, eyeX: 0
+10:00:34.624 - face locator: no person located
+10:00:34.625 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.635 - eyecam image taken 1111, rothead: 0 degrees, eyeX: 0
+10:00:34.687 - face locator: no person located
+10:00:34.687 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.699 - eyecam image taken 1112, rothead: 0 degrees, eyeX: 0
+10:00:34.745 - face locator: no person located
+10:00:34.745 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.779 - eyecam image taken 1113, rothead: 0 degrees, eyeX: 0
+10:00:34.827 - face locator: no person located
+10:00:34.827 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.843 - eyecam image taken 1114, rothead: 0 degrees, eyeX: 0
+10:00:34.889 - face locator: no person located
+10:00:34.889 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.923 - eyecam image taken 1115, rothead: 0 degrees, eyeX: 0
+10:00:34.968 - face locator: no person located
+10:00:34.968 - face locator: no person detected but not in scan and no timeout, retry
+10:00:34.988 - eyecam image taken 1116, rothead: 0 degrees, eyeX: 0
+10:00:35.033 - face locator: no person located
+10:00:35.033 - face locator: no person detected but not in scan and no timeout, retry
+10:00:35.051 - eyecam image taken 1117, rothead: 0 degrees, eyeX: 0
+10:00:35.096 - face locator: no person located
+10:00:35.096 - face locator: time since last person seen: 2.04, resume scan
+10:00:35.096 - scan for person started
+10:00:35.096 - speak blocking: ich suche nach personen
+10:00:35.096 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 50
+10:00:35.096 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 50
+10:00:35.097 - arduino send head.neck, arduino 0, degrees: -10, position: 99, duration: 500
+10:00:36.429 - speech responds signaled after: 3.4 s, charPerSec: 0.12
+10:00:36.429 - tts request: ich suche nach personen
+10:00:36.491 - text for lip movement: ich suche nach personen
+10:00:37.128 - rothead moved in 2.03 s to 0
+10:00:37.332 - eyecam image taken 1118, rothead: 0 degrees, eyeX: 0
+10:00:37.332 - arduino send head.rothead, arduino 0, degrees: 5, position: 103, duration: 80
+10:00:37.377 - face locator: no person located
+10:00:37.379 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 103, duration: 80, startPosition: 98.00, numIncrements: 4, increment: 1.25
+10:00:37.447 - servo update, 9C,8B,9F, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:37.449 - <-I0 m99 lastStatusUpdate: 99
+10:00:37.508 - <-I0 target reached head.rothead, position: 103
+10:00:37.520 - servo update, 9C,8F,9D, arduino: 0, pin: 28, servo: head.rothead, pos 103, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:37.531 - rothead moved in 0.20 s to 5
+10:00:37.554 - servo update, 9C,8F,9D, arduino: 0, pin: 28, servo: head.rothead, pos 103, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:37.554 - <-I0 m99 lastStatusUpdate: 103
+10:00:37.731 - eyecam image taken 1119, rothead: 5 degrees, eyeX: 0
+10:00:37.732 - arduino send head.rothead, arduino 0, degrees: 10, position: 108, duration: 80
+10:00:37.782 - face locator: no person located
+10:00:37.785 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 108, duration: 80, startPosition: 103.00, numIncrements: 4, increment: 1.25
+10:00:37.853 - servo update, 9C,90,9F, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:37.855 - <-I0 m99 lastStatusUpdate: 104
+10:00:37.912 - <-I0 target reached head.rothead, position: 108
+10:00:37.922 - servo update, 9C,94,9D, arduino: 0, pin: 28, servo: head.rothead, pos 108, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:37.935 - rothead moved in 0.20 s to 10
+10:00:37.956 - servo update, 9C,94,9D, arduino: 0, pin: 28, servo: head.rothead, pos 108, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:37.956 - <-I0 m99 lastStatusUpdate: 108
+10:00:38.137 - eyecam image taken 1120, rothead: 10 degrees, eyeX: 0
+10:00:38.137 - arduino send head.rothead, arduino 0, degrees: 14, position: 112, duration: 80
+10:00:38.188 - face locator: no person located
+10:00:38.190 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 112, duration: 80, startPosition: 108.00, numIncrements: 4, increment: 1.00
+10:00:38.246 - servo update, 9C,95,9F, arduino: 0, pin: 28, servo: head.rothead, pos 109, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:38.248 - <-I0 m99 lastStatusUpdate: 109
+10:00:38.307 - <-I0 target reached head.rothead, position: 112
+10:00:38.318 - servo update, 9C,98,9D, arduino: 0, pin: 28, servo: head.rothead, pos 112, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:38.341 - rothead moved in 0.20 s to 14
+10:00:38.354 - servo update, 9C,98,9D, arduino: 0, pin: 28, servo: head.rothead, pos 112, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:38.354 - <-I0 m99 lastStatusUpdate: 112
+10:00:38.542 - eyecam image taken 1121, rothead: 14 degrees, eyeX: 0
+10:00:38.542 - arduino send head.rothead, arduino 0, degrees: 19, position: 116, duration: 80
+10:00:38.589 - face locator: no person located
+10:00:38.592 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 116, duration: 80, startPosition: 112.00, numIncrements: 4, increment: 1.00
+10:00:38.668 - servo update, 9C,99,9F, arduino: 0, pin: 28, servo: head.rothead, pos 113, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:38.670 - <-I0 m99 lastStatusUpdate: 113
+10:00:38.734 - <-I0 target reached head.rothead, position: 116
+10:00:38.745 - servo update, 9C,9C,9D, arduino: 0, pin: 28, servo: head.rothead, pos 116, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:38.769 - servo update, 9C,9C,9D, arduino: 0, pin: 28, servo: head.rothead, pos 116, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:38.769 - <-I0 m99 lastStatusUpdate: 116
+10:00:38.793 - rothead moved in 0.25 s to 19
+10:00:38.798 - speech responds signaled after: 2.4 s, charPerSec: 0.10
+10:00:38.995 - eyecam image taken 1122, rothead: 19 degrees, eyeX: 0
+10:00:38.995 - arduino send head.rothead, arduino 0, degrees: 24, position: 121, duration: 80
+10:00:39.039 - face locator: no person located
+10:00:39.041 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 121, duration: 80, startPosition: 116.00, numIncrements: 4, increment: 1.25
+10:00:39.115 - servo update, 9C,9D,9F, arduino: 0, pin: 28, servo: head.rothead, pos 117, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:39.117 - <-I0 m99 lastStatusUpdate: 117
+10:00:39.172 - <-I0 target reached head.rothead, position: 121
+10:00:39.183 - servo update, 9C,A1,9D, arduino: 0, pin: 28, servo: head.rothead, pos 121, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:39.191 - rothead moved in 0.20 s to 24
+10:00:39.207 - servo update, 9C,A1,9D, arduino: 0, pin: 28, servo: head.rothead, pos 121, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:39.208 - <-I0 m99 lastStatusUpdate: 121
+10:00:39.393 - eyecam image taken 1123, rothead: 24 degrees, eyeX: 0
+10:00:39.393 - arduino send head.rothead, arduino 0, degrees: 29, position: 126, duration: 80
+10:00:39.441 - face locator: no person located
+10:00:39.443 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 126, duration: 80, startPosition: 121.00, numIncrements: 4, increment: 1.25
+10:00:39.509 - servo update, 9C,A2,9F, arduino: 0, pin: 28, servo: head.rothead, pos 122, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:39.511 - <-I0 m99 lastStatusUpdate: 122
+10:00:39.568 - <-I0 target reached head.rothead, position: 126
+10:00:39.580 - servo update, 9C,A6,9D, arduino: 0, pin: 28, servo: head.rothead, pos 126, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:39.595 - rothead moved in 0.20 s to 29
+10:00:39.616 - servo update, 9C,A6,9D, arduino: 0, pin: 28, servo: head.rothead, pos 126, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:39.616 - <-I0 m99 lastStatusUpdate: 126
+10:00:39.796 - eyecam image taken 1124, rothead: 29 degrees, eyeX: 0
+10:00:39.796 - arduino send head.rothead, arduino 0, degrees: 34, position: 131, duration: 80
+10:00:39.844 - face locator: no person located
+10:00:39.845 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 131, duration: 80, startPosition: 126.00, numIncrements: 4, increment: 1.25
+10:00:39.911 - servo update, 9C,A7,9F, arduino: 0, pin: 28, servo: head.rothead, pos 127, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:39.913 - <-I0 m99 lastStatusUpdate: 127
+10:00:39.970 - <-I0 target reached head.rothead, position: 131
+10:00:39.981 - servo update, 9C,AB,9D, arduino: 0, pin: 28, servo: head.rothead, pos 131, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:39.997 - rothead moved in 0.20 s to 34
+10:00:40.007 - servo update, 9C,AB,9D, arduino: 0, pin: 28, servo: head.rothead, pos 131, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:40.007 - <-I0 m99 lastStatusUpdate: 131
+10:00:40.198 - eyecam image taken 1125, rothead: 34 degrees, eyeX: 0
+10:00:40.199 - arduino send head.rothead, arduino 0, degrees: 39, position: 136, duration: 80
+10:00:40.249 - face locator: no person located
+10:00:40.251 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 136, duration: 80, startPosition: 131.00, numIncrements: 4, increment: 1.25
+10:00:40.306 - servo update, 9C,AC,9F, arduino: 0, pin: 28, servo: head.rothead, pos 132, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:40.308 - <-I0 m99 lastStatusUpdate: 132
+10:00:40.374 - <-I0 target reached head.rothead, position: 136
+10:00:40.385 - servo update, 9C,B0,9D, arduino: 0, pin: 28, servo: head.rothead, pos 136, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:40.403 - rothead moved in 0.20 s to 39
+10:00:40.408 - servo update, 9C,B0,9D, arduino: 0, pin: 28, servo: head.rothead, pos 136, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:40.408 - <-I0 m99 lastStatusUpdate: 136
+10:00:40.604 - eyecam image taken 1126, rothead: 39 degrees, eyeX: 0
+10:00:40.604 - arduino send head.rothead, arduino 0, degrees: 44, position: 141, duration: 80
+10:00:40.652 - face locator: no person located
+10:00:40.653 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 141, duration: 80, startPosition: 136.00, numIncrements: 4, increment: 1.25
+10:00:40.729 - servo update, 9C,B1,9F, arduino: 0, pin: 28, servo: head.rothead, pos 137, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:40.731 - <-I0 m99 lastStatusUpdate: 137
+10:00:40.796 - <-I0 target reached head.rothead, position: 141
+10:00:40.807 - servo update, 9C,B5,9D, arduino: 0, pin: 28, servo: head.rothead, pos 141, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:40.831 - servo update, 9C,B5,9D, arduino: 0, pin: 28, servo: head.rothead, pos 141, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:40.831 - <-I0 m99 lastStatusUpdate: 141
+10:00:40.856 - rothead moved in 0.25 s to 44
+10:00:41.057 - eyecam image taken 1127, rothead: 44 degrees, eyeX: 0
+10:00:41.057 - arduino send head.rothead, arduino 0, degrees: 49, position: 145, duration: 80
+10:00:41.110 - face locator: no person located
+10:00:41.111 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 145, duration: 80, startPosition: 141.00, numIncrements: 4, increment: 1.00
+10:00:41.167 - servo update, 9C,B6,9F, arduino: 0, pin: 28, servo: head.rothead, pos 142, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:41.169 - <-I0 m99 lastStatusUpdate: 142
+10:00:41.234 - <-I0 target reached head.rothead, position: 145
+10:00:41.245 - servo update, 9C,B9,9D, arduino: 0, pin: 28, servo: head.rothead, pos 145, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:41.263 - rothead moved in 0.21 s to 49
+10:00:41.268 - servo update, 9C,B9,9D, arduino: 0, pin: 28, servo: head.rothead, pos 145, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:41.269 - <-I0 m99 lastStatusUpdate: 145
+10:00:41.464 - eyecam image taken 1128, rothead: 49 degrees, eyeX: 0
+10:00:41.464 - arduino send head.rothead, arduino 0, degrees: 50, position: 146, duration: 80
+10:00:41.510 - face locator: no person located
+10:00:41.510 - rothead moved in 0.05 s to 49
+10:00:41.512 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 146, duration: 80, startPosition: 145.00, numIncrements: 4, increment: 0.25
+10:00:41.653 - servo update, 9C,BA,9F, arduino: 0, pin: 28, servo: head.rothead, pos 146, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:41.655 - <-I0 m99 lastStatusUpdate: 146
+10:00:41.666 - <-I0 target reached head.rothead, position: 146
+10:00:41.676 - servo update, 9C,BA,9D, arduino: 0, pin: 28, servo: head.rothead, pos 146, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:41.712 - eyecam image taken 1129, rothead: 50 degrees, eyeX: 0
+10:00:41.712 - arduino send head.rothead, arduino 0, degrees: 46, position: 142, duration: 80
+10:00:41.765 - face locator: no person located
+10:00:41.766 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 142, duration: 80, startPosition: 146.00, numIncrements: 4, increment: -1.00
+10:00:41.832 - servo update, 9C,B9,9F, arduino: 0, pin: 28, servo: head.rothead, pos 145, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:41.834 - <-I0 m99 lastStatusUpdate: 145
+10:00:41.889 - <-I0 target reached head.rothead, position: 142
+10:00:41.900 - servo update, 9C,B6,9D, arduino: 0, pin: 28, servo: head.rothead, pos 142, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:41.918 - rothead moved in 0.20 s to 46
+10:00:41.934 - servo update, 9C,B6,9D, arduino: 0, pin: 28, servo: head.rothead, pos 142, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:41.934 - <-I0 m99 lastStatusUpdate: 142
+10:00:42.119 - eyecam image taken 1130, rothead: 46 degrees, eyeX: 0
+10:00:42.119 - arduino send head.rothead, arduino 0, degrees: 41, position: 138, duration: 80
+10:00:42.165 - face locator: no person located
+10:00:42.166 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 138, duration: 80, startPosition: 142.00, numIncrements: 4, increment: -1.00
+10:00:42.231 - servo update, 9C,B5,9F, arduino: 0, pin: 28, servo: head.rothead, pos 141, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:42.233 - <-I0 m99 lastStatusUpdate: 141
+10:00:42.289 - <-I0 target reached head.rothead, position: 138
+10:00:42.300 - servo update, 9C,B2,9D, arduino: 0, pin: 28, servo: head.rothead, pos 138, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:42.318 - rothead moved in 0.20 s to 41
+10:00:42.335 - servo update, 9C,B2,9D, arduino: 0, pin: 28, servo: head.rothead, pos 138, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:42.335 - <-I0 m99 lastStatusUpdate: 138
+10:00:42.520 - eyecam image taken 1131, rothead: 41 degrees, eyeX: 0
+10:00:42.520 - arduino send head.rothead, arduino 0, degrees: 36, position: 133, duration: 80
+10:00:42.580 - face locator: no person located
+10:00:42.582 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 133, duration: 80, startPosition: 138.00, numIncrements: 4, increment: -1.25
+10:00:42.626 - servo update, 9C,B0,9F, arduino: 0, pin: 28, servo: head.rothead, pos 136, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:42.628 - <-I0 m99 lastStatusUpdate: 136
+10:00:42.693 - <-I0 target reached head.rothead, position: 133
+10:00:42.704 - servo update, 9C,AD,9D, arduino: 0, pin: 28, servo: head.rothead, pos 133, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:42.728 - servo update, 9C,AD,9D, arduino: 0, pin: 28, servo: head.rothead, pos 133, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:42.728 - <-I0 m99 lastStatusUpdate: 133
+10:00:42.733 - rothead moved in 0.21 s to 36
+10:00:42.935 - eyecam image taken 1132, rothead: 36 degrees, eyeX: 0
+10:00:42.935 - arduino send head.rothead, arduino 0, degrees: 31, position: 128, duration: 80
+10:00:42.980 - face locator: no person located
+10:00:42.982 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 128, duration: 80, startPosition: 133.00, numIncrements: 4, increment: -1.25
+10:00:43.048 - servo update, 9C,AB,9F, arduino: 0, pin: 28, servo: head.rothead, pos 131, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:43.050 - <-I0 m99 lastStatusUpdate: 131
+10:00:43.114 - <-I0 target reached head.rothead, position: 128
+10:00:43.125 - servo update, 9C,A8,9D, arduino: 0, pin: 28, servo: head.rothead, pos 128, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:43.133 - rothead moved in 0.20 s to 31
+10:00:43.148 - servo update, 9C,A8,9D, arduino: 0, pin: 28, servo: head.rothead, pos 128, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:43.148 - <-I0 m99 lastStatusUpdate: 128
+10:00:43.335 - eyecam image taken 1133, rothead: 31 degrees, eyeX: 0
+10:00:43.335 - arduino send head.rothead, arduino 0, degrees: 26, position: 123, duration: 80
+10:00:43.381 - face locator: no person located
+10:00:43.383 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 123, duration: 80, startPosition: 128.00, numIncrements: 4, increment: -1.25
+10:00:43.449 - servo update, 9C,A6,9F, arduino: 0, pin: 28, servo: head.rothead, pos 126, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:43.451 - <-I0 m99 lastStatusUpdate: 126
+10:00:43.516 - <-I0 target reached head.rothead, position: 123
+10:00:43.526 - servo update, 9C,A3,9D, arduino: 0, pin: 28, servo: head.rothead, pos 123, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:43.533 - rothead moved in 0.20 s to 26
+10:00:43.550 - servo update, 9C,A3,9D, arduino: 0, pin: 28, servo: head.rothead, pos 123, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:43.550 - <-I0 m99 lastStatusUpdate: 123
+10:00:43.735 - eyecam image taken 1134, rothead: 26 degrees, eyeX: 0
+10:00:43.735 - arduino send head.rothead, arduino 0, degrees: 21, position: 118, duration: 80
+10:00:43.780 - face locator: no person located
+10:00:43.782 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 118, duration: 80, startPosition: 123.00, numIncrements: 4, increment: -1.25
+10:00:43.848 - servo update, 9C,A1,9F, arduino: 0, pin: 28, servo: head.rothead, pos 121, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:43.850 - <-I0 m99 lastStatusUpdate: 121
+10:00:43.915 - <-I0 target reached head.rothead, position: 118
+10:00:43.926 - servo update, 9C,9E,9D, arduino: 0, pin: 28, servo: head.rothead, pos 118, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:43.932 - rothead moved in 0.20 s to 21
+10:00:43.950 - servo update, 9C,9E,9D, arduino: 0, pin: 28, servo: head.rothead, pos 118, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:43.950 - <-I0 m99 lastStatusUpdate: 118
+10:00:44.133 - eyecam image taken 1135, rothead: 21 degrees, eyeX: 0
+10:00:44.133 - arduino send head.rothead, arduino 0, degrees: 16, position: 113, duration: 80
+10:00:44.181 - face locator: no person located
+10:00:44.182 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 113, duration: 80, startPosition: 118.00, numIncrements: 4, increment: -1.25
+10:00:44.258 - servo update, 9C,9C,9F, arduino: 0, pin: 28, servo: head.rothead, pos 116, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:44.260 - <-I0 m99 lastStatusUpdate: 116
+10:00:44.314 - <-I0 target reached head.rothead, position: 113
+10:00:44.325 - servo update, 9C,99,9D, arduino: 0, pin: 28, servo: head.rothead, pos 113, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:44.333 - rothead moved in 0.20 s to 16
+10:00:44.347 - servo update, 9C,99,9D, arduino: 0, pin: 28, servo: head.rothead, pos 113, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:44.348 - <-I0 m99 lastStatusUpdate: 113
+10:00:44.534 - eyecam image taken 1136, rothead: 16 degrees, eyeX: 0
+10:00:44.534 - arduino send head.rothead, arduino 0, degrees: 11, position: 109, duration: 80
+10:00:44.586 - face locator: no person located
+10:00:44.587 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 109, duration: 80, startPosition: 113.00, numIncrements: 4, increment: -1.00
+10:00:44.654 - servo update, 9C,98,9F, arduino: 0, pin: 28, servo: head.rothead, pos 112, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:44.656 - <-I0 m99 lastStatusUpdate: 112
+10:00:44.711 - <-I0 target reached head.rothead, position: 109
+10:00:44.722 - servo update, 9C,95,9D, arduino: 0, pin: 28, servo: head.rothead, pos 109, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:44.739 - rothead moved in 0.20 s to 11
+10:00:44.756 - servo update, 9C,95,9D, arduino: 0, pin: 28, servo: head.rothead, pos 109, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:44.756 - <-I0 m99 lastStatusUpdate: 109
+10:00:44.940 - eyecam image taken 1137, rothead: 11 degrees, eyeX: 0
+10:00:44.940 - arduino send head.rothead, arduino 0, degrees: 6, position: 104, duration: 80
+10:00:44.987 - face locator: no person located
+10:00:44.989 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 104, duration: 80, startPosition: 109.00, numIncrements: 4, increment: -1.25
+10:00:45.054 - servo update, 9C,93,9F, arduino: 0, pin: 28, servo: head.rothead, pos 107, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:45.056 - <-I0 m99 lastStatusUpdate: 107
+10:00:45.111 - <-I0 target reached head.rothead, position: 104
+10:00:45.121 - servo update, 9C,90,9D, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:45.140 - rothead moved in 0.20 s to 6
+10:00:45.145 - servo update, 9C,90,9D, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:45.148 - <-I0 m99 lastStatusUpdate: 104
+10:00:45.341 - eyecam image taken 1138, rothead: 6 degrees, eyeX: 0
+10:00:45.341 - arduino send head.rothead, arduino 0, degrees: 1, position: 99, duration: 80
+10:00:45.386 - face locator: no person located
+10:00:45.387 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 99, duration: 80, startPosition: 104.00, numIncrements: 4, increment: -1.25
+10:00:45.451 - servo update, 9C,8E,9F, arduino: 0, pin: 28, servo: head.rothead, pos 102, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:45.453 - <-I0 m99 lastStatusUpdate: 102
+10:00:45.508 - <-I0 target reached head.rothead, position: 99
+10:00:45.520 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:45.539 - rothead moved in 0.20 s to 1
+10:00:45.555 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:45.555 - <-I0 m99 lastStatusUpdate: 99
+10:00:45.740 - eyecam image taken 1139, rothead: 1 degrees, eyeX: 0
+10:00:45.740 - arduino send head.rothead, arduino 0, degrees: -4, position: 94, duration: 80
+10:00:45.785 - face locator: no person located
+10:00:45.786 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 94, duration: 80, startPosition: 99.00, numIncrements: 4, increment: -1.25
+10:00:45.852 - servo update, 9C,89,9F, arduino: 0, pin: 28, servo: head.rothead, pos  97, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:45.854 - <-I0 m99 lastStatusUpdate: 97
+10:00:45.910 - <-I0 target reached head.rothead, position: 94
+10:00:45.921 - servo update, 9C,86,9D, arduino: 0, pin: 28, servo: head.rothead, pos  94, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:45.938 - rothead moved in 0.20 s to -4
+10:00:45.955 - servo update, 9C,86,9D, arduino: 0, pin: 28, servo: head.rothead, pos  94, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:45.956 - <-I0 m99 lastStatusUpdate: 94
+10:00:46.138 - eyecam image taken 1140, rothead: -4 degrees, eyeX: 0
+10:00:46.139 - arduino send head.rothead, arduino 0, degrees: -9, position: 89, duration: 80
+10:00:46.185 - face locator: no person located
+10:00:46.187 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 89, duration: 80, startPosition: 94.00, numIncrements: 4, increment: -1.25
+10:00:46.250 - servo update, 9C,84,9F, arduino: 0, pin: 28, servo: head.rothead, pos  92, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:46.252 - <-I0 m99 lastStatusUpdate: 92
+10:00:46.308 - <-I0 target reached head.rothead, position: 89
+10:00:46.318 - servo update, 9C,81,9D, arduino: 0, pin: 28, servo: head.rothead, pos  89, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:46.338 - rothead moved in 0.20 s to -9
+10:00:46.352 - servo update, 9C,81,9D, arduino: 0, pin: 28, servo: head.rothead, pos  89, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:46.352 - <-I0 m99 lastStatusUpdate: 89
+10:00:46.539 - eyecam image taken 1141, rothead: -9 degrees, eyeX: 0
+10:00:46.539 - arduino send head.rothead, arduino 0, degrees: -14, position: 84, duration: 80
+10:00:46.584 - face locator: no person located
+10:00:46.586 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 84, duration: 80, startPosition: 89.00, numIncrements: 4, increment: -1.25
+10:00:46.652 - servo update, 9C,7F,9F, arduino: 0, pin: 28, servo: head.rothead, pos  87, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:46.654 - <-I0 m99 lastStatusUpdate: 87
+10:00:46.709 - <-I0 target reached head.rothead, position: 84
+10:00:46.719 - servo update, 9C,7C,9D, arduino: 0, pin: 28, servo: head.rothead, pos  84, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:46.735 - rothead moved in 0.20 s to -14
+10:00:46.754 - servo update, 9C,7C,9D, arduino: 0, pin: 28, servo: head.rothead, pos  84, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:46.754 - <-I0 m99 lastStatusUpdate: 84
+10:00:46.937 - eyecam image taken 1142, rothead: -14 degrees, eyeX: 0
+10:00:46.937 - arduino send head.rothead, arduino 0, degrees: -19, position: 80, duration: 80
+10:00:46.983 - face locator: no person located
+10:00:46.985 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 80, duration: 80, startPosition: 84.00, numIncrements: 4, increment: -1.00
+10:00:47.049 - servo update, 9C,7B,9F, arduino: 0, pin: 28, servo: head.rothead, pos  83, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:47.050 - <-I0 m99 lastStatusUpdate: 83
+10:00:47.117 - <-I0 target reached head.rothead, position: 80
+10:00:47.128 - servo update, 9C,78,9D, arduino: 0, pin: 28, servo: head.rothead, pos  80, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:47.135 - rothead moved in 0.20 s to -19
+10:00:47.152 - servo update, 9C,78,9D, arduino: 0, pin: 28, servo: head.rothead, pos  80, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:47.152 - <-I0 m99 lastStatusUpdate: 80
+10:00:47.337 - eyecam image taken 1143, rothead: -19 degrees, eyeX: 0
+10:00:47.337 - arduino send head.rothead, arduino 0, degrees: -24, position: 75, duration: 80
+10:00:47.382 - face locator: no person located
+10:00:47.383 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 75, duration: 80, startPosition: 80.00, numIncrements: 4, increment: -1.25
+10:00:47.447 - servo update, 9C,76,9F, arduino: 0, pin: 28, servo: head.rothead, pos  78, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:47.449 - <-I0 m99 lastStatusUpdate: 78
+10:00:47.513 - <-I0 target reached head.rothead, position: 75
+10:00:47.525 - servo update, 9C,73,9D, arduino: 0, pin: 28, servo: head.rothead, pos  75, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:47.534 - rothead moved in 0.20 s to -24
+10:00:47.548 - servo update, 9C,73,9D, arduino: 0, pin: 28, servo: head.rothead, pos  75, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:47.548 - <-I0 m99 lastStatusUpdate: 75
+10:00:47.736 - eyecam image taken 1144, rothead: -24 degrees, eyeX: 0
+10:00:47.736 - arduino send head.rothead, arduino 0, degrees: -29, position: 70, duration: 80
+10:00:47.783 - face locator: no person located
+10:00:47.784 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 70, duration: 80, startPosition: 75.00, numIncrements: 4, increment: -1.25
+10:00:47.850 - servo update, 9C,71,9F, arduino: 0, pin: 28, servo: head.rothead, pos  73, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:47.852 - <-I0 m99 lastStatusUpdate: 73
+10:00:47.909 - <-I0 target reached head.rothead, position: 70
+10:00:47.920 - servo update, 9C,6E,9D, arduino: 0, pin: 28, servo: head.rothead, pos  70, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:47.936 - rothead moved in 0.20 s to -29
+10:00:47.954 - servo update, 9C,6E,9D, arduino: 0, pin: 28, servo: head.rothead, pos  70, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:47.954 - <-I0 m99 lastStatusUpdate: 70
+10:00:48.137 - eyecam image taken 1145, rothead: -29 degrees, eyeX: 0
+10:00:48.137 - arduino send head.rothead, arduino 0, degrees: -34, position: 65, duration: 80
+10:00:48.181 - face locator: no person located
+10:00:48.183 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 65, duration: 80, startPosition: 70.00, numIncrements: 4, increment: -1.25
+10:00:48.247 - servo update, 9C,6C,9F, arduino: 0, pin: 28, servo: head.rothead, pos  68, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:48.249 - <-I0 m99 lastStatusUpdate: 68
+10:00:48.313 - <-I0 target reached head.rothead, position: 65
+10:00:48.325 - servo update, 9C,69,9D, arduino: 0, pin: 28, servo: head.rothead, pos  65, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:48.335 - rothead moved in 0.20 s to -34
+10:00:48.349 - servo update, 9C,69,9D, arduino: 0, pin: 28, servo: head.rothead, pos  65, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:48.349 - <-I0 m99 lastStatusUpdate: 65
+10:00:48.538 - eyecam image taken 1146, rothead: -34 degrees, eyeX: 0
+10:00:48.538 - arduino send head.rothead, arduino 0, degrees: -39, position: 60, duration: 80
+10:00:48.583 - face locator: no person located
+10:00:48.584 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 60, duration: 80, startPosition: 65.00, numIncrements: 4, increment: -1.25
+10:00:48.650 - servo update, 9C,67,9F, arduino: 0, pin: 28, servo: head.rothead, pos  63, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:48.652 - <-I0 m99 lastStatusUpdate: 63
+10:00:48.708 - <-I0 target reached head.rothead, position: 60
+10:00:48.720 - servo update, 9C,64,9D, arduino: 0, pin: 28, servo: head.rothead, pos  60, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:48.736 - rothead moved in 0.20 s to -39
+10:00:48.755 - servo update, 9C,64,9D, arduino: 0, pin: 28, servo: head.rothead, pos  60, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:48.755 - <-I0 m99 lastStatusUpdate: 60
+10:00:48.937 - eyecam image taken 1147, rothead: -39 degrees, eyeX: 0
+10:00:48.937 - arduino send head.rothead, arduino 0, degrees: -44, position: 55, duration: 80
+10:00:48.982 - face locator: no person located
+10:00:48.984 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 55, duration: 80, startPosition: 60.00, numIncrements: 4, increment: -1.25
+10:00:49.048 - servo update, 9C,62,9F, arduino: 0, pin: 28, servo: head.rothead, pos  58, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:49.050 - <-I0 m99 lastStatusUpdate: 58
+10:00:49.115 - <-I0 target reached head.rothead, position: 55
+10:00:49.126 - servo update, 9C,5F,9D, arduino: 0, pin: 28, servo: head.rothead, pos  55, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:49.135 - rothead moved in 0.20 s to -44
+10:00:49.149 - servo update, 9C,5F,9D, arduino: 0, pin: 28, servo: head.rothead, pos  55, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:49.149 - <-I0 m99 lastStatusUpdate: 55
+10:00:49.336 - eyecam image taken 1148, rothead: -44 degrees, eyeX: 0
+10:00:49.336 - arduino send head.rothead, arduino 0, degrees: -49, position: 51, duration: 80
+10:00:49.382 - face locator: no person located
+10:00:49.384 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 51, duration: 80, startPosition: 55.00, numIncrements: 4, increment: -1.00
+10:00:49.449 - servo update, 9C,5E,9F, arduino: 0, pin: 28, servo: head.rothead, pos  54, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:49.451 - <-I0 m99 lastStatusUpdate: 54
+10:00:49.516 - <-I0 target reached head.rothead, position: 51
+10:00:49.527 - servo update, 9C,5B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  51, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:49.536 - rothead moved in 0.20 s to -49
+10:00:49.551 - servo update, 9C,5B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  51, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:49.551 - <-I0 m99 lastStatusUpdate: 51
+10:00:49.738 - eyecam image taken 1149, rothead: -49 degrees, eyeX: 0
+10:00:49.739 - arduino send head.rothead, arduino 0, degrees: -50, position: 50, duration: 80
+10:00:49.752 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 50, duration: 80, startPosition: 51.00, numIncrements: 4, increment: -0.25
+10:00:49.790 - face locator: no person located
+10:00:49.790 - rothead moved in 0.05 s to -49
+10:00:49.856 - servo update, 9C,5A,9F, arduino: 0, pin: 28, servo: head.rothead, pos  50, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:49.858 - <-I0 m99 lastStatusUpdate: 50
+10:00:49.912 - <-I0 target reached head.rothead, position: 50
+10:00:49.923 - servo update, 9C,5A,9D, arduino: 0, pin: 28, servo: head.rothead, pos  50, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:49.993 - eyecam image taken 1150, rothead: -50 degrees, eyeX: 0
+10:00:49.993 - arduino send head.rothead, arduino 0, degrees: -46, position: 54, duration: 80
+10:00:50.039 - face locator: no person located
+10:00:50.040 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 54, duration: 80, startPosition: 50.00, numIncrements: 4, increment: 1.00
+10:00:50.114 - servo update, 9C,5B,9F, arduino: 0, pin: 28, servo: head.rothead, pos  51, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:50.116 - <-I0 m99 lastStatusUpdate: 51
+10:00:50.169 - <-I0 target reached head.rothead, position: 54
+10:00:50.181 - servo update, 9C,5E,9D, arduino: 0, pin: 28, servo: head.rothead, pos  54, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:50.192 - rothead moved in 0.20 s to -46
+10:00:50.216 - servo update, 9C,5E,9D, arduino: 0, pin: 28, servo: head.rothead, pos  54, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:50.216 - <-I0 m99 lastStatusUpdate: 54
+10:00:50.394 - eyecam image taken 1151, rothead: -46 degrees, eyeX: 0
+10:00:50.394 - arduino send head.rothead, arduino 0, degrees: -41, position: 58, duration: 80
+10:00:50.441 - face locator: no person located
+10:00:50.442 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 58, duration: 80, startPosition: 54.00, numIncrements: 4, increment: 1.00
+10:00:50.507 - servo update, 9C,5F,9F, arduino: 0, pin: 28, servo: head.rothead, pos  55, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:50.509 - <-I0 m99 lastStatusUpdate: 55
+10:00:50.574 - <-I0 target reached head.rothead, position: 58
+10:00:50.585 - servo update, 9C,62,9D, arduino: 0, pin: 28, servo: head.rothead, pos  58, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:50.594 - rothead moved in 0.20 s to -41
+10:00:50.608 - servo update, 9C,62,9D, arduino: 0, pin: 28, servo: head.rothead, pos  58, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:50.608 - <-I0 m99 lastStatusUpdate: 58
+10:00:50.796 - eyecam image taken 1152, rothead: -41 degrees, eyeX: 0
+10:00:50.796 - arduino send head.rothead, arduino 0, degrees: -36, position: 63, duration: 80
+10:00:50.841 - face locator: no person located
+10:00:50.842 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 63, duration: 80, startPosition: 58.00, numIncrements: 4, increment: 1.25
+10:00:50.908 - servo update, 9C,63,9F, arduino: 0, pin: 28, servo: head.rothead, pos  59, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:50.909 - <-I0 m99 lastStatusUpdate: 59
+10:00:50.974 - <-I0 target reached head.rothead, position: 63
+10:00:50.985 - servo update, 9C,67,9D, arduino: 0, pin: 28, servo: head.rothead, pos  63, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:50.994 - rothead moved in 0.20 s to -36
+10:00:51.009 - servo update, 9C,67,9D, arduino: 0, pin: 28, servo: head.rothead, pos  63, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:51.010 - <-I0 m99 lastStatusUpdate: 63
+10:00:51.195 - eyecam image taken 1153, rothead: -36 degrees, eyeX: 0
+10:00:51.195 - arduino send head.rothead, arduino 0, degrees: -31, position: 68, duration: 80
+10:00:51.241 - face locator: no person located
+10:00:51.242 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 68, duration: 80, startPosition: 63.00, numIncrements: 4, increment: 1.25
+10:00:51.309 - servo update, 9C,68,9F, arduino: 0, pin: 28, servo: head.rothead, pos  64, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:51.311 - <-I0 m99 lastStatusUpdate: 64
+10:00:51.370 - <-I0 target reached head.rothead, position: 68
+10:00:51.381 - servo update, 9C,6C,9D, arduino: 0, pin: 28, servo: head.rothead, pos  68, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:51.394 - rothead moved in 0.20 s to -31
+10:00:51.415 - servo update, 9C,6C,9D, arduino: 0, pin: 28, servo: head.rothead, pos  68, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:51.416 - <-I0 m99 lastStatusUpdate: 68
+10:00:51.595 - eyecam image taken 1154, rothead: -31 degrees, eyeX: 0
+10:00:51.595 - arduino send head.rothead, arduino 0, degrees: -26, position: 73, duration: 80
+10:00:51.639 - face locator: no person located
+10:00:51.641 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 73, duration: 80, startPosition: 68.00, numIncrements: 4, increment: 1.25
+10:00:51.706 - servo update, 9C,6D,9F, arduino: 0, pin: 28, servo: head.rothead, pos  69, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:51.708 - <-I0 m99 lastStatusUpdate: 69
+10:00:51.771 - <-I0 target reached head.rothead, position: 73
+10:00:51.782 - servo update, 9C,71,9D, arduino: 0, pin: 28, servo: head.rothead, pos  73, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:51.792 - rothead moved in 0.20 s to -26
+10:00:51.806 - servo update, 9C,71,9D, arduino: 0, pin: 28, servo: head.rothead, pos  73, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:51.808 - <-I0 m99 lastStatusUpdate: 73
+10:00:51.993 - eyecam image taken 1155, rothead: -26 degrees, eyeX: 0
+10:00:51.993 - arduino send head.rothead, arduino 0, degrees: -21, position: 78, duration: 80
+10:00:52.037 - face locator: no person located
+10:00:52.039 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 78, duration: 80, startPosition: 73.00, numIncrements: 4, increment: 1.25
+10:00:52.105 - servo update, 9C,72,9F, arduino: 0, pin: 28, servo: head.rothead, pos  74, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:52.117 - <-I0 m99 lastStatusUpdate: 74
+10:00:52.172 - <-I0 target reached head.rothead, position: 78
+10:00:52.183 - servo update, 9C,76,9D, arduino: 0, pin: 28, servo: head.rothead, pos  78, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:52.190 - rothead moved in 0.20 s to -21
+10:00:52.207 - servo update, 9C,76,9D, arduino: 0, pin: 28, servo: head.rothead, pos  78, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:52.207 - <-I0 m99 lastStatusUpdate: 78
+10:00:52.392 - eyecam image taken 1156, rothead: -21 degrees, eyeX: 0
+10:00:52.392 - arduino send head.rothead, arduino 0, degrees: -16, position: 83, duration: 80
+10:00:52.436 - face locator: no person located
+10:00:52.438 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 83, duration: 80, startPosition: 78.00, numIncrements: 4, increment: 1.25
+10:00:52.514 - servo update, 9C,77,9F, arduino: 0, pin: 28, servo: head.rothead, pos  79, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:52.516 - <-I0 m99 lastStatusUpdate: 79
+10:00:52.571 - <-I0 target reached head.rothead, position: 83
+10:00:52.582 - servo update, 9C,7B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  83, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:52.589 - rothead moved in 0.20 s to -16
+10:00:52.607 - servo update, 9C,7B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  83, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:52.608 - <-I0 m99 lastStatusUpdate: 83
+10:00:52.790 - eyecam image taken 1157, rothead: -16 degrees, eyeX: 0
+10:00:52.790 - arduino send head.rothead, arduino 0, degrees: -11, position: 87, duration: 80
+10:00:52.837 - face locator: no person located
+10:00:52.838 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 87, duration: 80, startPosition: 83.00, numIncrements: 4, increment: 1.00
+10:00:52.915 - servo update, 9C,7C,9F, arduino: 0, pin: 28, servo: head.rothead, pos  84, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:52.917 - <-I0 m99 lastStatusUpdate: 84
+10:00:52.972 - <-I0 target reached head.rothead, position: 87
+10:00:52.983 - servo update, 9C,7F,9D, arduino: 0, pin: 28, servo: head.rothead, pos  87, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:52.990 - rothead moved in 0.20 s to -11
+10:00:53.006 - servo update, 9C,7F,9D, arduino: 0, pin: 28, servo: head.rothead, pos  87, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:53.009 - <-I0 m99 lastStatusUpdate: 87
+10:00:53.191 - eyecam image taken 1158, rothead: -11 degrees, eyeX: 0
+10:00:53.192 - arduino send head.rothead, arduino 0, degrees: -6, position: 92, duration: 80
+10:00:53.234 - face locator: no person located
+10:00:53.236 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 92, duration: 80, startPosition: 87.00, numIncrements: 4, increment: 1.25
+10:00:53.313 - servo update, 9C,80,9F, arduino: 0, pin: 28, servo: head.rothead, pos  88, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:53.316 - <-I0 m99 lastStatusUpdate: 88
+10:00:53.371 - <-I0 target reached head.rothead, position: 92
+10:00:53.382 - servo update, 9C,84,9D, arduino: 0, pin: 28, servo: head.rothead, pos  92, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:53.387 - rothead moved in 0.20 s to -6
+10:00:53.406 - servo update, 9C,84,9D, arduino: 0, pin: 28, servo: head.rothead, pos  92, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:53.406 - <-I0 m99 lastStatusUpdate: 92
+10:00:53.589 - eyecam image taken 1159, rothead: -6 degrees, eyeX: 0
+10:00:53.589 - arduino send head.rothead, arduino 0, degrees: -1, position: 97, duration: 80
+10:00:53.635 - face locator: no person located
+10:00:53.636 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 97, duration: 80, startPosition: 92.00, numIncrements: 4, increment: 1.25
+10:00:53.711 - servo update, 9C,85,9F, arduino: 0, pin: 28, servo: head.rothead, pos  93, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:53.713 - <-I0 m99 lastStatusUpdate: 93
+10:00:53.776 - <-I0 target reached head.rothead, position: 97
+10:00:53.788 - servo update, 9C,89,9D, arduino: 0, pin: 28, servo: head.rothead, pos  97, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:53.811 - servo update, 9C,89,9D, arduino: 0, pin: 28, servo: head.rothead, pos  97, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:53.811 - <-I0 m99 lastStatusUpdate: 97
+10:00:53.837 - rothead moved in 0.25 s to -1
+10:00:54.037 - eyecam image taken 1160, rothead: -1 degrees, eyeX: 0
+10:00:54.038 - arduino send head.rothead, arduino 0, degrees: 4, position: 102, duration: 80
+10:00:54.083 - face locator: located 1 person
+10:00:54.084 - scan for person stopped
+10:00:54.084 - speak blocking: eine person gesehen
+10:00:54.084 - return rothead to detected person
+10:00:54.084 - arduino send head.rothead, arduino 0, degrees: -1, position: 97, duration: 50
+10:00:54.084 - tts request: eine person gesehen
+10:00:54.086 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 102, duration: 80, startPosition: 97.00, numIncrements: 4, increment: 1.25
+10:00:54.097 - servo update, 9C,89,9F, arduino: 0, pin: 28, servo: head.rothead, pos  97, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:54.098 - <-I0 new moveTo position request while still moving, stop current move head.rothead
+10:00:54.109 - <-I0 request for move to current position, request ignored head.rothead
+10:00:54.120 - <-I0 target reached head.rothead, position: 97
+10:00:54.131 - servo update, 9C,89,9D, arduino: 0, pin: 28, servo: head.rothead, pos  97, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:54.185 - text for lip movement: eine person gesehen
+10:00:56.116 - rothead moved in 2.03 s to -1
+10:00:56.134 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:00:56.145 - servo update, 9C,89,9D, arduino: 0, pin: 28, servo: head.rothead, pos  97, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:56.316 - face locator: unknown person detected
+10:00:56.316 - face locator: pass image to recognizer, objectId: 0
+10:00:56.316 - image: 1160.jpg, 240x320
+10:00:56.316 - centerFace, startX: 89, endX: 141, w: 240, faceXCenter: 115, xOffset: -5, fovH: 18, faceXAngle: -0.4
+10:00:56.316 - centerFace, startY: 72, endY: 124, h: 320, faceYCenter: 98, yOffset: -62, fovV: 26, faceYAngle: 5.0
+10:00:56.316 - center person in image with eyeY move: -1.5, faceYAngle: 5.0
+10:00:56.316 - arduino send head.eyeY, arduino 0, degrees: -2, position: 86, duration: 30
+10:00:56.490 - new request for face recognition
+10:00:56.798 - face recognizer: encoding for face created
+10:00:56.798 - face recognizer: best match: 0.49, name: Jürg, file: 09.jpg
+10:00:56.799 - eyecam image taken 1161, rothead: -1 degrees, eyeX: 0
+10:00:56.844 - face locator: located 1 person
+10:00:56.844 - already identified person: Jürg
+10:00:56.844 - recognized person: Jürg
+10:00:56.845 - speak blocking: hallo Jürg
+10:00:56.847 - last seen: 2020-08-05 11:58:07.091100, 22 stunden, 2 minuten, , zweiundzwanzig stunden und zwei minuten, zweiundzwanzig stunden und zwei minuten
+10:00:56.847 - speak blocking: ich habe dich seit zweiundzwanzig stunden und zwei minuten nicht mehr gesehen
+10:00:56.848 - image: 1161.jpg, 240x320
+10:00:56.848 - centerFace, startX: 20, endX: 72, w: 240, faceXCenter: 46, xOffset: -74, fovH: 18, faceXAngle: -5.5
+10:00:56.848 - centerFace, startY: 72, endY: 124, h: 320, faceYCenter: 98, yOffset: -62, fovV: 26, faceYAngle: 5.0
+10:00:56.848 - center person in image with eyeX move, newEyeX: -2.8, faceXAngle: -5.5
+10:00:56.848 - arduino send head.eyeX, arduino 0, degrees: -3, position: 86, duration: 30
+10:00:56.848 - center person in image with eyeY move: -3.5, faceYAngle: 5.0
+10:00:56.848 - arduino send head.eyeY, arduino 0, degrees: -3, position: 82, duration: 30
+10:00:56.850 - speech responds signaled after: 2.8 s, charPerSec: 0.15
+10:00:56.850 - tts request: hallo Jürg
+10:00:56.898 - text for lip movement: hallo Jürg
+10:00:57.255 - eyecam image taken 1162, rothead: -1 degrees, eyeX: -3
+10:00:57.299 - face locator: located 1 person
+10:00:57.300 - already identified person: Jürg
+10:00:57.300 - image: 1162.jpg, 240x320
+10:00:57.300 - centerFace, startX: 20, endX: 72, w: 240, faceXCenter: 46, xOffset: -74, fovH: 18, faceXAngle: -5.5
+10:00:57.300 - centerFace, startY: 90, endY: 141, h: 320, faceYCenter: 116, yOffset: -44, fovV: 26, faceYAngle: 3.6
+10:00:57.300 - center person in image with eyeX move, newEyeX: -5.8, faceXAngle: -5.5
+10:00:57.300 - arduino send head.eyeX, arduino 0, degrees: -6, position: 81, duration: 30
+10:00:57.300 - center person in image with eyeY move: -4.1, faceYAngle: 3.6
+10:00:57.300 - arduino send head.eyeY, arduino 0, degrees: -4, position: 80, duration: 30
+10:00:57.706 - eyecam image taken 1163, rothead: -1 degrees, eyeX: -6
+10:00:57.751 - face locator: located 1 person
+10:00:57.752 - already identified person: Jürg
+10:00:57.752 - image: 1163.jpg, 240x320
+10:00:57.752 - centerFace, startX: 60, endX: 112, w: 240, faceXCenter: 86, xOffset: -34, fovH: 18, faceXAngle: -2.5
+10:00:57.752 - centerFace, startY: 101, endY: 153, h: 320, faceYCenter: 127, yOffset: -33, fovV: 26, faceYAngle: 2.7
+10:00:57.752 - zero eyeX and move rothead, faceXAngle: -2.5, currEyeXDegrees: -6.0
+10:00:57.752 - faceWidth: 52, faceWidthDegrees: 3.9, approxDist: 235
+10:00:57.752 - rothead correction: 2.4 degrees
+10:00:57.752 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 80
+10:00:57.752 - arduino send head.rothead, arduino 0, degrees: 1.0, position: 99, duration: 80
+10:00:57.752 - center person in image with eyeY move: -4.8, faceYAngle: 2.7
+10:00:57.752 - arduino send head.eyeY, arduino 0, degrees: -5, position: 78, duration: 30
+10:00:57.768 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 99, duration: 80, startPosition: 97.00, numIncrements: 4, increment: 0.50
+10:00:57.894 - servo update, 9C,8A,9F, arduino: 0, pin: 28, servo: head.rothead, pos  98, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:00:57.896 - <-I0 m99 lastStatusUpdate: 98
+10:00:57.928 - <-I0 target reached head.rothead, position: 99
+10:00:57.940 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:57.987 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:57.989 - <-I0 m99 lastStatusUpdate: 99
+10:00:58.549 - speech responds signaled after: 1.7 s, charPerSec: 0.17
+10:00:58.549 - tts request: ich habe dich seit zweiundzwanzig stunden und zwei minuten nicht mehr gesehen
+10:00:58.580 - text for lip movement: ich habe dich seit zweiundzwanzig stunden und zwei minuten nicht mehr gesehen
+10:00:59.782 - rothead moved in 2.03 s to 1
+10:00:59.952 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:00:59.963 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:00:59.984 - eyecam image taken 1164, rothead: 1 degrees, eyeX: 0
+10:01:00.031 - face locator: located 1 person
+10:01:00.032 - already identified person: Jürg
+10:01:00.032 - image: 1164.jpg, 240x320
+10:01:00.032 - centerFace, startX: 118, endX: 170, w: 240, faceXCenter: 144, xOffset: 24, fovH: 18, faceXAngle: 1.8
+10:01:00.032 - centerFace, startY: 107, endY: 159, h: 320, faceYCenter: 133, yOffset: -27, fovV: 26, faceYAngle: 2.2
+10:01:00.032 - center person in image with eyeY move: -5.7, faceYAngle: 2.2
+10:01:00.032 - arduino send head.eyeY, arduino 0, degrees: -6, position: 76, duration: 30
+10:01:00.438 - eyecam image taken 1165, rothead: 1 degrees, eyeX: 0
+10:01:00.486 - face locator: located 1 person
+10:01:00.486 - already identified person: Jürg
+10:01:00.486 - image: 1165.jpg, 240x320
+10:01:00.486 - centerFace, startX: 3, endX: 55, w: 240, faceXCenter: 29, xOffset: -91, fovH: 18, faceXAngle: -6.8
+10:01:00.487 - centerFace, startY: 118, endY: 170, h: 320, faceYCenter: 144, yOffset: -16, fovV: 26, faceYAngle: 1.3
+10:01:00.487 - center person in image with eyeX move, newEyeX: -3.4, faceXAngle: -6.8
+10:01:00.487 - arduino send head.eyeX, arduino 0, degrees: -3, position: 85, duration: 30
+10:01:00.489 - zero eyeY and move neck: 1.3, currEyeYDegrees: -6.0
+10:01:00.489 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:00.489 - arduino send head.neck, arduino 0, degrees: -10, position: 98, duration: 80
+10:01:02.523 - rothead moved in 2.03 s to 1
+10:01:02.724 - eyecam image taken 1166, rothead: 1 degrees, eyeX: -3
+10:01:02.772 - face locator: located 1 person
+10:01:02.772 - already identified person: Jürg
+10:01:02.772 - image: 1166.jpg, 240x320
+10:01:02.773 - centerFace, startX: 3, endX: 55, w: 240, faceXCenter: 29, xOffset: -91, fovH: 18, faceXAngle: -6.8
+10:01:02.773 - centerFace, startY: 118, endY: 170, h: 320, faceYCenter: 144, yOffset: -16, fovV: 26, faceYAngle: 1.3
+10:01:02.773 - center person in image with eyeX move, newEyeX: -6.4, faceXAngle: -6.8
+10:01:02.773 - arduino send head.eyeX, arduino 0, degrees: -7, position: 80, duration: 30
+10:01:02.839 - new request for face recognition
+10:01:03.139 - face recognizer: encoding for face created
+10:01:03.140 - face recognizer: best match: 0.47, name: Jürg, file: 14.jpg
+10:01:03.189 - eyecam image taken 1167, rothead: 1 degrees, eyeX: -7
+10:01:03.233 - face locator: located 1 person
+10:01:03.234 - already identified person: Jürg
+10:01:03.234 - image: 1167.jpg, 240x320
+10:01:03.234 - centerFace, startX: 60, endX: 112, w: 240, faceXCenter: 86, xOffset: -34, fovH: 18, faceXAngle: -2.5
+10:01:03.234 - centerFace, startY: 72, endY: 124, h: 320, faceYCenter: 98, yOffset: -62, fovV: 26, faceYAngle: 5.0
+10:01:03.234 - zero eyeX and move rothead, faceXAngle: -2.5, currEyeXDegrees: -7.0
+10:01:03.234 - faceWidth: 52, faceWidthDegrees: 3.9, approxDist: 235
+10:01:03.235 - rothead correction: 2.4 degrees
+10:01:03.235 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:03.236 - arduino send head.rothead, arduino 0, degrees: 3.0, position: 101, duration: 80
+10:01:03.236 - center person in image with eyeY move: -1.5, faceYAngle: 5.0
+10:01:03.236 - arduino send head.eyeY, arduino 0, degrees: -2, position: 86, duration: 30
+10:01:03.253 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 101, duration: 80, startPosition: 99.00, numIncrements: 4, increment: 0.50
+10:01:03.367 - servo update, 9C,8C,9F, arduino: 0, pin: 28, servo: head.rothead, pos 100, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:03.369 - <-I0 m99 lastStatusUpdate: 100
+10:01:03.413 - <-I0 target reached head.rothead, position: 101
+10:01:03.424 - servo update, 9C,8D,9D, arduino: 0, pin: 28, servo: head.rothead, pos 101, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:03.441 - rothead moved in 0.20 s to 3
+10:01:03.472 - servo update, 9C,8D,9D, arduino: 0, pin: 28, servo: head.rothead, pos 101, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:03.472 - <-I0 m99 lastStatusUpdate: 101
+10:01:03.642 - eyecam image taken 1168, rothead: 3 degrees, eyeX: 0
+10:01:03.687 - face locator: located 1 person
+10:01:03.687 - already identified person: Jürg
+10:01:03.687 - image: 1168.jpg, 240x320
+10:01:03.687 - centerFace, startX: 114, endX: 176, w: 240, faceXCenter: 145, xOffset: 25, fovH: 18, faceXAngle: 1.9
+10:01:03.687 - centerFace, startY: 73, endY: 135, h: 320, faceYCenter: 104, yOffset: -56, fovV: 26, faceYAngle: 4.5
+10:01:03.687 - center person in image with eyeY move: -3.4, faceYAngle: 4.5
+10:01:03.687 - arduino send head.eyeY, arduino 0, degrees: -3, position: 82, duration: 30
+10:01:03.999 - speech responds signaled after: 5.4 s, charPerSec: 0.07
+10:01:04.096 - eyecam image taken 1169, rothead: 3 degrees, eyeX: 0
+10:01:04.144 - face locator: no person located
+10:01:04.144 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.187 - eyecam image taken 1170, rothead: 3 degrees, eyeX: 0
+10:01:04.238 - face locator: no person located
+10:01:04.238 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.284 - eyecam image taken 1171, rothead: 3 degrees, eyeX: 0
+10:01:04.328 - face locator: no person located
+10:01:04.329 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.363 - eyecam image taken 1172, rothead: 3 degrees, eyeX: 0
+10:01:04.409 - face locator: no person located
+10:01:04.409 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.459 - eyecam image taken 1173, rothead: 3 degrees, eyeX: 0
+10:01:04.506 - face locator: no person located
+10:01:04.506 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.540 - eyecam image taken 1174, rothead: 3 degrees, eyeX: 0
+10:01:04.595 - face locator: no person located
+10:01:04.595 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.636 - eyecam image taken 1175, rothead: 3 degrees, eyeX: 0
+10:01:04.690 - face locator: no person located
+10:01:04.691 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.731 - eyecam image taken 1176, rothead: 3 degrees, eyeX: 0
+10:01:04.777 - face locator: no person located
+10:01:04.777 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.811 - eyecam image taken 1177, rothead: 3 degrees, eyeX: 0
+10:01:04.858 - face locator: no person located
+10:01:04.859 - face locator: no person detected but not in scan and no timeout, retry
+10:01:04.907 - eyecam image taken 1178, rothead: 3 degrees, eyeX: 0
+10:01:04.957 - face locator: no person located
+10:01:04.957 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.004 - eyecam image taken 1179, rothead: 3 degrees, eyeX: 0
+10:01:05.051 - face locator: no person located
+10:01:05.052 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.083 - eyecam image taken 1180, rothead: 3 degrees, eyeX: 0
+10:01:05.134 - face locator: no person located
+10:01:05.135 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.180 - eyecam image taken 1181, rothead: 3 degrees, eyeX: 0
+10:01:05.227 - face locator: no person located
+10:01:05.228 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.259 - eyecam image taken 1182, rothead: 3 degrees, eyeX: 0
+10:01:05.309 - face locator: no person located
+10:01:05.309 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.356 - eyecam image taken 1183, rothead: 3 degrees, eyeX: 0
+10:01:05.403 - face locator: no person located
+10:01:05.403 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.433 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:01:05.443 - servo update, 9C,8D,9D, arduino: 0, pin: 28, servo: head.rothead, pos 101, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:05.451 - eyecam image taken 1184, rothead: 3 degrees, eyeX: 0
+10:01:05.502 - face locator: no person located
+10:01:05.502 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.531 - eyecam image taken 1185, rothead: 3 degrees, eyeX: 0
+10:01:05.582 - face locator: no person located
+10:01:05.582 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.627 - eyecam image taken 1186, rothead: 3 degrees, eyeX: 0
+10:01:05.676 - face locator: no person located
+10:01:05.676 - face locator: no person detected but not in scan and no timeout, retry
+10:01:05.723 - eyecam image taken 1187, rothead: 3 degrees, eyeX: 0
+10:01:05.769 - face locator: located 1 person
+10:01:05.769 - already identified person: Jürg
+10:01:05.770 - image: 1187.jpg, 240x320
+10:01:05.770 - centerFace, startX: 0, endX: 49, w: 240, faceXCenter: 24, xOffset: -96, fovH: 18, faceXAngle: -7.2
+10:01:05.770 - centerFace, startY: 107, endY: 159, h: 320, faceYCenter: 133, yOffset: -27, fovV: 26, faceYAngle: 2.2
+10:01:05.770 - center person in image with eyeX move, newEyeX: -3.6, faceXAngle: -7.2
+10:01:05.770 - arduino send head.eyeX, arduino 0, degrees: -3, position: 85, duration: 30
+10:01:05.770 - center person in image with eyeY move: -3.7, faceYAngle: 2.2
+10:01:05.770 - arduino send head.eyeY, arduino 0, degrees: -4, position: 81, duration: 30
+10:01:06.178 - eyecam image taken 1188, rothead: 3 degrees, eyeX: -3
+10:01:06.225 - face locator: located 1 person
+10:01:06.225 - already identified person: Jürg
+10:01:06.225 - image: 1188.jpg, 240x320
+10:01:06.225 - centerFace, startX: 0, endX: 63, w: 240, faceXCenter: 32, xOffset: -88, fovH: 18, faceXAngle: -6.6
+10:01:06.225 - centerFace, startY: 96, endY: 171, h: 320, faceYCenter: 134, yOffset: -26, fovV: 26, faceYAngle: 2.2
+10:01:06.225 - center person in image with eyeX move, newEyeX: -6.3, faceXAngle: -6.6
+10:01:06.226 - arduino send head.eyeX, arduino 0, degrees: -6, position: 81, duration: 30
+10:01:06.226 - center person in image with eyeY move: -4.6, faceYAngle: 2.2
+10:01:06.226 - arduino send head.eyeY, arduino 0, degrees: -5, position: 79, duration: 30
+10:01:06.634 - eyecam image taken 1189, rothead: 3 degrees, eyeX: -6
+10:01:06.680 - face locator: located 1 person
+10:01:06.680 - already identified person: Jürg
+10:01:06.680 - image: 1189.jpg, 240x320
+10:01:06.680 - centerFace, startX: 71, endX: 146, w: 240, faceXCenter: 108, xOffset: -12, fovH: 18, faceXAngle: -0.9
+10:01:06.680 - centerFace, startY: 105, endY: 179, h: 320, faceYCenter: 142, yOffset: -18, fovV: 26, faceYAngle: 1.5
+10:01:06.680 - zero eyeX and move rothead, faceXAngle: -0.9, currEyeXDegrees: -6.0
+10:01:06.681 - faceWidth: 75, faceWidthDegrees: 5.6, approxDist: 162
+10:01:06.681 - rothead correction: 0.8 degrees
+10:01:06.681 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:06.681 - arduino send head.rothead, arduino 0, degrees: 4.0, position: 102, duration: 80
+10:01:06.681 - zero eyeY and move neck: 1.5, currEyeYDegrees: -5.0
+10:01:06.681 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:06.681 - arduino send head.neck, arduino 0, degrees: -10, position: 99, duration: 80
+10:01:06.681 - rothead moved in 0.00 s to 3
+10:01:06.698 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 102, duration: 80, startPosition: 101.00, numIncrements: 4, increment: 0.25
+10:01:06.854 - servo update, 9C,8E,9F, arduino: 0, pin: 28, servo: head.rothead, pos 102, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:06.857 - <-I0 m99 lastStatusUpdate: 102
+10:01:06.868 - <-I0 target reached head.rothead, position: 102
+10:01:06.879 - servo update, 9C,8E,9D, arduino: 0, pin: 28, servo: head.rothead, pos 102, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:07.087 - eyecam image taken 1190, rothead: 4 degrees, eyeX: 0
+10:01:07.135 - face locator: located 1 person
+10:01:07.135 - already identified person: Jürg
+10:01:07.136 - image: 1190.jpg, 240x320
+10:01:07.136 - centerFace, startX: 141, endX: 193, w: 240, faceXCenter: 167, xOffset: 47, fovH: 18, faceXAngle: 3.5
+10:01:07.136 - centerFace, startY: 118, endY: 170, h: 320, faceYCenter: 144, yOffset: -16, fovV: 26, faceYAngle: 1.3
+10:01:07.136 - center person in image with eyeX move, newEyeX: 1.8, faceXAngle: 3.5
+10:01:07.136 - arduino send head.eyeX, arduino 0, degrees: 2, position: 93, duration: 30
+10:01:07.543 - eyecam image taken 1191, rothead: 4 degrees, eyeX: 2
+10:01:07.592 - face locator: located 1 person
+10:01:07.592 - already identified person: Jürg
+10:01:07.592 - image: 1191.jpg, 240x320
+10:01:07.592 - centerFace, startX: 26, endX: 78, w: 240, faceXCenter: 52, xOffset: -68, fovH: 18, faceXAngle: -5.1
+10:01:07.592 - centerFace, startY: 84, endY: 136, h: 320, faceYCenter: 110, yOffset: -50, fovV: 26, faceYAngle: 4.1
+10:01:07.592 - center person in image with eyeX move, newEyeX: -0.5, faceXAngle: -5.1
+10:01:07.592 - arduino send head.eyeX, arduino 0, degrees: -1, position: 89, duration: 30
+10:01:07.592 - center person in image with eyeY move: -1.2, faceYAngle: 4.1
+10:01:07.592 - arduino send head.eyeY, arduino 0, degrees: -1, position: 87, duration: 30
+10:01:08.000 - eyecam image taken 1192, rothead: 4 degrees, eyeX: -1
+10:01:08.045 - face locator: located 1 person
+10:01:08.045 - already identified person: Jürg
+10:01:08.045 - image: 1192.jpg, 240x320
+10:01:08.045 - centerFace, startX: 8, endX: 60, w: 240, faceXCenter: 34, xOffset: -86, fovH: 18, faceXAngle: -6.5
+10:01:08.046 - centerFace, startY: 84, endY: 136, h: 320, faceYCenter: 110, yOffset: -50, fovV: 26, faceYAngle: 4.1
+10:01:08.046 - center person in image with eyeX move, newEyeX: -4.2, faceXAngle: -6.5
+10:01:08.046 - arduino send head.eyeX, arduino 0, degrees: -4, position: 84, duration: 30
+10:01:08.046 - center person in image with eyeY move: -2.2, faceYAngle: 4.1
+10:01:08.046 - arduino send head.eyeY, arduino 0, degrees: -2, position: 85, duration: 30
+10:01:08.453 - eyecam image taken 1193, rothead: 4 degrees, eyeX: -4
+10:01:08.497 - face locator: located 1 person
+10:01:08.498 - already identified person: Jürg
+10:01:08.498 - image: 1193.jpg, 240x320
+10:01:08.498 - centerFace, startX: 38, endX: 100, w: 240, faceXCenter: 69, xOffset: -51, fovH: 18, faceXAngle: -3.8
+10:01:08.498 - centerFace, startY: 87, endY: 149, h: 320, faceYCenter: 118, yOffset: -42, fovV: 26, faceYAngle: 3.4
+10:01:08.498 - center person in image with eyeX move, newEyeX: -5.9, faceXAngle: -3.8
+10:01:08.498 - arduino send head.eyeX, arduino 0, degrees: -6, position: 81, duration: 30
+10:01:08.498 - center person in image with eyeY move: -3.0, faceYAngle: 3.4
+10:01:08.498 - arduino send head.eyeY, arduino 0, degrees: -3, position: 83, duration: 30
+10:01:08.647 - new request for face recognition
+10:01:08.950 - face recognizer: encoding for face created
+10:01:08.950 - face recognizer: best match: 0.51, name: Jürg, file: 14.jpg
+10:01:08.952 - eyecam image taken 1194, rothead: 4 degrees, eyeX: -6
+10:01:08.952 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:01:08.997 - face locator: located 1 person
+10:01:08.997 - already identified person: Jürg
+10:01:08.997 - servo update, 9C,8E,9D, arduino: 0, pin: 28, servo: head.rothead, pos 102, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:08.997 - image: 1194.jpg, 240x320
+10:01:08.997 - centerFace, startX: 106, endX: 158, w: 240, faceXCenter: 132, xOffset: 12, fovH: 18, faceXAngle: 0.9
+10:01:08.997 - centerFace, startY: 101, endY: 153, h: 320, faceYCenter: 127, yOffset: -33, fovV: 26, faceYAngle: 2.7
+10:01:08.997 - zero eyeX and move rothead, faceXAngle: 0.9, currEyeXDegrees: -6.0
+10:01:08.997 - faceWidth: 52, faceWidthDegrees: 3.9, approxDist: 235
+10:01:08.998 - rothead correction: -0.9 degrees
+10:01:08.998 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:08.998 - arduino send head.rothead, arduino 0, degrees: 3.0, position: 101, duration: 80
+10:01:08.998 - center person in image with eyeY move: -3.8, faceYAngle: 2.7
+10:01:08.998 - arduino send head.eyeY, arduino 0, degrees: -4, position: 81, duration: 30
+10:01:08.998 - rothead moved in 0.00 s to 4
+10:01:09.013 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 101, duration: 80, startPosition: 102.00, numIncrements: 4, increment: -0.25
+10:01:09.112 - servo update, 9C,8D,9F, arduino: 0, pin: 28, servo: head.rothead, pos 101, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:09.114 - <-I0 m99 lastStatusUpdate: 101
+10:01:09.171 - <-I0 target reached head.rothead, position: 101
+10:01:09.182 - servo update, 9C,8D,9D, arduino: 0, pin: 28, servo: head.rothead, pos 101, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:09.402 - eyecam image taken 1195, rothead: 3 degrees, eyeX: 0
+10:01:09.448 - face locator: located 1 person
+10:01:09.448 - already identified person: Jürg
+10:01:09.448 - image: 1195.jpg, 240x320
+10:01:09.448 - centerFace, startX: 154, endX: 229, w: 240, faceXCenter: 192, xOffset: 72, fovH: 18, faceXAngle: 5.4
+10:01:09.448 - centerFace, startY: 105, endY: 179, h: 320, faceYCenter: 142, yOffset: -18, fovV: 26, faceYAngle: 1.5
+10:01:09.448 - center person in image with eyeX move, newEyeX: 2.7, faceXAngle: 5.4
+10:01:09.448 - arduino send head.eyeX, arduino 0, degrees: 3, position: 94, duration: 30
+10:01:09.448 - zero eyeY and move neck: 1.5, currEyeYDegrees: -4.0
+10:01:09.448 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:09.448 - arduino send head.neck, arduino 0, degrees: -10, position: 100, duration: 80
+10:01:09.449 - rothead moved in 0.00 s to 3
+10:01:09.853 - eyecam image taken 1196, rothead: 3 degrees, eyeX: 3
+10:01:09.898 - face locator: located 1 person
+10:01:09.898 - already identified person: Jürg
+10:01:09.898 - image: 1196.jpg, 240x320
+10:01:09.898 - centerFace, startX: 73, endX: 135, w: 240, faceXCenter: 104, xOffset: -16, fovH: 18, faceXAngle: -1.2
+10:01:09.899 - centerFace, startY: 108, endY: 170, h: 320, faceYCenter: 139, yOffset: -21, fovV: 26, faceYAngle: 1.7
+10:01:09.900 - eyecam image taken 1197, rothead: 3 degrees, eyeX: 3
+10:01:09.945 - face locator: located 1 person
+10:01:09.945 - already identified person: Jürg
+10:01:09.945 - image: 1197.jpg, 240x320
+10:01:09.945 - centerFace, startX: 43, endX: 95, w: 240, faceXCenter: 69, xOffset: -51, fovH: 18, faceXAngle: -3.8
+10:01:09.945 - centerFace, startY: 84, endY: 136, h: 320, faceYCenter: 110, yOffset: -50, fovV: 26, faceYAngle: 4.1
+10:01:09.945 - center person in image with eyeX move, newEyeX: 1.1, faceXAngle: -3.8
+10:01:09.945 - arduino send head.eyeX, arduino 0, degrees: 1, position: 92, duration: 30
+10:01:09.946 - center person in image with eyeY move: -1.2, faceYAngle: 4.1
+10:01:09.946 - arduino send head.eyeY, arduino 0, degrees: -1, position: 87, duration: 30
+10:01:10.354 - eyecam image taken 1198, rothead: 3 degrees, eyeX: 1
+10:01:10.400 - face locator: located 1 person
+10:01:10.400 - already identified person: Jürg
+10:01:10.400 - image: 1198.jpg, 240x320
+10:01:10.400 - centerFace, startX: 45, endX: 107, w: 240, faceXCenter: 76, xOffset: -44, fovH: 18, faceXAngle: -3.3
+10:01:10.400 - centerFace, startY: 73, endY: 135, h: 320, faceYCenter: 104, yOffset: -56, fovV: 26, faceYAngle: 4.5
+10:01:10.400 - center person in image with eyeX move, newEyeX: -0.6, faceXAngle: -3.3
+10:01:10.400 - arduino send head.eyeX, arduino 0, degrees: -1, position: 89, duration: 30
+10:01:10.400 - center person in image with eyeY move: -2.4, faceYAngle: 4.5
+10:01:10.400 - arduino send head.eyeY, arduino 0, degrees: -2, position: 84, duration: 30
+10:01:10.807 - eyecam image taken 1199, rothead: 3 degrees, eyeX: -1
+10:01:10.853 - face locator: located 1 person
+10:01:10.853 - already identified person: Jürg
+10:01:10.853 - image: 1199.jpg, 240x320
+10:01:10.853 - centerFace, startX: 87, endX: 149, w: 240, faceXCenter: 118, xOffset: -2, fovH: 18, faceXAngle: -0.1
+10:01:10.853 - centerFace, startY: 87, endY: 149, h: 320, faceYCenter: 118, yOffset: -42, fovV: 26, faceYAngle: 3.4
+10:01:10.853 - center person in image with eyeY move: -3.0, faceYAngle: 3.4
+10:01:10.854 - arduino send head.eyeY, arduino 0, degrees: -3, position: 83, duration: 30
+10:01:11.192 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:01:11.204 - servo update, 9C,8D,9D, arduino: 0, pin: 28, servo: head.rothead, pos 101, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:11.260 - eyecam image taken 1200, rothead: 3 degrees, eyeX: -1
+10:01:11.305 - face locator: located 1 person
+10:01:11.305 - already identified person: Jürg
+10:01:11.305 - image: 1200.jpg, 240x320
+10:01:11.305 - centerFace, startX: 129, endX: 204, w: 240, faceXCenter: 166, xOffset: 46, fovH: 18, faceXAngle: 3.5
+10:01:11.305 - centerFace, startY: 96, endY: 171, h: 320, faceYCenter: 134, yOffset: -26, fovV: 26, faceYAngle: 2.2
+10:01:11.305 - center person in image with eyeX move, newEyeX: 0.7, faceXAngle: 3.5
+10:01:11.305 - arduino send head.eyeX, arduino 0, degrees: 1, position: 91, duration: 30
+10:01:11.305 - center person in image with eyeY move: -3.6, faceYAngle: 2.2
+10:01:11.305 - arduino send head.eyeY, arduino 0, degrees: -4, position: 81, duration: 30
+10:01:11.712 - eyecam image taken 1201, rothead: 3 degrees, eyeX: 1
+10:01:11.756 - face locator: located 1 person
+10:01:11.757 - already identified person: Jürg
+10:01:11.757 - image: 1201.jpg, 240x320
+10:01:11.757 - centerFace, startX: 158, endX: 210, w: 240, faceXCenter: 184, xOffset: 64, fovH: 18, faceXAngle: 4.8
+10:01:11.757 - centerFace, startY: 113, endY: 164, h: 320, faceYCenter: 138, yOffset: -22, fovV: 26, faceYAngle: 1.7
+10:01:11.757 - center person in image with eyeX move, newEyeX: 3.4, faceXAngle: 4.8
+10:01:11.757 - arduino send head.eyeX, arduino 0, degrees: 3, position: 95, duration: 30
+10:01:11.757 - zero eyeY and move neck: 1.7, currEyeYDegrees: -4.0
+10:01:11.757 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:11.757 - arduino send head.neck, arduino 0, degrees: -9, position: 101, duration: 80
+10:01:11.757 - rothead moved in 0.00 s to 3
+10:01:12.162 - eyecam image taken 1202, rothead: 3 degrees, eyeX: 3
+10:01:12.208 - face locator: located 1 person
+10:01:12.208 - already identified person: Jürg
+10:01:12.208 - image: 1202.jpg, 240x320
+10:01:12.208 - centerFace, startX: 135, endX: 197, w: 240, faceXCenter: 166, xOffset: 46, fovH: 18, faceXAngle: 3.4
+10:01:12.208 - centerFace, startY: 122, endY: 184, h: 320, faceYCenter: 153, yOffset: -7, fovV: 26, faceYAngle: 0.6
+10:01:12.208 - center person in image with eyeX move, newEyeX: 4.7, faceXAngle: 3.4
+10:01:12.208 - arduino send head.eyeX, arduino 0, degrees: 5, position: 97, duration: 30
+10:01:12.615 - eyecam image taken 1203, rothead: 3 degrees, eyeX: 5
+10:01:12.660 - face locator: located 1 person
+10:01:12.660 - already identified person: Jürg
+10:01:12.660 - image: 1203.jpg, 240x320
+10:01:12.661 - centerFace, startX: 101, endX: 152, w: 240, faceXCenter: 126, xOffset: 6, fovH: 18, faceXAngle: 0.5
+10:01:12.661 - centerFace, startY: 90, endY: 141, h: 320, faceYCenter: 116, yOffset: -44, fovV: 26, faceYAngle: 3.6
+10:01:12.661 - center person in image with eyeY move: -1.1, faceYAngle: 3.6
+10:01:12.661 - arduino send head.eyeY, arduino 0, degrees: -1, position: 87, duration: 30
+10:01:13.068 - eyecam image taken 1204, rothead: 3 degrees, eyeX: 5
+10:01:13.113 - face locator: located 1 person
+10:01:13.113 - already identified person: Jürg
+10:01:13.114 - image: 1204.jpg, 240x320
+10:01:13.114 - centerFace, startX: 72, endX: 124, w: 240, faceXCenter: 98, xOffset: -22, fovH: 18, faceXAngle: -1.6
+10:01:13.114 - centerFace, startY: 90, endY: 141, h: 320, faceYCenter: 116, yOffset: -44, fovV: 26, faceYAngle: 3.6
+10:01:13.114 - center person in image with eyeY move: -2.1, faceYAngle: 3.6
+10:01:13.114 - arduino send head.eyeY, arduino 0, degrees: -2, position: 85, duration: 30
+10:01:13.520 - eyecam image taken 1205, rothead: 3 degrees, eyeX: 5
+10:01:13.565 - face locator: located 1 person
+10:01:13.565 - already identified person: Jürg
+10:01:13.565 - image: 1205.jpg, 240x320
+10:01:13.565 - centerFace, startX: 66, endX: 128, w: 240, faceXCenter: 97, xOffset: -23, fovH: 18, faceXAngle: -1.7
+10:01:13.565 - centerFace, startY: 101, endY: 163, h: 320, faceYCenter: 132, yOffset: -28, fovV: 26, faceYAngle: 2.3
+10:01:13.566 - center person in image with eyeY move: -2.7, faceYAngle: 2.3
+10:01:13.566 - arduino send head.eyeY, arduino 0, degrees: -2, position: 84, duration: 30
+10:01:13.973 - eyecam image taken 1206, rothead: 3 degrees, eyeX: 5
+10:01:14.018 - face locator: located 1 person
+10:01:14.018 - already identified person: Jürg
+10:01:14.018 - image: 1206.jpg, 240x320
+10:01:14.018 - centerFace, startX: 66, endX: 128, w: 240, faceXCenter: 97, xOffset: -23, fovH: 18, faceXAngle: -1.7
+10:01:14.018 - centerFace, startY: 108, endY: 170, h: 320, faceYCenter: 139, yOffset: -21, fovV: 26, faceYAngle: 1.7
+10:01:14.019 - eyecam image taken 1207, rothead: 3 degrees, eyeX: 5
+10:01:14.064 - face locator: located 1 person
+10:01:14.064 - already identified person: Jürg
+10:01:14.065 - image: 1207.jpg, 240x320
+10:01:14.065 - centerFace, startX: 72, endX: 124, w: 240, faceXCenter: 98, xOffset: -22, fovH: 18, faceXAngle: -1.6
+10:01:14.065 - centerFace, startY: 113, endY: 164, h: 320, faceYCenter: 138, yOffset: -22, fovV: 26, faceYAngle: 1.7
+10:01:14.091 - eyecam image taken 1208, rothead: 3 degrees, eyeX: 5
+10:01:14.136 - face locator: located 1 person
+10:01:14.137 - already identified person: Jürg
+10:01:14.137 - image: 1208.jpg, 240x320
+10:01:14.137 - centerFace, startX: 72, endX: 124, w: 240, faceXCenter: 98, xOffset: -22, fovH: 18, faceXAngle: -1.6
+10:01:14.137 - centerFace, startY: 113, endY: 164, h: 320, faceYCenter: 138, yOffset: -22, fovV: 26, faceYAngle: 1.7
+10:01:14.167 - new request for face recognition
+10:01:14.473 - face recognizer: encoding for face created
+10:01:14.474 - face recognizer: best match: 0.43, name: Jürg, file: 14.jpg
+10:01:14.474 - eyecam image taken 1209, rothead: 3 degrees, eyeX: 5
+10:01:14.519 - face locator: located 1 person
+10:01:14.519 - already identified person: Jürg
+10:01:14.519 - image: 1209.jpg, 240x320
+10:01:14.519 - centerFace, startX: 66, endX: 118, w: 240, faceXCenter: 92, xOffset: -28, fovH: 18, faceXAngle: -2.1
+10:01:14.519 - centerFace, startY: 107, endY: 159, h: 320, faceYCenter: 133, yOffset: -27, fovV: 26, faceYAngle: 2.2
+10:01:14.519 - center person in image with eyeY move: -2.7, faceYAngle: 2.2
+10:01:14.519 - arduino send head.eyeY, arduino 0, degrees: -2, position: 84, duration: 30
+10:01:14.925 - eyecam image taken 1210, rothead: 3 degrees, eyeX: 5
+10:01:14.970 - face locator: located 1 person
+10:01:14.971 - already identified person: Jürg
+10:01:14.971 - image: 1210.jpg, 240x320
+10:01:14.971 - centerFace, startX: 66, endX: 118, w: 240, faceXCenter: 92, xOffset: -28, fovH: 18, faceXAngle: -2.1
+10:01:14.971 - centerFace, startY: 107, endY: 159, h: 320, faceYCenter: 133, yOffset: -27, fovV: 26, faceYAngle: 2.2
+10:01:14.971 - center person in image with eyeY move: -2.7, faceYAngle: 2.2
+10:01:14.971 - arduino send head.eyeY, arduino 0, degrees: -2, position: 84, duration: 30
+10:01:15.377 - eyecam image taken 1211, rothead: 3 degrees, eyeX: 5
+10:01:15.422 - face locator: located 1 person
+10:01:15.422 - already identified person: Jürg
+10:01:15.422 - image: 1211.jpg, 240x320
+10:01:15.422 - centerFace, startX: 52, endX: 114, w: 240, faceXCenter: 83, xOffset: -37, fovH: 18, faceXAngle: -2.8
+10:01:15.422 - centerFace, startY: 108, endY: 170, h: 320, faceYCenter: 139, yOffset: -21, fovV: 26, faceYAngle: 1.7
+10:01:15.451 - eyecam image taken 1212, rothead: 3 degrees, eyeX: 5
+10:01:15.497 - face locator: located 1 person
+10:01:15.498 - already identified person: Jürg
+10:01:15.498 - image: 1212.jpg, 240x320
+10:01:15.498 - centerFace, startX: 93, endX: 156, w: 240, faceXCenter: 124, xOffset: 4, fovH: 18, faceXAngle: 0.3
+10:01:15.498 - centerFace, startY: 115, endY: 177, h: 320, faceYCenter: 146, yOffset: -14, fovV: 26, faceYAngle: 1.1
+10:01:15.531 - eyecam image taken 1213, rothead: 3 degrees, eyeX: 5
+10:01:15.577 - face locator: located 1 person
+10:01:15.577 - already identified person: Jürg
+10:01:15.577 - image: 1213.jpg, 240x320
+10:01:15.577 - centerFace, startX: 100, endX: 163, w: 240, faceXCenter: 132, xOffset: 12, fovH: 18, faceXAngle: 0.9
+10:01:15.577 - centerFace, startY: 115, endY: 177, h: 320, faceYCenter: 146, yOffset: -14, fovV: 26, faceYAngle: 1.1
+10:01:15.628 - eyecam image taken 1214, rothead: 3 degrees, eyeX: 5
+10:01:15.674 - face locator: located 1 person
+10:01:15.674 - already identified person: Jürg
+10:01:15.674 - image: 1214.jpg, 240x320
+10:01:15.674 - centerFace, startX: 107, endX: 170, w: 240, faceXCenter: 138, xOffset: 18, fovH: 18, faceXAngle: 1.4
+10:01:15.674 - centerFace, startY: 115, endY: 177, h: 320, faceYCenter: 146, yOffset: -14, fovV: 26, faceYAngle: 1.1
+10:01:15.723 - eyecam image taken 1215, rothead: 3 degrees, eyeX: 5
+10:01:15.767 - face locator: located 1 person
+10:01:15.767 - already identified person: Jürg
+10:01:15.767 - image: 1215.jpg, 240x320
+10:01:15.768 - centerFace, startX: 114, endX: 176, w: 240, faceXCenter: 145, xOffset: 25, fovH: 18, faceXAngle: 1.9
+10:01:15.768 - centerFace, startY: 115, endY: 177, h: 320, faceYCenter: 146, yOffset: -14, fovV: 26, faceYAngle: 1.1
+10:01:15.803 - eyecam image taken 1216, rothead: 3 degrees, eyeX: 5
+10:01:15.849 - face locator: located 1 person
+10:01:15.849 - already identified person: Jürg
+10:01:15.849 - image: 1216.jpg, 240x320
+10:01:15.849 - centerFace, startX: 124, endX: 175, w: 240, faceXCenter: 150, xOffset: 30, fovH: 18, faceXAngle: 2.2
+10:01:15.849 - centerFace, startY: 113, endY: 164, h: 320, faceYCenter: 138, yOffset: -22, fovV: 26, faceYAngle: 1.7
+10:01:15.899 - eyecam image taken 1217, rothead: 3 degrees, eyeX: 5
+10:01:15.944 - face locator: located 1 person
+10:01:15.944 - already identified person: Jürg
+10:01:15.944 - image: 1217.jpg, 240x320
+10:01:15.944 - centerFace, startX: 129, endX: 181, w: 240, faceXCenter: 155, xOffset: 35, fovH: 18, faceXAngle: 2.6
+10:01:15.944 - centerFace, startY: 113, endY: 164, h: 320, faceYCenter: 138, yOffset: -22, fovV: 26, faceYAngle: 1.7
+10:01:15.995 - eyecam image taken 1218, rothead: 3 degrees, eyeX: 5
+10:01:16.042 - face locator: located 1 person
+10:01:16.042 - already identified person: Jürg
+10:01:16.042 - image: 1218.jpg, 240x320
+10:01:16.043 - centerFace, startX: 135, endX: 197, w: 240, faceXCenter: 166, xOffset: 46, fovH: 18, faceXAngle: 3.4
+10:01:16.043 - centerFace, startY: 115, endY: 177, h: 320, faceYCenter: 146, yOffset: -14, fovV: 26, faceYAngle: 1.1
+10:01:16.043 - center person in image with eyeX move, newEyeX: 6.7, faceXAngle: 3.4
+10:01:16.043 - arduino send head.eyeX, arduino 0, degrees: 7, position: 100, duration: 30
+10:01:16.451 - eyecam image taken 1219, rothead: 3 degrees, eyeX: 7
+10:01:16.495 - face locator: located 1 person
+10:01:16.495 - already identified person: Jürg
+10:01:16.495 - image: 1219.jpg, 240x320
+10:01:16.495 - centerFace, startX: 141, endX: 193, w: 240, faceXCenter: 167, xOffset: 47, fovH: 18, faceXAngle: 3.5
+10:01:16.495 - centerFace, startY: 113, endY: 164, h: 320, faceYCenter: 138, yOffset: -22, fovV: 26, faceYAngle: 1.7
+10:01:16.495 - center person in image with eyeX move, newEyeX: 8.8, faceXAngle: 3.5
+10:01:16.495 - arduino send head.eyeX, arduino 0, degrees: 9, position: 103, duration: 30
+10:01:16.903 - eyecam image taken 1220, rothead: 3 degrees, eyeX: 9
+10:01:16.948 - face locator: located 1 person
+10:01:16.948 - already identified person: Jürg
+10:01:16.948 - image: 1220.jpg, 240x320
+10:01:16.948 - centerFace, startX: 114, endX: 176, w: 240, faceXCenter: 145, xOffset: 25, fovH: 18, faceXAngle: 1.9
+10:01:16.948 - centerFace, startY: 115, endY: 177, h: 320, faceYCenter: 146, yOffset: -14, fovV: 26, faceYAngle: 1.1
+10:01:16.948 - zero eyeX and move rothead, faceXAngle: 1.9, currEyeXDegrees: 9.0
+10:01:16.948 - faceWidth: 62, faceWidthDegrees: 4.6, approxDist: 197
+10:01:16.948 - rothead correction: -1.8 degrees
+10:01:16.948 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 80
+10:01:16.948 - arduino send head.rothead, arduino 0, degrees: 1.0, position: 99, duration: 80
+10:01:16.949 - rothead moved in 0.00 s to 3
+10:01:16.964 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 99, duration: 80, startPosition: 101.00, numIncrements: 4, increment: -0.50
+10:01:17.072 - servo update, 9C,8C,9F, arduino: 0, pin: 28, servo: head.rothead, pos 100, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:17.074 - <-I0 m99 lastStatusUpdate: 100
+10:01:17.130 - <-I0 target reached head.rothead, position: 99
+10:01:17.141 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:17.175 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:17.176 - <-I0 m99 lastStatusUpdate: 99
+10:01:17.353 - eyecam image taken 1221, rothead: 1 degrees, eyeX: 0
+10:01:17.399 - face locator: located 1 person
+10:01:17.400 - already identified person: Jürg
+10:01:17.400 - image: 1221.jpg, 240x320
+10:01:17.400 - centerFace, startX: 101, endX: 152, w: 240, faceXCenter: 126, xOffset: 6, fovH: 18, faceXAngle: 0.5
+10:01:17.400 - centerFace, startY: 118, endY: 170, h: 320, faceYCenter: 144, yOffset: -16, fovV: 26, faceYAngle: 1.3
+10:01:17.436 - eyecam image taken 1222, rothead: 1 degrees, eyeX: 0
+10:01:17.481 - face locator: no person located
+10:01:17.481 - face locator: no person detected but not in scan and no timeout, retry
+10:01:17.516 - eyecam image taken 1223, rothead: 1 degrees, eyeX: 0
+10:01:17.561 - face locator: no person located
+10:01:17.561 - face locator: no person detected but not in scan and no timeout, retry
+10:01:17.612 - eyecam image taken 1224, rothead: 1 degrees, eyeX: 0
+10:01:17.656 - face locator: no person located
+10:01:17.656 - face locator: no person detected but not in scan and no timeout, retry
+10:01:17.707 - eyecam image taken 1225, rothead: 1 degrees, eyeX: 0
+10:01:17.753 - face locator: no person located
+10:01:17.753 - face locator: no person detected but not in scan and no timeout, retry
+10:01:17.787 - eyecam image taken 1226, rothead: 1 degrees, eyeX: 0
+10:01:17.833 - face locator: no person located
+10:01:17.834 - face locator: no person detected but not in scan and no timeout, retry
+10:01:17.883 - eyecam image taken 1227, rothead: 1 degrees, eyeX: 0
+10:01:17.928 - face locator: no person located
+10:01:17.928 - face locator: no person detected but not in scan and no timeout, retry
+10:01:17.963 - eyecam image taken 1228, rothead: 1 degrees, eyeX: 0
+10:01:18.008 - face locator: no person located
+10:01:18.008 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.059 - eyecam image taken 1229, rothead: 1 degrees, eyeX: 0
+10:01:18.103 - face locator: no person located
+10:01:18.103 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.155 - eyecam image taken 1230, rothead: 1 degrees, eyeX: 0
+10:01:18.199 - face locator: no person located
+10:01:18.199 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.235 - eyecam image taken 1231, rothead: 1 degrees, eyeX: 0
+10:01:18.281 - face locator: no person located
+10:01:18.281 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.332 - eyecam image taken 1232, rothead: 1 degrees, eyeX: 0
+10:01:18.376 - face locator: no person located
+10:01:18.376 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.427 - eyecam image taken 1233, rothead: 1 degrees, eyeX: 0
+10:01:18.472 - face locator: no person located
+10:01:18.473 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.507 - eyecam image taken 1234, rothead: 1 degrees, eyeX: 0
+10:01:18.552 - face locator: no person located
+10:01:18.552 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.603 - eyecam image taken 1235, rothead: 1 degrees, eyeX: 0
+10:01:18.649 - face locator: no person located
+10:01:18.649 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.684 - eyecam image taken 1236, rothead: 1 degrees, eyeX: 0
+10:01:18.730 - face locator: no person located
+10:01:18.730 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.779 - eyecam image taken 1237, rothead: 1 degrees, eyeX: 0
+10:01:18.824 - face locator: no person located
+10:01:18.824 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.875 - eyecam image taken 1238, rothead: 1 degrees, eyeX: 0
+10:01:18.922 - face locator: no person located
+10:01:18.922 - face locator: no person detected but not in scan and no timeout, retry
+10:01:18.956 - eyecam image taken 1239, rothead: 1 degrees, eyeX: 0
+10:01:19.003 - face locator: no person located
+10:01:19.003 - face locator: no person detected but not in scan and no timeout, retry
+10:01:19.051 - eyecam image taken 1240, rothead: 1 degrees, eyeX: 0
+10:01:19.096 - face locator: no person located
+10:01:19.096 - face locator: no person detected but not in scan and no timeout, retry
+10:01:19.147 - eyecam image taken 1241, rothead: 1 degrees, eyeX: 0
+10:01:19.151 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:01:19.194 - face locator: no person located
+10:01:19.195 - face locator: no person detected but not in scan and no timeout, retry
+10:01:19.195 - servo update, 9C,8B,9D, arduino: 0, pin: 28, servo: head.rothead, pos  99, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:19.227 - eyecam image taken 1242, rothead: 1 degrees, eyeX: 0
+10:01:19.272 - face locator: no person located
+10:01:19.272 - face locator: no person detected but not in scan and no timeout, retry
+10:01:19.323 - eyecam image taken 1243, rothead: 1 degrees, eyeX: 0
+10:01:19.370 - face locator: no person located
+10:01:19.370 - face locator: no person detected but not in scan and no timeout, retry
+10:01:19.420 - eyecam image taken 1244, rothead: 1 degrees, eyeX: 0
+10:01:19.464 - face locator: no person located
+10:01:19.465 - face locator: time since last person seen: 2.06, resume scan
+10:01:19.465 - scan for person started
+10:01:19.465 - speak blocking: ich suche nach personen
+10:01:19.465 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 50
+10:01:19.465 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 50
+10:01:19.465 - tts request: ich suche nach personen
+10:01:19.465 - arduino send head.neck, arduino 0, degrees: -10, position: 99, duration: 500
+10:01:19.507 - text for lip movement: ich suche nach personen
+10:01:21.496 - rothead moved in 2.03 s to 1
+10:01:21.698 - eyecam image taken 1245, rothead: 1 degrees, eyeX: 0
+10:01:21.698 - arduino send head.rothead, arduino 0, degrees: 6, position: 104, duration: 80
+10:01:21.745 - face locator: no person located
+10:01:21.746 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 104, duration: 80, startPosition: 99.00, numIncrements: 4, increment: 1.25
+10:01:21.812 - servo update, 9C,8C,9F, arduino: 0, pin: 28, servo: head.rothead, pos 100, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:21.813 - <-I0 m99 lastStatusUpdate: 100
+10:01:21.870 - <-I0 target reached head.rothead, position: 104
+10:01:21.881 - servo update, 9C,90,9D, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:21.897 - rothead moved in 0.20 s to 6
+10:01:21.915 - servo update, 9C,90,9D, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:21.915 - <-I0 m99 lastStatusUpdate: 104
+10:01:22.099 - eyecam image taken 1246, rothead: 6 degrees, eyeX: 0
+10:01:22.099 - arduino send head.rothead, arduino 0, degrees: 11, position: 109, duration: 80
+10:01:22.144 - face locator: located 1 person
+10:01:22.144 - scan for person stopped
+10:01:22.144 - speak blocking: eine person gesehen
+10:01:22.144 - return rothead to detected person
+10:01:22.144 - arduino send head.rothead, arduino 0, degrees: 6, position: 104, duration: 50
+10:01:22.146 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 109, duration: 80, startPosition: 104.00, numIncrements: 4, increment: 1.25
+10:01:22.157 - servo update, 9C,90,9F, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:22.158 - <-I0 new moveTo position request while still moving, stop current move head.rothead
+10:01:22.170 - <-I0 request for move to current position, request ignored head.rothead
+10:01:22.181 - <-I0 target reached head.rothead, position: 104
+10:01:22.192 - servo update, 9C,90,9D, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:22.360 - speech responds signaled after: 2.9 s, charPerSec: 0.13
+10:01:22.360 - tts request: eine person gesehen
+10:01:22.400 - text for lip movement: eine person gesehen
+10:01:24.175 - rothead moved in 2.03 s to 6
+10:01:24.196 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:01:24.207 - servo update, 9C,90,9D, arduino: 0, pin: 28, servo: head.rothead, pos 104, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:24.376 - already identified person: Jürg
+10:01:24.376 - image: 1246.jpg, 240x320
+10:01:24.376 - centerFace, startX: 142, endX: 204, w: 240, faceXCenter: 173, xOffset: 53, fovH: 18, faceXAngle: 4.0
+10:01:24.376 - centerFace, startY: 87, endY: 149, h: 320, faceYCenter: 118, yOffset: -42, fovV: 26, faceYAngle: 3.4
+10:01:24.376 - center person in image with eyeX move, newEyeX: 2.0, faceXAngle: 4.0
+10:01:24.376 - arduino send head.eyeX, arduino 0, degrees: 2, position: 93, duration: 30
+10:01:24.376 - center person in image with eyeY move: -1.0, faceYAngle: 3.4
+10:01:24.376 - arduino send head.eyeY, arduino 0, degrees: -1, position: 88, duration: 30
+10:01:24.382 - new request for face recognition
+10:01:24.706 - face recognizer: encoding for face created
+10:01:24.706 - face recognizer: best match: 0.52, name: Jürg, file: 10.jpg
+10:01:24.758 - speech responds signaled after: 2.4 s, charPerSec: 0.13
+10:01:24.809 - eyecam image taken 1247, rothead: 6 degrees, eyeX: 2
+10:01:24.854 - face locator: located 1 person
+10:01:24.854 - already identified person: Jürg
+10:01:24.854 - image: 1247.jpg, 240x320
+10:01:24.854 - centerFace, startX: 63, endX: 137, w: 240, faceXCenter: 100, xOffset: -20, fovH: 18, faceXAngle: -1.5
+10:01:24.854 - centerFace, startY: 80, endY: 155, h: 320, faceYCenter: 118, yOffset: -42, fovV: 26, faceYAngle: 3.5
+10:01:24.854 - center person in image with eyeY move: -2.0, faceYAngle: 3.5
+10:01:24.854 - arduino send head.eyeY, arduino 0, degrees: -2, position: 85, duration: 30
+10:01:25.260 - eyecam image taken 1248, rothead: 6 degrees, eyeX: 2
+10:01:25.305 - face locator: no person located
+10:01:25.305 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.306 - eyecam image taken 1249, rothead: 6 degrees, eyeX: 2
+10:01:25.352 - face locator: no person located
+10:01:25.352 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.355 - eyecam image taken 1250, rothead: 6 degrees, eyeX: 2
+10:01:25.402 - face locator: no person located
+10:01:25.402 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.451 - eyecam image taken 1251, rothead: 6 degrees, eyeX: 2
+10:01:25.496 - face locator: no person located
+10:01:25.496 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.531 - eyecam image taken 1252, rothead: 6 degrees, eyeX: 2
+10:01:25.577 - face locator: no person located
+10:01:25.577 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.628 - eyecam image taken 1253, rothead: 6 degrees, eyeX: 2
+10:01:25.673 - face locator: no person located
+10:01:25.673 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.724 - eyecam image taken 1254, rothead: 6 degrees, eyeX: 2
+10:01:25.769 - face locator: no person located
+10:01:25.769 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.803 - eyecam image taken 1255, rothead: 6 degrees, eyeX: 2
+10:01:25.848 - face locator: no person located
+10:01:25.848 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.899 - eyecam image taken 1256, rothead: 6 degrees, eyeX: 2
+10:01:25.947 - face locator: no person located
+10:01:25.948 - face locator: no person detected but not in scan and no timeout, retry
+10:01:25.996 - eyecam image taken 1257, rothead: 6 degrees, eyeX: 2
+10:01:26.042 - face locator: no person located
+10:01:26.042 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.076 - eyecam image taken 1258, rothead: 6 degrees, eyeX: 2
+10:01:26.120 - face locator: no person located
+10:01:26.120 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.171 - eyecam image taken 1259, rothead: 6 degrees, eyeX: 2
+10:01:26.217 - face locator: no person located
+10:01:26.217 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.251 - eyecam image taken 1260, rothead: 6 degrees, eyeX: 2
+10:01:26.295 - face locator: no person located
+10:01:26.295 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.347 - eyecam image taken 1261, rothead: 6 degrees, eyeX: 2
+10:01:26.395 - face locator: no person located
+10:01:26.395 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.444 - eyecam image taken 1262, rothead: 6 degrees, eyeX: 2
+10:01:26.489 - face locator: no person located
+10:01:26.489 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.523 - eyecam image taken 1263, rothead: 6 degrees, eyeX: 2
+10:01:26.568 - face locator: no person located
+10:01:26.569 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.619 - eyecam image taken 1264, rothead: 6 degrees, eyeX: 2
+10:01:26.666 - face locator: no person located
+10:01:26.666 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.715 - eyecam image taken 1265, rothead: 6 degrees, eyeX: 2
+10:01:26.761 - face locator: no person located
+10:01:26.761 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.796 - eyecam image taken 1266, rothead: 6 degrees, eyeX: 2
+10:01:26.843 - face locator: no person located
+10:01:26.843 - face locator: no person detected but not in scan and no timeout, retry
+10:01:26.891 - eyecam image taken 1267, rothead: 6 degrees, eyeX: 2
+10:01:26.935 - face locator: no person located
+10:01:26.935 - face locator: time since last person seen: 2.08, resume scan
+10:01:26.935 - scan for person started
+10:01:26.935 - speak blocking: ich suche nach personen
+10:01:26.935 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 50
+10:01:26.936 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 50
+10:01:26.936 - tts request: ich suche nach personen
+10:01:26.936 - arduino send head.neck, arduino 0, degrees: -10, position: 99, duration: 500
+10:01:26.992 - text for lip movement: ich suche nach personen
+10:01:28.970 - rothead moved in 2.03 s to 6
+10:01:29.171 - eyecam image taken 1268, rothead: 6 degrees, eyeX: 0
+10:01:29.171 - arduino send head.rothead, arduino 0, degrees: 11, position: 109, duration: 80
+10:01:29.219 - face locator: no person located
+10:01:29.221 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 109, duration: 80, startPosition: 104.00, numIncrements: 4, increment: 1.25
+10:01:29.287 - servo update, 9C,91,9F, arduino: 0, pin: 28, servo: head.rothead, pos 105, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:29.289 - <-I0 m99 lastStatusUpdate: 105
+10:01:29.304 - speech responds signaled after: 2.4 s, charPerSec: 0.10
+10:01:29.355 - <-I0 target reached head.rothead, position: 109
+10:01:29.366 - servo update, 9C,95,9D, arduino: 0, pin: 28, servo: head.rothead, pos 109, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:29.373 - rothead moved in 0.20 s to 11
+10:01:29.389 - servo update, 9C,95,9D, arduino: 0, pin: 28, servo: head.rothead, pos 109, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:29.389 - <-I0 m99 lastStatusUpdate: 109
+10:01:29.574 - eyecam image taken 1269, rothead: 11 degrees, eyeX: 0
+10:01:29.574 - arduino send head.rothead, arduino 0, degrees: 16, position: 113, duration: 80
+10:01:29.634 - face locator: no person located
+10:01:29.636 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 113, duration: 80, startPosition: 109.00, numIncrements: 4, increment: 1.00
+10:01:29.691 - servo update, 9C,96,9F, arduino: 0, pin: 28, servo: head.rothead, pos 110, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:29.693 - <-I0 m99 lastStatusUpdate: 110
+10:01:29.748 - <-I0 target reached head.rothead, position: 113
+10:01:29.759 - servo update, 9C,99,9D, arduino: 0, pin: 28, servo: head.rothead, pos 113, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:29.788 - rothead moved in 0.21 s to 16
+10:01:29.794 - servo update, 9C,99,9D, arduino: 0, pin: 28, servo: head.rothead, pos 113, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:29.795 - <-I0 m99 lastStatusUpdate: 113
+10:01:29.989 - eyecam image taken 1270, rothead: 16 degrees, eyeX: 0
+10:01:29.989 - arduino send head.rothead, arduino 0, degrees: 21, position: 118, duration: 80
+10:01:30.036 - face locator: no person located
+10:01:30.038 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 118, duration: 80, startPosition: 113.00, numIncrements: 4, increment: 1.25
+10:01:30.114 - servo update, 9C,9A,9F, arduino: 0, pin: 28, servo: head.rothead, pos 114, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:30.116 - <-I0 m99 lastStatusUpdate: 114
+10:01:30.171 - <-I0 target reached head.rothead, position: 118
+10:01:30.182 - servo update, 9C,9E,9D, arduino: 0, pin: 28, servo: head.rothead, pos 118, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:30.190 - rothead moved in 0.20 s to 21
+10:01:30.217 - servo update, 9C,9E,9D, arduino: 0, pin: 28, servo: head.rothead, pos 118, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:30.217 - <-I0 m99 lastStatusUpdate: 118
+10:01:30.392 - eyecam image taken 1271, rothead: 21 degrees, eyeX: 0
+10:01:30.392 - arduino send head.rothead, arduino 0, degrees: 26, position: 123, duration: 80
+10:01:30.446 - face locator: no person located
+10:01:30.447 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 123, duration: 80, startPosition: 118.00, numIncrements: 4, increment: 1.25
+10:01:30.512 - servo update, 9C,9F,9F, arduino: 0, pin: 28, servo: head.rothead, pos 119, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:30.514 - <-I0 m99 lastStatusUpdate: 119
+10:01:30.571 - <-I0 target reached head.rothead, position: 123
+10:01:30.582 - servo update, 9C,A3,9D, arduino: 0, pin: 28, servo: head.rothead, pos 123, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:30.600 - rothead moved in 0.21 s to 26
+10:01:30.605 - servo update, 9C,A3,9D, arduino: 0, pin: 28, servo: head.rothead, pos 123, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:30.616 - <-I0 m99 lastStatusUpdate: 123
+10:01:30.801 - eyecam image taken 1272, rothead: 26 degrees, eyeX: 0
+10:01:30.801 - arduino send head.rothead, arduino 0, degrees: 31, position: 128, duration: 80
+10:01:30.846 - face locator: no person located
+10:01:30.848 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 128, duration: 80, startPosition: 123.00, numIncrements: 4, increment: 1.25
+10:01:30.912 - servo update, 9C,A4,9F, arduino: 0, pin: 28, servo: head.rothead, pos 124, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:30.914 - <-I0 m99 lastStatusUpdate: 124
+10:01:30.969 - <-I0 target reached head.rothead, position: 128
+10:01:30.980 - servo update, 9C,A8,9D, arduino: 0, pin: 28, servo: head.rothead, pos 128, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:30.982 - on_locateFaces_pressed, isFaceTrackingActive: True
+10:01:30.982 - stop face tracking
+10:01:30.982 - arduino send head.eyeX, arduino 0, degrees: 0, position: 90, duration: 500
+10:01:30.982 - arduino send head.eyeY, arduino 0, degrees: 0, position: 90, duration: 500
+10:01:30.982 - arduino send head.rothead, arduino 0, degrees: 0, position: 98, duration: 500
+10:01:30.982 - arduino send head.neck, arduino 0, degrees: 0, position: 125, duration: 500
+10:01:30.983 - speak blocking: gesichtsverfolgung beendet
+10:01:30.983 - tts request: gesichtsverfolgung beendet
+10:01:30.992 - text for lip movement: gesichtsverfolgung beendet
+10:01:30.999 - rothead moved in 0.20 s to 31
+10:01:31.001 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 98, duration: 500, startPosition: 128.00, numIncrements: 25, increment: -1.20
+10:01:31.090 - servo update, 9C,A8,9F, arduino: 0, pin: 28, servo: head.rothead, pos 128, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:31.090 - <-I0 m99 lastStatusUpdate: 128
+10:01:31.201 - eyecam image taken 1273, rothead: 31 degrees, eyeX: 0
+10:01:31.201 - arduino send head.rothead, arduino 0, degrees: 36, position: 133, duration: 80
+10:01:31.248 - face locator: no person located
+10:01:31.248 - servo update, 9C,A8,9F, arduino: 0, pin: 28, servo: head.rothead, pos 128, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:31.248 - <-I0 new moveTo position request while still moving, stop current move head.rothead
+10:01:31.260 - <-I0 m10 a0, pin: 28, moveTo received, targetPos: 133, duration: 80, startPosition: 128.00, numIncrements: 4, increment: 1.25
+10:01:31.315 - servo update, 9C,A9,9F, arduino: 0, pin: 28, servo: head.rothead, pos 129, assigned: True, moving True, attached True, autoDetach: True, verbose: True
+10:01:31.317 - <-I0 m99 lastStatusUpdate: 129
+10:01:31.374 - <-I0 target reached head.rothead, position: 133
+10:01:31.385 - servo update, 9C,AD,9D, arduino: 0, pin: 28, servo: head.rothead, pos 133, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:31.419 - servo update, 9C,AD,9D, arduino: 0, pin: 28, servo: head.rothead, pos 133, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:31.420 - <-I0 m99 lastStatusUpdate: 133
+10:01:33.400 - <-I0 inMoveRequest cleared, autoDetachMs 2000 servo, head.rothead ms after arrived: 2020
+10:01:33.411 - servo update, 9C,AD,9D, arduino: 0, pin: 28, servo: head.rothead, pos 133, assigned: True, moving False, attached True, autoDetach: True, verbose: True
+10:01:33.691 - speech responds signaled after: 2.7 s, charPerSec: 0.10
+10:01:35.004 - <-I0 m35, servo group powered off IN5-head
+10:01:35.015 - <-I0 m14 pin: 28, head.rothead detached
